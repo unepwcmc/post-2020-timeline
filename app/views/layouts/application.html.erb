@@ -9,6 +9,19 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <%= render 'global/topbar' %>
+
+    <div id="v-app">
+      
+      <%= render 'global/header' %>
+
+      <%= yield %>
+
+    </div>
+
+    <%= render 'global/footer' %>
+
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>
