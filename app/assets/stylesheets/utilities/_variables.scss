@@ -3,7 +3,8 @@
 //--------------------------------------------------
 $black: #000000;
 
-$grey: #D5D8E1;
+$grey: #7f7f7f;
+$grey-light: #f4f4f4;
 
 $primary: $black;
 $secondary: $grey;
@@ -18,7 +19,7 @@ $body-font-color: $black;
 //--------------------------------------------------
 // dimensions
 //--------------------------------------------------
-$site-width: rem-calc(1200);
+$site-width: rem-calc(960);
 // $site-width-medium: $site-width * .80;
 // $site-width-small: $site-width * .60;
 
