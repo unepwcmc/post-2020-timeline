@@ -1,0 +1,23 @@
+//--------------------------------------------------
+// html elements
+//--------------------------------------------------
+* { 
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: $body-font;
+  margin: 0;
+}
+
+//--------------------------------------------------
+// site structure
+//--------------------------------------------------
+.site-width { width: $site-width; }
+
+.container {
+  @extend .site-width;
+
+  margin: 0 auto;
+}

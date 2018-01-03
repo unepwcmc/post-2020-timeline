@@ -1,0 +1,68 @@
+//--------------------------------------------------
+// flexbox
+//--------------------------------------------------
+.flex { display: flex; }
+.flex-inline { display: inline-flex; }
+
+.flex-row { flex-direction: row; }
+.flex-row-reverse { flex-direction: row-reverse; }
+.flex-column { flex-direction: column; }
+.flex-column-reverse { flex-direction: column-reverse; }
+
+.flex-nowrap { flex-wrap: nowrap; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-wrap-reverse { flex-wrap: wrap-reverse; }
+
+//--------------------------------------------------
+// horizontal alignment
+//--------------------------------------------------
+.flex-h-start { justify-content: flex-start; }
+.flex-h-end { justify-content: flex-end; }
+.flex-h-center { justify-content: center; }
+.flex-h-between { justify-content: space-between; }
+.flex-h-around { justify-content: space-around; }
+
+//--------------------------------------------------
+// vertical alignment
+//--------------------------------------------------
+.flex-v-start { align-items: flex-start; }
+.flex-v-end { align-items: flex-end; }
+.flex-v-center {align-items: center; }
+.flex-v-baseline { align-items: baseline; }
+.flex-v-stretch { align-items: stretch; }
+
+//--------------------------------------------------
+// vertical alignment of self
+//--------------------------------------------------
+.flex-vs-start { align-self: flex-start; }
+.flex-vs-end { align-self: flex-end; }
+.flex-vs-center {align-self: center; }
+.flex-vs-baseline { align-self: baseline; }
+.flex-vs-stretch { align-self: stretch; }
+
+//--------------------------------------------------
+// vertical alignment of multiple items
+//--------------------------------------------------
+.flex-vm-start { align-content: flex-start; }
+.flex-vm-end { align-content: flex-end; }
+.flex-vm-center {align-content: center; }
+.flex-vm-between { align-content: space-between; }
+.flex-vm-around { align-content: space-around; }
+.flex-vm-stretch { align-content: stretch; }
+
+//--------------------------------------------------
+// columns
+//--------------------------------------------------
+.flex-1-half { flex: 0 1 50%; }
+
+.flex-1-third { flex: 0 1 33%; }
+.flex-2-thirds { flex: 0 1 66%; }
+
+.flex-1-quarter { flex: 0 1 25%; }
+.flex-2-quarters { flex: 0 1 50%; }
+.flex-3-quarters { flex: 0 1 75%; }
+
+.flex-1-fith { flex: 0 1 20%; }
+.flex-2-fiths { flex: 0 1 40%; }
+.flex-3-fiths { flex: 0 1 60%; }
+.flex-5-fiths { flex: 0 1 80%; }
