@@ -5,6 +5,7 @@
 // - fonts
 // - dimensions
 // - breakpoins
+// - padding
 // - buttons
 //
 //--------------------------------------------------
@@ -46,6 +47,12 @@ $site-width-large: $site-width * 1.5;
 $small: rem-calc(720);
 $medium: $site-width;
 $large: $site-width-large;
+
+//--------------------------------------------------
+// padding
+//--------------------------------------------------
+$gutter-small: rem-calc(16); 
+$gutter-medium: rem-calc(20);
 
 //--------------------------------------------------
 // buttons
