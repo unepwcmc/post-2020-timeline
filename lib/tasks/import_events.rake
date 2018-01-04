@@ -47,12 +47,10 @@ namespace :import do
         end
       else
         event = Event.new(event_row_hash)
+        unless event.save!
+          Rails.logger.info "Cannot import! #{event.title}"
+        end
       end
-
-      unless event.save!
-        Rails.logger.info "Cannot import! #{event.title}"
-      end
-
     end
 
     csv.close
