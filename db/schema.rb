@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 20180104105906) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.string "event", null: false
+    t.string "title", null: false
     t.date "start_date", null: false
     t.date "end_date", null: false
     t.string "location"
     t.string "organisers"
-    t.string "meeting_aims", null: false
+    t.string "summary", null: false
     t.string "relevance"
     t.string "outputs", null: false
     t.string "category_first", null: false
