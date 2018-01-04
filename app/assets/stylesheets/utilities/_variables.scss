@@ -1,4 +1,13 @@
 //--------------------------------------------------
+// variables
+//--------------------------------------------------
+// - colours
+// - fonts
+// - dimensions
+// - breakpoins
+// - buttons
+//
+//--------------------------------------------------
 // colours
 //--------------------------------------------------
 $black: #000000;
@@ -6,22 +15,37 @@ $black: #000000;
 $grey: #7f7f7f;
 $grey-light: #f4f4f4;
 
-$primary: $black;
-$secondary: $grey;
+$blue: #4d6b89;
+
+$cerulean: #00a0d1;
+
+$green: #b4c92b;
+
+$primary: $blue;
+$secondary: $cerulean;
+
+$accent: $green;
 
 //--------------------------------------------------
 // fonts
 //--------------------------------------------------
+$font-roboto: 'Roboto', sans-serif;
 
-$body-font: 'Arial';
+$body-font: $font-roboto;
 $body-font-color: $black;
 
 //--------------------------------------------------
 // dimensions
 //--------------------------------------------------
 $site-width: rem-calc(960);
-// $site-width-medium: $site-width * .80;
-// $site-width-small: $site-width * .60;
+$site-width-large: $site-width * 1.5;
+
+//--------------------------------------------------
+// breakpoints
+//--------------------------------------------------
+$breakpoint-small: rem-calc(720);
+$breakpoint-medium: $site-width;
+$breakpoint-large: $site-width-large;
 
 //--------------------------------------------------
 // buttons

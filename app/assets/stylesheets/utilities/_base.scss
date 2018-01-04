@@ -11,10 +11,16 @@ body {
   margin: 0;
 }
 
+h1 {
+  font-size: rem-calc(45);
+  margin: rem-calc(0 0 12 0);
+}
+
 //--------------------------------------------------
 // site structure
 //--------------------------------------------------
 .site-width { width: $site-width; }
+.site-width--large { width: $site-width-large; }
 
 .container {
   @extend .site-width;

@@ -1,0 +1,36 @@
+//--------------------------------------------------
+// buttons
+//--------------------------------------------------
+.button {
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: rem-calc(22);
+  font-weight: bold;
+  line-height: 1;
+
+  &--secondary { 
+    background-color: $secondary; 
+    color: white;
+    padding: rem-calc(15 76 15 46);
+  }
+
+  &--filter {
+    position: relative;
+
+    &:after {
+      // background-image: url('images/icons/filter.svg');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      content: '';
+      width: rem-calc(27);
+
+      display: block;
+      position: absolute;
+      top: 0;
+      right: rem-calc(46);
+      bottom: 0;
+    }
+  }
+}

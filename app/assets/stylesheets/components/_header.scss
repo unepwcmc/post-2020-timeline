@@ -1,0 +1,14 @@
+//--------------------------------------------------
+// header
+//--------------------------------------------------
+.header {
+  background-color: $primary;
+  color: white;
+  padding: rem-calc(56);
+
+  &__intro {
+    line-height: 1.6;
+    margin: 0;
+    width: 65%;
+  }
+}
