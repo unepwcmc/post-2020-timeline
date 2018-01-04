@@ -4,11 +4,15 @@
 .control-bar {
   background-color: white; 
   box-shadow: lighten($grey, 30%) 0 2px 4px 0px;
-  padding: rem-calc(15);
+  padding: rem-calc(9 10);
+
+  @include breakpoint($small){ padding: rem-calc(15); }
 
   &:before { // hack to center and right align child components
-    content: '';
-    flex: 1;
-    visibility: hidden;
+    @include breakpoint($small){
+      content: '';
+      flex: 1;
+      visibility: hidden;
+    }
   }
 }

@@ -12,15 +12,22 @@ body {
 }
 
 h1 {
-  font-size: rem-calc(45);
+  font-size: rem-calc(20);
   margin: rem-calc(0 0 12 0);
+
+  @include breakpoint($small) { font-size: rem-calc(45); }
 }
 
 //--------------------------------------------------
 // site structure
 //--------------------------------------------------
-.site-width { width: $site-width; }
-.site-width--large { width: $site-width-large; }
+.site-width { 
+  @include breakpoint($medium){ width: $site-width; }
+}
+
+.site-width--large { 
+  @include breakpoint($large){ width: $site-width-large; }
+}
 
 .container {
   @extend .site-width;

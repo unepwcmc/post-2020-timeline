@@ -4,11 +4,18 @@
 .header {
   background-color: $primary;
   color: white;
-  padding: rem-calc(56);
+  padding: rem-calc(18 16);
+
+  @include breakpoint($small){ padding: rem-calc(56); }
 
   &__intro {
+    font-size: rem-calc(14);
     line-height: 1.6;
     margin: 0;
-    width: 65%;
+
+    @include breakpoint($small){
+      font-size: rem-calc(16); 
+      width: 65%;
+    }
   }
 }

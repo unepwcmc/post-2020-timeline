@@ -43,9 +43,9 @@ $site-width-large: $site-width * 1.5;
 //--------------------------------------------------
 // breakpoints
 //--------------------------------------------------
-$breakpoint-small: rem-calc(720);
-$breakpoint-medium: $site-width;
-$breakpoint-large: $site-width-large;
+$small: rem-calc(720);
+$medium: $site-width;
+$large: $site-width-large;
 
 //--------------------------------------------------
 // buttons

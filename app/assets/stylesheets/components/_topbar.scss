@@ -3,6 +3,13 @@
 //--------------------------------------------------
 .topbar {
   background-color: $grey-light;
-  height: rem-calc(86);
-  padding: rem-calc(44 16);
+  padding: rem-calc(10 16);
+
+  @include breakpoint($small){ padding: rem-calc(44 16); }
+
+  &__logo {
+    width: rem-calc(137);
+
+    @include breakpoint($small){ width: rem-calc(152); }
+  }
 }

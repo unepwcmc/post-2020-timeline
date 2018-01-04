@@ -5,14 +5,20 @@
   border: none;
   border-radius: 0;
   cursor: pointer;
-  font-size: rem-calc(22);
+  font-size: rem-calc(20);
   font-weight: bold;
   line-height: 1;
+
+  @include breakpoint($small){
+    font-size: rem-calc(22);
+  }
 
   &--secondary { 
     background-color: $secondary; 
     color: white;
-    padding: rem-calc(15 76 15 46);
+    padding: rem-calc(8 46 8 16);
+
+    @include breakpoint($small){ padding: rem-calc(15 76 15 46); }
   }
 
   &--filter {
