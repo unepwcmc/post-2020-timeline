@@ -20,7 +20,6 @@
     methods: {
       clickTrigger () {
         this.$store.commit('reveal/toggleActiveState')
-        console.log(this.$store.state.reveal.active)
       }
     }
   }

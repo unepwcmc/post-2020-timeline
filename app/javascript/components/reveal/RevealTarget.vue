@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'reveal__target--active' : isActive }">
+  <div class="reveal__target" :class="{ 'reveal__target--active' : isActive }">
     <slot></slot>  
   </div>
 </template>
@@ -21,12 +21,6 @@
       }
     },
 
-    data() {
-      return {
-        // isActive: this.$store.state.reveal.active
-      }
-    },
-
     computed: {
       isActive () {
         return this.$store.state.reveal.active
@@ -40,3 +34,20 @@
     }
   }
 </script>
+
+<style lang="scss">
+  .reveal__target {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    
+    transform: translateX(100%);
+
+    transition: transform .4s ease-in-out;
+
+    &--active {
+      transform: translateX(0);
+    }
+  }
+</style>
