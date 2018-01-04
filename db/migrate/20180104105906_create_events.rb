@@ -5,12 +5,12 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.date :start_date
       t.date :end_date
       t.string :location
-      t.string :organisers
       t.string :summary, null: false
       t.string :relevance
       t.string :outputs, null: false
-      t.string :category_first, null: false
-      t.string :category_second
+      t.string :category, null: false
+
+      t.timestamps
     end
   end
 end

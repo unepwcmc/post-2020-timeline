@@ -20,8 +20,7 @@ namespace :import do
       summary: csv_headers[5],
       relevance: csv_headers[6],
       outputs: csv_headers[7],
-      category_first: csv_headers[8],
-      category_second: csv_headers[9].chomp
+      category: csv_headers[8]
     }
 
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
@@ -29,7 +28,8 @@ namespace :import do
       event_row_hash = {}
 
       event_hash.keys.each do |key|
-        if [:outputs, :summary, :category_first].include? key
+        next if key == :organisers
+        if [:outputs, :summary, :category].include? key
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || "Empty"
         elsif [:start_date, :end_date].include? key
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || nil
@@ -51,6 +51,19 @@ namespace :import do
           Rails.logger.info "Cannot import! #{event.title}"
         end
       end
+
+      list_of_children = csv_event_row[event_hash[:organisers]]&.strip
+      unless list_of_children.nil?
+        list_of_children = list_of_children.split(",")
+        list_of_children.each do |child_name|
+          child_name = child_name&.strip
+          new_child = Organiser.find_or_create_by(name: child_name)
+          unless event.organisers.exists?(new_child.id)
+            event.organisers << new_child
+          end
+        end
+      end
+
     end
 
     csv.close
