@@ -1,0 +1,27 @@
+//--------------------------------------------------
+// reveal vue component
+//
+// app/javascripts/components/reveal/RevealTrigger.vue
+// app/javascripts/components/reveal/RevealTarget.vue
+//--------------------------------------------------
+.reveal {
+  &--target {
+    background-color: $primary;
+    color: white;
+    padding: rem-calc(20) $gutter-small;
+    width: 100%;
+
+    @include breakpoint($small){ 
+      padding: rem-calc(36 22);
+      width: auto;
+    }
+
+    &__button {
+      position: absolute;
+      top: rem-calc(20);
+      right: $gutter-small;
+
+      @include breakpoint($small){ right: rem-calc(22); }
+    }
+  }
+}
