@@ -52,14 +52,14 @@ namespace :import do
         end
       end
 
-      list_of_children = csv_event_row[event_hash[:organisers]]&.strip
-      unless list_of_children.nil?
-        list_of_children = list_of_children.split(",")
-        list_of_children.each do |child_name|
-          child_name = child_name&.strip
-          new_child = Organiser.find_or_create_by(name: child_name)
-          unless event.organisers.exists?(new_child.id)
-            event.organisers << new_child
+      list_of_organisers = csv_event_row[event_hash[:organisers]]&.strip
+      unless list_of_organisers.nil?
+        list_of_organisers = list_of_organisers.split(",")
+        list_of_organisers.each do |organiser|
+          organiser = organiser&.strip
+          new_organiser = Organiser.find_or_create_by(name: organiser)
+          unless event.organisers.exists?(new_organiser.id)
+            event.organisers << new_organiser
           end
         end
       end
