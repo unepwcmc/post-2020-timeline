@@ -10,13 +10,6 @@
   export default {
     name: 'reveal-trigger',
 
-    props: {
-      id: {
-        required: true,
-        type: String
-      }
-    },
-
     methods: {
       clickTrigger () {
         this.$store.commit('reveal/toggleActiveState')

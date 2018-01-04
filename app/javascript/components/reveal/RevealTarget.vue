@@ -11,17 +11,6 @@
   export default {
     name: 'reveal-target',
 
-    props: {
-      id: {
-        required: true,
-        type: String
-      },
-      type: {
-        required: true,
-        type: String
-      }
-    },
-
     computed: {
       isActive () {
         return this.$store.state.reveal.active
