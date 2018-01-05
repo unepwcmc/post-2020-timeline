@@ -53,7 +53,8 @@
             multiple: true
           }
         ],
-        children: this.$children
+        children: this.$children,
+        activeOptions: []
       }
     },
 
@@ -83,8 +84,6 @@
       },
 
       apply () {
-        this.closeSelect()
-
         //update the active filters array
         this.activeOptions = this.selectedOptions
         

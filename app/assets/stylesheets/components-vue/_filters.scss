@@ -2,7 +2,7 @@
 // filter variables
 //--------------------------------------------------
 $padding-small: rem-calc(14 10);
-$padding-meduim: rem-calc(18);
+$padding-meduim: rem-calc(18 16);
 
 $total-size: rem-calc(25);
 
@@ -45,6 +45,7 @@ $total-size: rem-calc(25);
 //--------------------------------------------------
   &__button {
     font-size: rem-calc(16);
+    line-height: $total-size;
     margin: 0;
     padding: $padding-small;
     text-transform: capitalize;
@@ -94,14 +95,14 @@ $total-size: rem-calc(25);
       &__checkbox {
         border: solid rem-calc(1) white;
         cursor: pointer;
-        width: rem-calc(22); height: rem-calc(22);
+        width: rem-calc(26); height: rem-calc(26);
 
         -webkit-appearance: none;
         -moz-appearance: none;
         -ms-appearance: none;
 
         &--active:after {
-          background: $accent center no-repeat;
+          background: transparent url('icons/tick.svg') center no-repeat;
           content: '';
           width: rem-calc(22); height: rem-calc(22);
 
