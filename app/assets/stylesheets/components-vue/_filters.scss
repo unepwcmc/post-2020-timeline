@@ -10,6 +10,8 @@ $total-size: rem-calc(25);
 // filters
 //--------------------------------------------------
 .filters {
+  overflow: scroll;
+  padding-bottom: rem-calc(60);
   width: 100%; height: 100%;
 
 //--------------------------------------------------

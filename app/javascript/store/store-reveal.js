@@ -2,7 +2,7 @@ export const storeReveal = {
   namespaced: true,
 
   state: {
-    active: true
+    active: false
   },
 
   mutations: {
