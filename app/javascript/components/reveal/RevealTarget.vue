@@ -20,6 +20,8 @@
     methods: {
       closeReveal () {
         this.$store.commit('reveal/toggleActiveState')
+
+        eventHub.$emit('closeReveal')
       }
     }
   }

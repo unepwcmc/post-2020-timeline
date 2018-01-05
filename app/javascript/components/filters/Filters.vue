@@ -34,6 +34,7 @@
 
     mounted () {
       eventHub.$on('clickDropdown', this.updateDropdowns)
+      eventHub.$on('closeReveal', this.cancel)
     },
 
     data () {
@@ -56,6 +57,10 @@
       }
     },
 
+    computed: {
+
+    },
+
     methods: {
       updateDropdowns (name) {
         this.children.forEach(filter => {
@@ -64,12 +69,13 @@
       },
 
       cancel() {
-        this.closeSelect()
+        console.log('cancel')
+        // this.closeSelect()
         
-        // reset each option to the correct state
-        this.children.forEach(child => {
-          child.isSelected = this.activeOptions.includes(child.option) ? true : false
-        })
+        // // reset each option to the correct state
+        // this.children.forEach(child => {
+        //   child.isSelected = this.activeOptions.includes(child.option) ? true : false
+        // })
       },
 
       clear () {
