@@ -1,24 +1,7 @@
-# README
+# Post 2020 Timeline
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Importing data
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Import event rake task
+- `rake import:events['lib/data/seed/post-2020-timeline-2018-01-04.csv']`
+- Check logs to see any errors
