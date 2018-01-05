@@ -39,7 +39,7 @@ class Event < ApplicationRecord
       monthly_events = months.map do |month|
       [
         month: month,
-        events: [ monthly_events(year_events, month) ]
+        events: [ monthly_events(year_events, month, year) ]
       ]
       end
 
@@ -55,26 +55,32 @@ class Event < ApplicationRecord
 
   private
 
-  def self.monthly_events(year_events, month)
-    year_events.map do |year_event|
-      start_day = year_event.start_date.nil? ? nil : format('%02d', year_event.start_date.day)
-      start_month = year_event.start_date.nil? ? nil : format('%02d', year_event.start_date.month)
-      end_day = year_event.end_date.nil? ? nil : format('%02d', year_event.end_date.day)
-      end_month = year_event.end_date.nil? ? nil : format('%02d', year_event.end_date.month)
+  def self.monthly_events(year_events, month, year)
+    start_of_month = Date.parse('1st #{month} #{year}')
+    end_of_month   = start_of_month.end_of_month
+
+    monthly_events_list = year_events.where("start_date BETWEEN ? AND ? OR end_date BETWEEN ? AND ?",
+                    start_of_month, end_of_month, start_of_month, end_of_month).order(:start_date)
+
+    monthly_events_list.map do |monthly_event|
+      start_day = monthly_event.start_date.nil? ? nil : format('%02d', monthly_event.start_date.day)
+      start_month = monthly_event.start_date.nil? ? nil : format('%02d', monthly_event.start_date.month)
+      end_day = monthly_event.end_date.nil? ? nil : format('%02d', monthly_event.end_date.day)
+      end_month = monthly_event.end_date.nil? ? nil : format('%02d', monthly_event.end_date.month)
       {
-        title: year_event.title,
-        category: year_event.category,
-        start_year: year_event.start_date&.year || nil,
+        title: monthly_event.title,
+        category: monthly_event.category,
+        start_year: monthly_event.start_date&.year || nil,
         start_month: start_month,
         start_day: start_day,
-        end_year: year_event.end_date&.year || nil,
+        end_year: monthly_event.end_date&.year || nil,
         end_month: end_month,
         end_day: end_day,
-        location: year_event.location,
-        organisers: year_event.organisers.pluck(:name),
-        summary: year_event.summary,
-        relevance: year_event.relevance,
-        outputs: year_event.outputs
+        location: monthly_event.location,
+        organisers: monthly_event.organisers.pluck(:name),
+        summary: monthly_event.summary,
+        relevance: monthly_event.relevance,
+        outputs: monthly_event.outputs
       }
     end
   end
