@@ -25,8 +25,8 @@ class Event < ApplicationRecord
   def self.events_to_json
     timeline = []
     events = Event.all.order(start_date: :asc)
-    start_year = events.pluck(:start_date).compact.uniq.sort.first.year
-    end_year = events.pluck(:start_date).compact.uniq.sort.last.year
+    start_year = events.pluck(:start_date).compact.sort.first.year
+    end_year = events.pluck(:start_date).compact.sort.last.year
     years = start_year.upto(end_year).to_a
 
     years.map do |year|
