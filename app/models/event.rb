@@ -35,11 +35,11 @@ class Event < ApplicationRecord
         EXTRACT(year from end_date) = ?
       }
       year_events = events.where(sql, year, year)
-      months = year_events.pluck(:start_date, :end_date).flatten.uniq.compact.map { |e| e.strftime("%b") }.uniq.map(&:downcase)
+      months = year_events.pluck(:start_date, :end_date).flatten.compact.map(&:month).uniq
 
       monthly_events = months.map do |month|
       {
-        month: month,
+        month: Date::ABBR_MONTHNAMES[month].downcase,
         events: monthly_events(year_events, month, year)
       }
       end
@@ -57,11 +57,11 @@ class Event < ApplicationRecord
   private
 
   def self.monthly_events(year_events, month, year)
-    start_of_month = Date.parse("1st #{month} #{year}")
-    end_of_month   = start_of_month.end_of_month
-
-    monthly_events_list = year_events.where("start_date BETWEEN ? AND ? OR end_date BETWEEN ? AND ?",
-                    start_of_month, end_of_month, start_of_month, end_of_month).order(:start_date)
+    sql = %{
+      EXTRACT(month from start_date) = ? OR
+      EXTRACT(month from end_date) = ?
+    }
+    monthly_events_list = year_events.where(sql, month, month).order(:start_date)
 
     monthly_events_list.map do |monthly_event|
       start_day = format('%02d', monthly_event.start_date.day) rescue nil
