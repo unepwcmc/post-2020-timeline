@@ -10,7 +10,7 @@
     </v-filter>
 
     <div class="filters__controls flex flex-h-between">
-      <button @click="clear()" class="button button--link bold float-left">Clear</button>
+      <button @click="clear()" class="button button--plain">Clear</button>
       <button @click="apply()" class="button button--apply">Apply</button>
     </div>
   </div>  

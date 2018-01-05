@@ -4,6 +4,8 @@
 $padding-small: rem-calc(14 10);
 $padding-meduim: rem-calc(18);
 
+$total-size: rem-calc(25);
+
 //--------------------------------------------------
 // filters
 //--------------------------------------------------
@@ -43,14 +45,26 @@ $padding-meduim: rem-calc(18);
 //--------------------------------------------------
   &__button {
     font-size: rem-calc(16);
+    margin: 0;
     padding: $padding-small;
     text-transform: capitalize;
-
-    display: block;
 
     @include breakpoint($small){ 
       font-size: rem-calc(22);
       padding: $padding-meduim;
+    }
+
+    &-total {
+      background-color: $accent;
+      border-radius: 100%;
+      color: $primary;
+      font-size: rem-calc(18);
+      line-height: $total-size;
+      margin-left: rem-calc(8);
+      text-align: center;
+      width: $total-size; height: $total-size;
+
+      display: inline-block;
     }
   }
 

@@ -25,6 +25,9 @@
 
   &--plain {
     background-color: transparent;
+    font-weight: 300;
+    padding: rem-calc(0 10);
+    text-transform: uppercase;
   }
 
   &--close {
@@ -37,6 +40,7 @@
 
   &--apply {
     background-color: $accent;
+    text-transform: uppercase;
   }
 
   &--filter {

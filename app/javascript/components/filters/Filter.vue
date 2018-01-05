@@ -1,13 +1,13 @@
 <template>
   <div class="filter">
 
-    <span
+    <p
       @click="openSelect()" 
-      class="filter__button button" 
+      class="filter__button button flex flex-v-center" 
       :class="{ 'filter__button--active' : isOpen , 'filter__button--has-selected' : hasSelected }">
 
-      {{ title }} <span v-show="hasSelected" class="filter__button-total">{{ totalSelectedOptions }}</span>
-    </span>
+      <span>{{ title }}</span><span v-show="hasSelected" class="filter__button-total">{{ totalSelectedOptions }}</span>
+    </p>
 
     <ul class="filter__options ul-unstyled" :class="{ 'filter__options--active' : isOpen }">
       <filter-option v-for="option in options" 
