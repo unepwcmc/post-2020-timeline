@@ -30,10 +30,11 @@ class Event < ApplicationRecord
     years = start_year.upto(end_year).to_a
 
     years.map do |year|
-      start_of_year = Date.new(year,1,1)
-      end_of_year = Date.new(year,12,31)
-      year_events = events.where("start_date BETWEEN ? AND ? OR end_date BETWEEN ? AND ?",
-                                 start_of_year, end_of_year, start_of_year, end_of_year)
+      sql = %{
+        EXTRACT(year from start_date) = ? OR
+        EXTRACT(year from end_date) = ?
+      }
+      year_events = events.where(sql, year, year)
       months = year_events.pluck(:start_date, :end_date).flatten.uniq.compact.map { |e| e.strftime("%b") }.uniq.map(&:downcase)
 
       monthly_events = months.map do |month|
