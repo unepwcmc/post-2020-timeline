@@ -1,6 +1,87 @@
 //--------------------------------------------------
+// filter variables
+//--------------------------------------------------
+$padding-small: rem-calc(8 12);
+$padding-meduim: rem-calc(18);
+
+//--------------------------------------------------
 // filters
 //--------------------------------------------------
 .filters {
   width: 100%; height: 100%;
+}
+
+//--------------------------------------------------
+// filter
+//--------------------------------------------------
+.filter {
+  border: white solid rem-calc(1);
+  margin-bottom: rem-calc(20);
+  width: rem-calc(426);
+
+  @include breakpoint($small) {
+    margin-bottom: rem-calc(30);
+  }
+
+//--------------------------------------------------
+// filter button
+//--------------------------------------------------
+  &__button {
+    font-size: rem-calc(16);
+    padding: $padding-small;
+    text-transform: capitalize;
+
+    display: block;
+
+    @include breakpoint($small){ 
+      font-size: rem-calc(22);
+      padding: $padding-meduim;
+    }
+  }
+
+//--------------------------------------------------
+// filter options
+//--------------------------------------------------
+  &__options {
+    border-top: white solid rem-calc(1);
+    overflow: scroll;
+    padding: $padding-small;
+    max-height: rem-calc(230);
+
+    display: none;
+
+    @include breakpoint($small){ padding: $padding-meduim; }
+
+    &--active { display: block; }
+  }
+
+    &__option {
+      font-size: rem-calc(16);
+      margin-bottom: rem-calc(16);
+
+      &:last-child { margin-bottom: 0; }
+    }
+
+      &__checkbox {
+        border: solid rem-calc(1) white;
+        cursor: pointer;
+        width: rem-calc(22); height: rem-calc(22);
+
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+
+        &--active:after {
+          background: $accent center no-repeat;
+          content: '';
+          width: rem-calc(22); height: rem-calc(22);
+
+          display: block;
+        }
+      }
+
+      &__checkbox-label { 
+        cursor: pointer;
+        padding-left: rem-calc(8);
+      }
 }

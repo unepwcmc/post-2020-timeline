@@ -1,6 +1,6 @@
 <template>
   <div class="filters">
-    <h3>Filters</h3>
+    <h3 class="text-3">Filters</h3>
 
     <v-filter v-for="filter in filters"
       :name="filter.name"
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+  import { eventHub } from "../../home.js"
   import VFilter from './Filter.vue'
 
   export default {
@@ -24,6 +25,10 @@
       //   required: true,
       //   type: Array
       // }
+    },
+
+    mounted () {
+      eventHub.$on('clickDropdown', this.updateDropdowns)
     },
 
     data () {
@@ -41,16 +46,17 @@
             options: ['organiser 1', 'organiser 2'],
             multiple: true
           }
-        ]
+        ],
+        children: this.$children
       }
     },
 
-    created () {
-      console.log('filters', this.filters)
-    },
-
     methods: {
-
+      updateDropdowns (name) {
+        this.children.forEach(filter => {
+          filter.isOpen = filter.name == name
+        })
+      },
     }
   }
 </script>

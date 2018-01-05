@@ -1,18 +1,17 @@
 <template>
   <div class="filter">
 
-    <p
+    <span
       @click="openSelect()" 
       class="filter__button button" 
       :class="{ 'filter__button--active' : isOpen , 'filter__button--has-selected' : hasSelected }">
 
       {{ title }} <span v-show="hasSelected" class="filter__button-total">{{ totalSelectedOptions }}</span>
-    </p>
+    </span>
 
     <ul class="filter__options ul-unstyled" :class="{ 'filter__options--active' : isOpen }">
       <filter-option v-for="option in options" 
-        :option="option"
-        :selected="false">
+        :option="option">
       </filter-option>
     </ul>
   </div>
@@ -73,6 +72,7 @@
     methods: {
       openSelect () {
         // if the filter is open is close it, else open it and close the others
+        console.log('click', this.isOpen)
         if(this.isOpen){
           this.isOpen = false
         } else {
