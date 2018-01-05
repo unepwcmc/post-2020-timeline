@@ -1,6 +1,6 @@
 <template>
   <div class="reveal--target" :class="{ 'reveal--target--active' : isActive }">
-    <button @click="closeReveal" class="reveal--target__button button button--plain button--close">X</button>
+    <button @click="closeReveal" class="reveal--target__button button button--plain button--close"></button>
     <slot></slot>  
   </div>
 </template>
