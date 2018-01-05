@@ -56,24 +56,24 @@ class Event < ApplicationRecord
   private
 
   def self.monthly_events(year_events, month, year)
-    start_of_month = Date.parse('1st #{month} #{year}')
+    start_of_month = Date.parse("1st #{month} #{year}")
     end_of_month   = start_of_month.end_of_month
 
     monthly_events_list = year_events.where("start_date BETWEEN ? AND ? OR end_date BETWEEN ? AND ?",
                     start_of_month, end_of_month, start_of_month, end_of_month).order(:start_date)
 
     monthly_events_list.map do |monthly_event|
-      start_day = monthly_event.start_date.nil? ? nil : format('%02d', monthly_event.start_date.day)
-      start_month = monthly_event.start_date.nil? ? nil : format('%02d', monthly_event.start_date.month)
-      end_day = monthly_event.end_date.nil? ? nil : format('%02d', monthly_event.end_date.day)
-      end_month = monthly_event.end_date.nil? ? nil : format('%02d', monthly_event.end_date.month)
+      start_day = format('%02d', monthly_event.start_date.day) rescue nil
+      start_month = format('%02d', monthly_event.start_date.month) rescue nil
+      end_day = format('%02d', monthly_event.end_date.day) rescue nil
+      end_month = format('%02d', monthly_event.end_date.month) rescue nil
       {
         title: monthly_event.title,
         category: monthly_event.category,
-        start_year: monthly_event.start_date&.year || nil,
+        start_year: monthly_event.start_date&.year,
         start_month: start_month,
         start_day: start_day,
-        end_year: monthly_event.end_date&.year || nil,
+        end_year: monthly_event.end_date&.year,
         end_month: end_month,
         end_day: end_day,
         location: monthly_event.location,
