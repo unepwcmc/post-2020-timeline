@@ -40,7 +40,7 @@ class Event < ApplicationRecord
       monthly_events = months.map do |month|
       {
         month: Date::ABBR_MONTHNAMES[month].downcase,
-        events: monthly_events(year_events, month, year)
+        events: group_by_month(year_events, month, year)
       }
       end
 
@@ -56,7 +56,7 @@ class Event < ApplicationRecord
 
   private
 
-  def self.monthly_events(year_events, month, year)
+  def self.group_by_month(year_events, month, year)
     sql = %{
       EXTRACT(month from start_date) = ? OR
       EXTRACT(month from end_date) = ?
