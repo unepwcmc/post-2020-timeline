@@ -33,9 +33,9 @@
   &--close {
     background: url('icons/cross.svg') center no-repeat;
     background-size: contain;
-    width: rem-calc(13); height: rem-calc(13);
+    width: rem-calc(22); height: rem-calc(22);
 
-    @include breakpoint($small) { width: rem-calc(22); height: rem-calc(22); }
+    @include breakpoint($small) { width: rem-calc(30); height: rem-calc(30); }
   }
 
   &--apply {
