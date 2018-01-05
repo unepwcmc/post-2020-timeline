@@ -43,7 +43,8 @@
 
     data () {
       return {
-        isOpen: false
+        isOpen: false,
+        children: this.$children
       }
     },
 
@@ -51,11 +52,11 @@
       selectedOptions () {
         let selectedArray = []
 
-        // this.children.forEach(child => {
-        //   if(child.isSelected){ 
-        //     selectedArray.push(child.option) 
-        //   }
-        // })
+        this.children.forEach(child => {
+          if(child.isSelected){ 
+            selectedArray.push(child.option) 
+          }
+        })
 
         return selectedArray
       },
@@ -72,7 +73,6 @@
     methods: {
       openSelect () {
         // if the filter is open is close it, else open it and close the others
-        console.log('click', this.isOpen)
         if(this.isOpen){
           this.isOpen = false
         } else {

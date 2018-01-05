@@ -7,6 +7,8 @@
 </template>
 
 <script>
+  import { eventHub } from '../../home.js'
+
   export default {
     name: 'filter-option',
 
@@ -23,6 +25,10 @@
       }
     },
 
+    created () {
+      eventHub.$on('clearSelected', this.deSelect)
+    },
+
     computed : {
       optionId () {
         return this.option.replace(' |(|)|_', '-').toLowerCase()
@@ -32,6 +38,10 @@
     methods: {
       selectOption (option) {
         this.isSelected = true
+      },
+
+      deSelect () {
+        this.isSelected = false
       }
     }
   }

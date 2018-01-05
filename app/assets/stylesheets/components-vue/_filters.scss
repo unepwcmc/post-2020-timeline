@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // filter variables
 //--------------------------------------------------
-$padding-small: rem-calc(8 12);
+$padding-small: rem-calc(14 10);
 $padding-meduim: rem-calc(18);
 
 //--------------------------------------------------
@@ -9,6 +9,20 @@ $padding-meduim: rem-calc(18);
 //--------------------------------------------------
 .filters {
   width: 100%; height: 100%;
+
+//--------------------------------------------------
+// filter controls
+//--------------------------------------------------
+  &__controls {
+    border-left: solid $grey rem-calc(1);
+    background-color: white;
+    padding: rem-calc(12);
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 }
 
 //--------------------------------------------------
@@ -17,10 +31,11 @@ $padding-meduim: rem-calc(18);
 .filter {
   border: white solid rem-calc(1);
   margin-bottom: rem-calc(20);
-  width: rem-calc(426);
+  width: 100%;
 
   @include breakpoint($small) {
     margin-bottom: rem-calc(30);
+    width: rem-calc(426);
   }
 
 //--------------------------------------------------

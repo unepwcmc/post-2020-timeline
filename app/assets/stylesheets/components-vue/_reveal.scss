@@ -12,7 +12,7 @@
     width: 100%;
 
     @include breakpoint($small){ 
-      padding: rem-calc(36 22);
+      padding: rem-calc(36);
       width: auto;
     }
 

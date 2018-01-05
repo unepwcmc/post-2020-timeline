@@ -8,6 +8,11 @@
       :options="filter.options"
     >
     </v-filter>
+
+    <div class="filters__controls flex flex-h-between">
+      <button @click="clear()" class="button button--link bold float-left">Clear</button>
+      <button @click="apply()" class="button button--apply">Apply</button>
+    </div>
   </div>  
 </template>
 
@@ -57,6 +62,35 @@
           filter.isOpen = filter.name == name
         })
       },
+
+      cancel() {
+        this.closeSelect()
+        
+        // reset each option to the correct state
+        this.children.forEach(child => {
+          child.isSelected = this.activeOptions.includes(child.option) ? true : false
+        })
+      },
+
+      clear () {
+        eventHub.$emit('clearSelected')
+      },
+
+      apply () {
+        this.closeSelect()
+
+        //update the active filters array
+        this.activeOptions = this.selectedOptions
+        
+        const newFilterOptions = {
+          filter: this.name,
+          options: this.activeOptions
+        }
+
+        this.$store.commit('updateFilterOptions', newFilterOptions)
+
+        eventHub.$emit('callFilterItems')
+      }
     }
   }
 </script>

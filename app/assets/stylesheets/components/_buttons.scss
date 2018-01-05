@@ -8,9 +8,11 @@
   font-size: rem-calc(20);
   font-weight: bold;
   line-height: 1;
+  padding: rem-calc(8 18);
 
   @include breakpoint($small){
     font-size: rem-calc(22);
+    padding: rem-calc(12 28);
   }
 
   &--secondary { 
@@ -31,6 +33,10 @@
     width: rem-calc(13); height: rem-calc(13);
 
     @include breakpoint($small) { width: rem-calc(22); height: rem-calc(22); }
+  }
+
+  &--apply {
+    background-color: $accent;
   }
 
   &--filter {
