@@ -37,10 +37,10 @@ class Event < ApplicationRecord
       months = year_events.pluck(:start_date, :end_date).flatten.uniq.compact.map { |e| e.strftime("%b") }.uniq.map(&:downcase)
 
       monthly_events = months.map do |month|
-      [
+      {
         month: month,
-        events: [ monthly_events(year_events, month, year) ]
-      ]
+        events: monthly_events(year_events, month, year)
+      }
       end
 
       yearly_events_hash = {
