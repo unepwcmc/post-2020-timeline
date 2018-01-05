@@ -26,10 +26,10 @@
     components: { VFilter },
 
     props: {
-      // filters: {
-      //   required: true,
-      //   type: Array
-      // }
+      filters: {
+        required: true,
+        type: Array
+      }
     },
 
     mounted () {
@@ -39,20 +39,6 @@
 
     data () {
       return {
-        filters: [
-          {
-            name: 'category',
-            title: 'category',
-            options: ['category 1', 'category 2'],
-            multiple: false
-          },
-          {
-            name: 'organisers',
-            title: 'organisers',
-            options: ['organiser 1', 'organiser 2'],
-            multiple: true
-          }
-        ],
         children: this.$children,
         activeOptions: []
       }
