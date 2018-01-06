@@ -50,8 +50,8 @@ class Event < ApplicationRecord
       }
 
       timeline << yearly_events_hash
-      timeline.to_json
     end
+    timeline.to_json
   end
 
   private
