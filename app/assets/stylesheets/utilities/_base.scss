@@ -33,6 +33,9 @@ h2 {
 
 .container {
   @extend .site-width;
-
   margin: 0 auto;
+  padding: rem-calc(0 $gutter-small);
+
+  @include breakpoint($medium){ padding: rem-calc(0 $gutter-medium); }
+  @include breakpoint($large){ padding: 0; }
 }

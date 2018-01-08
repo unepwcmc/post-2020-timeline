@@ -68,3 +68,12 @@
 .flex-2-fiths { flex: 0 1 40%; }
 .flex-3-fiths { flex: 0 1 60%; }
 .flex-5-fiths { flex: 0 1 80%; }
+
+//--------------------------------------------------
+// helpers
+//--------------------------------------------------
+.flex-center {
+  @extend .flex;
+  @extend .flex-h-center;
+  @extend .flex-v-center;
+}
