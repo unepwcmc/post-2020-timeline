@@ -2,5 +2,12 @@
 // timeline
 //--------------------------------------------------
 .timeline {
-  
+  &__year {
+    &-title {
+      @extend .text-1;
+      text-align: center;
+
+      display: block;
+    }
+  }
 }

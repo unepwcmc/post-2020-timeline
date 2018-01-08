@@ -1,9 +1,5 @@
 <template>
   <div class="timeline">
-    {{ timeline }}
-    <div  v-for="year in timeline">
-      {{ year }}
-    </div>
     <year v-for="year in timeline"
       :year="year.year"
       :months="year.months"
