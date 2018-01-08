@@ -1,11 +1,30 @@
 <template>
-  <div>
-    Timeline
+  <div class="timeline">
+    {{ timeline }}
+    <div  v-for="year in timeline">
+      {{ year }}
+    </div>
+    <year v-for="year in timeline"
+      :year="year.year"
+      :months="year.months"
+    >
+    </year>
   </div>
 </template>
 
 <script>
+  import Year from './Year.vue'
+
   export default {
-    name: 'timeline'
+    name: 'timeline',
+
+    components: { Year },
+
+    props: {
+      timeline: {
+        requied: true,
+        type: Array
+      }
+    }
   }
 </script>
