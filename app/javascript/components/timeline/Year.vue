@@ -1,5 +1,5 @@
 <template>
-  <div class="timeline__year">
+  <div :id="id" class="timeline__year">
     <span class="timeline__year-title">{{ year }}</span>
     
     <div class="timeline__months flex flex-column">
@@ -28,6 +28,12 @@
       months: {
         required: true,
         type: Array
+      }
+    },
+
+    computed: {
+      id () {
+        return 'year-' + this.year
       }
     }
   }

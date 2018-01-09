@@ -1,0 +1,29 @@
+//--------------------------------------------------
+// scroll nav
+//--------------------------------------------------
+.scroll-nav {
+  &__item {
+    margin-left: rem-calc(12);
+
+    @include breakpoint($small){ margin-left: rem-calc(24); }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  } 
+
+    &__link {
+      color: $body-font-color;
+      font-size: rem-calc(20);
+      font-weight: bold;
+      text-decoration: none;
+
+      @include breakpoint($small){
+        font-size: rem-calc(36);
+      }
+
+      &:hover { color: $secondary; }
+
+      &--active { color: $secondary; }
+    }
+}
