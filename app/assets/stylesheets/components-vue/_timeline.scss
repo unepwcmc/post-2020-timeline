@@ -1,76 +1,52 @@
 //--------------------------------------------------
-// timeline variables
-//--------------------------------------------------
-$dateBox: rem-calc(52);
-
-//--------------------------------------------------
 // timeline
 //--------------------------------------------------
 .timeline {
+  padding: rem-calc(30 0 40 0);
+
+  @include breakpoint($small) { padding: rem-calc(50 0 60 0); };
+
+//--------------------------------------------------
+// year
+//--------------------------------------------------
   &__year {
+
+    @include breakpoint($small){ margin-top: rem-calc(30); }
+
     &-title {
       @extend .text-1;
+      margin-bottom: rem-calc(10);
       text-align: center;
 
       display: block;
+
+      @include breakpoint($small){ margin-bottom: rem-calc(24); }
+
+      &:after {
+        background: transparent url('icons/chevron-double-down.svg') center no-repeat;
+        background-size: contain;
+        content: '';
+        margin: 0 auto;
+        width: rem-calc(13); height: rem-calc(14);
+
+        display: block;
+
+        @include breakpoint($small){
+          width: rem-calc(19); height: rem-calc(20);
+        }
+
+        @include breakpoint($medium){ display: none; }
+      }
     }
   }
-
-    &__month {
-
-    }
-      
-      &__events {
-      }
-
-        &__event {
-          border: solid rem-calc(1) $primary;
-          box-shadow: $grey-light 2px 2px 2px 2px;
-          margin: rem-calc(0 0 14 14);
-          padding: rem-calc(14 68 14 14);
-          width: auto; min-height: $dateBox;
-
-          position: relative;
-
-          @include breakpoint($small){
-            padding: rem-calc(20 18);
-          }
-
-          &:before {
-            border-top: rem-calc(11) solid transparent;
-            border-bottom: rem-calc(11) solid transparent; 
-            border-right: rem-calc(14) solid $primary; 
-            content: '';
-            width: 0; height: 0;
-
-            position: absolute;
-            top: rem-calc(-1);
-            left: rem-calc(-15);
-          }
-        
-          &__date {
-            background-color: $primary;
-            color: white;
-            font-weight: bold;
-            line-height: 0.9;
-            text-align: center;
-            width: $dateBox; height: $dateBox;
-
-            position: absolute;
-            top: 0;
-            right: 0;
-          }
-
-          &__category {
-            @extend .text-7;
-            margin-bottom: rem-calc(8);
-            text-transform: uppercase;
-
-            display: block;
-          }
-
-          &__title {
-            font-weight: bold;
-          }
-        }
 }
+
+//--------------------------------------------------
+// month
+//--------------------------------------------------
+@import './timeline/timeline-months.scss';
+
+//--------------------------------------------------
+// event
+//--------------------------------------------------
+@import './timeline/timeline-events.scss';

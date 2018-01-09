@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="timeline__year">
     <span class="timeline__year-title">{{ year }}</span>
-
-    <month v-for="month in months"
-    :month="month.month"
-    :events="month.events"
-    >
-    </month>
+    
+    <div class="timeline__months flex flex-column">
+      <month v-for="month in months"
+      :month="month.month"
+      :events="month.events"
+      >
+      </month>
+    </div>
   </div>
 </template>
 

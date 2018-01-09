@@ -1,6 +1,6 @@
 <template>
   <div class="timeline__month">
-    {{ month }}
+    <span class="timeline__month-title">{{ month }}</span>
 
     <div class="timeline__events">
       <event v-for="event in events"

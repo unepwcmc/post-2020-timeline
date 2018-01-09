@@ -1,0 +1,132 @@
+//--------------------------------------------------
+// event variables
+//--------------------------------------------------
+$arrowWidthSmall: rem-calc(14);
+$arrowWidthLarge: rem-calc(17);
+
+$arrowPositionSmall: calc(-1px - #{$arrowWidthSmall});
+$arrowPositionLarge: calc(-1px - #{$arrowWidthLarge});
+
+$dateBoxSmall: rem-calc(52);
+$dateBoxLarge: rem-calc(90);
+
+$datePaddingSmall: calc(14px + #{$dateBoxSmall});
+$datePaddingLarge: calc(18px + #{$dateBoxLarge});
+
+//--------------------------------------------------
+// events
+//--------------------------------------------------
+.timeline {
+  &__events {
+    margin-left: $arrowWidthSmall; 
+
+    @include breakpoint($small){ margin-left: rem-calc(17); }
+
+    .timeline__month:nth-child(even) & {
+      @include breakpoint($medium){ 
+        margin-right: rem-calc(17); 
+        margin-left: 0;
+      }
+    }
+  }
+
+//--------------------------------------------------
+// event
+//--------------------------------------------------
+    &__event {
+      border: solid rem-calc(1) $primary;
+      box-shadow: $grey-light 2px 2px 2px 2px;
+      margin-bottom: rem-calc(14);
+      padding: rem-calc(14);
+      padding-right: $datePaddingSmall;
+      width: auto; min-height: $dateBoxSmall;
+
+      position: relative;
+
+      @include breakpoint($small){
+        padding: rem-calc(20 18);
+        padding-right: $datePaddingLarge;
+        min-height: calc(#{$dateBoxLarge} + 2px);
+      }
+
+      .timeline__month:nth-child(even) & {
+        @include breakpoint($medium){ 
+          padding-right: rem-calc(18);
+          padding-left: $datePaddingLarge; 
+        }
+      }
+
+      &:first-child:before {
+        border-top: rem-calc(11) solid transparent;
+        border-bottom: rem-calc(11) solid transparent; 
+        border-right: $arrowWidthSmall solid $primary; 
+        content: '';
+        width: 0; height: 0;
+
+        position: absolute;
+        top: rem-calc(-1);
+        left: $arrowPositionSmall;
+
+        @include breakpoint($medium){
+          border-top-width: rem-calc(13);
+          border-right-width: $arrowWidthLarge;
+          
+          left: $arrowPositionLarge;
+        }
+
+        .timeline__month:nth-child(even) & {
+          @include breakpoint($medium){
+            border-right: none;
+            border-left: $arrowWidthLarge solid $primary;
+            
+            right: $arrowPositionLarge;
+            left: initial;
+          }
+        }
+      }
+
+//--------------------------------------------------
+// date
+//--------------------------------------------------
+      &__date {
+        @extend .text-3;
+        background-color: $primary;
+        line-height: 0.9;
+        text-align: center;
+        width: $dateBoxSmall; height: $dateBoxSmall;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        @include breakpoint($small){
+          width: $dateBoxLarge; height: $dateBoxLarge;
+        }
+
+        .timeline__month:nth-child(even) & {
+          @include breakpoint($medium){
+            right: initial;
+            left: 0;
+          }
+        }
+      }
+
+//--------------------------------------------------
+// category
+//--------------------------------------------------
+      &__category {
+        @extend .text-7;
+        margin-bottom: rem-calc(4);
+        text-transform: uppercase;
+
+        display: block;
+      }
+
+//--------------------------------------------------
+// title
+//--------------------------------------------------
+      &__title {
+        @extend .text-4;
+      }
+    }
+}

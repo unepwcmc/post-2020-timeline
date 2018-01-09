@@ -1,0 +1,150 @@
+//--------------------------------------------------
+// month variables
+//--------------------------------------------------
+$circleSmall: rem-calc(51);
+$circleLarge: rem-calc(68);
+
+$endCircleSmall: rem-calc(19);
+$endCircleLarge: rem-calc(54);
+
+//--------------------------------------------------
+// reusable styles
+//--------------------------------------------------
+%circle {
+  @extend .text-3;
+  background-color: $secondary;
+  border-radius: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  
+  display: block;
+  position: absolute;
+}
+
+%circleSmall {
+  @extend %circle;
+  line-height: $circleSmall;
+  width: $circleSmall; height: $circleSmall;
+}
+
+%circleLarge {
+  @include breakpoint($small){
+    line-height: $circleLarge;
+    width: $circleLarge; height: $circleLarge;
+  }
+}
+
+%endCircleSmall {
+  @extend %circle;
+  width: $endCircleSmall; height: $endCircleSmall;
+}
+
+%endCircleLarge {
+  @include breakpoint($small){
+    width: $endCircleLarge; height: $endCircleLarge;
+  }
+}
+
+//--------------------------------------------------
+// months
+//--------------------------------------------------
+.timeline {
+  &__months {
+    margin-bottom: $endCircleSmall;
+
+    position: relative;
+
+    @include breakpoint($small){ margin-bottom: $endCircleLarge; }
+    @include breakpoint($medium){ margin-bottom: calc(2 * #{$endCircleLarge}); }
+
+    &:before {
+      background-color: $secondary;
+      content: '';
+      opacity: 0.5;
+      width: rem-calc(3);
+
+      position: absolute;
+      top: 0;
+      bottom: -$endCircleSmall;
+      left: calc((#{$circleSmall} / 2) - 2px);
+
+      @include breakpoint($small){ 
+        bottom: -$endCircleLarge;
+        left: calc((#{$circleLarge} / 2) - 2px);
+      }
+
+      @include breakpoint($medium){
+        left: calc(50% - 1px);
+      }
+    }
+
+    &:after {
+      @extend %endCircleSmall;
+      content: '';
+
+      bottom: -$endCircleSmall;
+      left: calc((#{$circleSmall} - #{$endCircleSmall})/ 2);
+      
+      @extend %endCircleLarge;
+
+      @include breakpoint($small){
+        bottom: -$endCircleLarge;
+        left: calc((#{$circleLarge} - #{$endCircleLarge})/ 2);
+      }
+
+      @include breakpoint($medium){
+        left: calc(50% - (#{$endCircleLarge}/ 2)); 
+      }
+    }  
+  }
+
+    &__month {
+      margin-bottom: rem-calc(14);
+      padding-top: calc((#{$circleSmall} / 2) - 11px);
+      padding-left: calc(#{$circleSmall} + 6px);
+      position: relative;
+
+      @include breakpoint($small){ 
+        margin-bottom: rem-calc(24);
+        padding-left: calc(#{$circleLarge} + 6px); 
+      }
+
+      @include breakpoint($medium){ 
+        margin-bottom: rem-calc(32);
+        padding-top: calc((#{$circleLarge} / 2) - 13px);
+        padding-left: calc((#{$circleLarge} / 2) + 14px);
+        width: 50%; 
+
+        align-self: flex-end;
+      }
+
+      &:nth-child(even){ 
+        @include breakpoint($medium){ 
+          padding-right: calc((#{$circleLarge} / 2) + 14px);
+          padding-left: 0;
+
+          align-self: flex-start;
+        }
+      }
+
+      &-title {
+        @extend %circleSmall;
+        
+        top: 0;
+        left: 0;
+        
+        @extend %circleLarge;
+
+        @include breakpoint($medium){
+          left: calc(-0.5 * #{$circleLarge});
+        }
+
+        .timeline__month:nth-child(even) & {
+          @include breakpoint($medium){
+            left: initial;
+            right: calc(-0.5 * #{$circleLarge});
+          }            
+        }
+      }
+    }
+}

@@ -18,10 +18,13 @@
 
 // match styleguide in zeplin
 .text-1 { 
-  color: $grey-dark;
-  font-size: rem-calc(90); 
+  color: $primary;
+  font-size: rem-calc(45); 
   font-weight: bold;
   line-height: 1.1;
+
+  @include breakpoint($small) { font-size: rem-calc(70); }
+  @include breakpoint($medium) { font-size: rem-calc(90); }
 }
 
 .text-2 { 
@@ -33,14 +36,20 @@
 
 .text-3 { 
   color: white;
-  font-size: rem-calc(25); 
+  font-size: rem-calc(16);
   font-weight: bold;
   line-height: 0.8;
+
+  @include breakpoint($small) { font-size: rem-calc(22); }
+  @include breakpoint($medium) { font-size: rem-calc(25); }
 }
 
 .text-4 { 
-  font-size: rem-calc(22); 
+  font-size: rem-calc(14); 
   font-weight: bold;
+
+  @include breakpoint($small) { font-size: rem-calc(19); }
+  @include breakpoint($medium) { font-size: rem-calc(22); }
 }
 
 .text-5 { 
@@ -50,8 +59,11 @@
 
 .text-7 { 
   color: $grey;
-  font-size: rem-calc(15); 
+  font-size: rem-calc(12); 
   font-weight: bold;
+  
+  @include breakpoint($small) { font-size: rem-calc(13); }
+  @include breakpoint($medium) { font-size: rem-calc(15); }
 }
 
 .text-8 { 
