@@ -5,18 +5,20 @@
   </head>
 
   <body>
-
-    <%= render 'global/topbar' %>
-
     <div id="v-app">
+
       <reveal-target>
         <filters :filters="<%= @filters %>"></filters>
       </reveal-target>
+
+      <sticky-nav>
+        <%= render 'global/topbar' %>
+
+        <%= render 'global/header' %>
+
+        <%= render 'global/control-bar' %>
+      </sticky-nav>
       
-      <%= render 'global/header' %>
-
-      <%= render 'global/control-bar' %>
-
       <%= yield %>
 
     </div>

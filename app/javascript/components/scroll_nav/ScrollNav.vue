@@ -44,7 +44,7 @@
       // scroll down to the section of the page which corresponds to the
       // link that has been clicked
       scroll (year) {
-        section = document.getElementById('year-' + year).scrollIntoView({block: 'start', behavior: 'smooth'})
+        const section = document.getElementById('year-' + year).scrollIntoView({block: 'start', behavior: 'smooth'})
       },
 
       // add scroll magic event listener for each nav item

@@ -5,6 +5,7 @@ import RevealTarget from './components/reveal/RevealTarget.vue'
 import RevealTrigger from './components/reveal/RevealTrigger.vue'
 import Timeline from './components/timeline/Timeline.vue'
 import ScrollNav from './components/scroll_nav/ScrollNav.vue'
+import StickyNav from './components/sticky_nav/StickyNav.vue'
 
 import ScrollMagic from 'scrollmagic'
 
@@ -16,6 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { Filters, RevealTarget, RevealTrigger, Timeline, ScrollNav }
+    components: { Filters, RevealTarget, RevealTrigger, Timeline, ScrollNav, StickyNav }
   })
 })
