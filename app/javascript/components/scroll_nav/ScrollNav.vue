@@ -1,10 +1,13 @@
 <template>
   <ul class="v-scroll-nav scroll-nav ul-unstyled ul-inline">
-    <li v-for="item in navArray"
-      class="scroll-nav__item"
-    >
-      <a href="" :title="'See events in ' + item" class="scroll-nav__link">
-        {{ item }}
+    <li v-for="item in navArray" class="scroll-nav__item">
+      <a 
+        :id="'link-' + item" 
+        href="" 
+        :title="'See events in ' + item" 
+        class="scroll-nav__link"
+        @click.prevent="scroll(item)">
+          {{ item }}
       </a>
     </li>
   </ul>
@@ -38,42 +41,46 @@
     },
 
     methods: {
-      scroll (sectionId) {
-        sectionY = $('#' + sectionId).offset().top - this.navHeight + 1
-
-        $('html, body').animate({
-          scrollTop: sectionY
-        }, 400, function(){
-          window.location.hash = sectionId
-        })
+      // scroll down to the section of the page which corresponds to the
+      // link that has been clicked
+      scroll (year) {
+        section = document.getElementById('year-' + year).scrollIntoView({block: 'start', behavior: 'smooth'})
       },
 
       // add scroll magic event listener for each nav item
+      // so that the nav items change active state when scrolling
+      // through different sections on the page
       scrollMagicHandlers () {
-        this.navScrollMagic = new ScrollMagic.Controller()
-
+        let navScrollMagic = new ScrollMagic.Controller()
         let scrollMagicScenes = []
 
         // add scene for each item in the nav
         this.navArray.forEach(link => {
           let scene = {}
+          const id = 'year-' + link
           
-          scene.id = link.id
+          scene.id = id
 
           scene.scene = new ScrollMagic.Scene({ 
-            duration: self.getSceneDuration(link.id),
-            triggerElement: '#' + link.id, 
+            duration: this.getSceneDuration(link),
+            triggerElement: '#' + id, 
             triggerHook: 'onLeave' 
           })
-          .offset(-self.navHeight)
-          .setClassToggle('#' + link.id + '-menu-item', 'v-sticky-nav__link-active')
-          .addTo(self.navScrollMagic)
+          // .offset(-self.navHeight)
+          .setClassToggle('#link-' + link, 'scroll-nav__link--active')
+          .addTo(navScrollMagic)
 
           scrollMagicScenes.push(scene)
         })
 
-        this.scrollMagicScenes = scrollMagicScenes
+        // this.scrollMagicScenes = scrollMagicScenes
       },
+
+      getSceneDuration (id) {
+        var section = document.getElementById('year-' + id)
+
+        return section.clientHeight
+      }
     }
   }
 </script>
