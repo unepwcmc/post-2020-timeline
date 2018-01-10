@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @filters =  Event.filters_to_json
+    @filters  = Event.filters_to_json
+    @nav      = Event.years_to_json
     @timeline = Event.events_to_json
   end
 end
