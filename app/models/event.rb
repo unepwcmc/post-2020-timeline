@@ -23,9 +23,9 @@ class Event < ApplicationRecord
   end
 
   def self.years_to_json
-    events = Event.all.order(start_date: :asc)
+    events = Event.all
     start_year = events.pluck(:start_date).compact.sort.first.year
-    end_year = events.pluck(:start_date).compact.sort.last.year
+    end_year = events.pluck(:end_date).compact.sort.last.year
     years = start_year.upto(end_year).to_a
     years.to_json
   end
