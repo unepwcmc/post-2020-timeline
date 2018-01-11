@@ -44,9 +44,29 @@
 
       // initiate scroll magin handlers
       this.scrollMagicHandlers()
+
+      // set the start position of the timeline to the current event
+      // eventHub.$on('timeline-mounted', this.setStartPosition)
+      this.setStartPosition()
     },
 
     methods: {
+      setStartPosition () {
+        const current = document.getElementById('v-current-event'),
+              event = current.offsetTop,
+              parent = current.offsetParent.offsetHeight,
+              header = document.getElementById('v-header').clientHeight,
+              offset = 48
+
+        console.log(event)
+        console.log(parent)
+        console.log(header)
+
+        const start = event + parent + header + offset
+
+        window.scrollTo({ top: start, behavior: 'smooth' })
+      },
+
       // scroll down to the section of the page which corresponds to the
       // link that has been clicked
       scroll (year) {

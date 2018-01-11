@@ -1,5 +1,5 @@
 <template>
-  <div id="sticky" class="sticky">
+  <div id="v-header" class="sticky">
     <slot></slot>
     <slot name="header" class="sticky__header"></slot>
 

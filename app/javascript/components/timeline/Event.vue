@@ -1,5 +1,5 @@
 <template>
-  <div class="timeline__event">
+  <div v-bind:id="id" class="timeline__event">
     <div class="timeline__event__date flex-center">
       <span>{{ start }}</br>-</br>{{ end }}</span>
     </div>
@@ -32,6 +32,10 @@
     },
 
     computed: {
+      id () {
+        return this.title == 'Third Meeting of the UN Environment Assembly (UNEA 3)' ? 'v-current-event' : ''
+      },
+
       start () {
         return this.styledDate(this.startDay)
       },
