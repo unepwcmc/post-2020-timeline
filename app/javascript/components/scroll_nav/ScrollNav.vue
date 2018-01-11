@@ -15,6 +15,7 @@
 
 <script>
   import ScrollMagic from 'scrollmagic'
+  import { eventHub } from '../../home.js'
 
   export default {
     name: 'scroll-nav',
@@ -29,14 +30,19 @@
     data () {
       return {
         navClass: '.v-scroll-nav',
-        navY: 0
+        navY: 0,
+        triggerOffset: 0
       }
     },
 
     mounted () {
-      //this.navY = this.navClass.offset().top
+      // recalculate scene heights when the window is resized
+      eventHub.$on('window-resized', this.windowResized)
 
+      // set the offset value that triggers the active scroll link
+      this.setTriggerOffset()
 
+      // initiate scroll magin handlers
       this.scrollMagicHandlers()
     },
 
@@ -58,35 +64,49 @@
         this.navArray.forEach(link => {
           let scene = {}
           const id = 'year-' + link
-          
-          scene.id = id
+
+        
+          scene.id = link
 
           scene.scene = new ScrollMagic.Scene({ 
             duration: this.getSceneDuration(link),
             triggerElement: '#' + id, 
             triggerHook: 'onLeave' 
           })
-          // .offset(-self.navHeight)
+          .offset(-this.triggerOffset)
           .setClassToggle('#link-' + link, 'scroll-nav__link--active')
           .addTo(navScrollMagic)
 
           scrollMagicScenes.push(scene)
         })
 
-        // this.scrollMagicScenes = scrollMagicScenes
+        this.scrollMagicScenes = scrollMagicScenes
+      },
+
+      setTriggerOffset () {
+        // this offset accounts for the sticky bars at the top of the window
+        this.triggerOffset = document.getElementById('topbar').clientHeight + document.getElementById('control-bar').clientHeight
       },
 
       getSceneDuration (id) {
-        var section = document.getElementById('year-' + id)
+        // find the height of the scene (year div)
+        let section = document.getElementById('year-' + id)
 
         return section.clientHeight
       },
 
       updateScrollMagicDurations () {
+        // update the scene durations (year div heights)
         this.scrollMagicScenes.forEach(scene => {
-
-          scene.scene.duration()
+          scene.scene.duration(this.getSceneDuration(scene.id))
         })
+      },
+
+      windowResized () {
+        // when the window is resized the heights of the sticky bars and
+        // years will change so update js accordingly
+        this.setTriggerOffset()
+        this.updateScrollMagicDurations()
       }
     }
   }

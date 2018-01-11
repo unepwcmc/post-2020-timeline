@@ -10,8 +10,9 @@
 // year
 //--------------------------------------------------
   &__year {
-
-    @include breakpoint($small){ margin-top: rem-calc(30); }
+    padding-bottom: rem-calc(10);
+    @include breakpoint($small){ padding-bottom: rem-calc(30); }
+    @include breakpoint($medium){ padding-bottom: rem-calc(50); }
 
     &-title {
       @extend .text-1;

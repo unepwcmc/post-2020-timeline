@@ -25,14 +25,13 @@
           }
         },
         isControlBarSticky: false,
-        // stickyTrigger: 0,
         headerHeight: 0,
         scrollY: 0
       }
     },
 
     mounted () {
-      // this.createTriggers()
+      // create trigger for collapsible header
       this.setStickyTrigger()
       this.scrollHandler()
 
@@ -41,18 +40,6 @@
     },
 
     methods: {
-      createTriggers () {
-        //create trigger for sticky elements
-        // const stickyElement = document.getElementById('sticky'),
-        //       stickyElementHeight = stickyElement.clientHeight,
-        //       stickyYOffset = stickyElement.getBoundingClientRect().top + window.pageYOffset
-
-        // this.stickyTrigger = stickyElementHeight + stickyYOffset
-
-        // create trigger for collapsible header
-        this.headerHeight = document.getElementById('header').clientHeight
-      },
-
       setStickyTrigger () {
         this.headerHeight = document.getElementById('header').clientHeight
       },
@@ -77,7 +64,7 @@
 
           this.setStickyTrigger()
 
-          // this.updateScrollMagicDurations()
+          eventHub.$emit('window-resized')
         })
       }
     }
