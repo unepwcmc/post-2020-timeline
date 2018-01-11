@@ -1,13 +1,4 @@
 //--------------------------------------------------
-// month variables
-//--------------------------------------------------
-$circleSmall: rem-calc(51);
-$circleLarge: rem-calc(68);
-
-$endCircleSmall: rem-calc(19);
-$endCircleLarge: rem-calc(54);
-
-//--------------------------------------------------
 // reusable styles
 //--------------------------------------------------
 %circle {
@@ -50,13 +41,8 @@ $endCircleLarge: rem-calc(54);
 //--------------------------------------------------
 .timeline {
   &__months {
-    margin-bottom: $endCircleSmall;
-
-    position: relative;
-
-    @include breakpoint($small){ margin-bottom: $endCircleLarge; }
-    @include breakpoint($medium){ margin-bottom: $endCircleLarge; }
-
+    position:relative;
+    
     &:before {
       background-color: $secondary;
       content: '';

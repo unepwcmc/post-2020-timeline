@@ -1,18 +1,30 @@
 //--------------------------------------------------
+// variables used in year and month
+//--------------------------------------------------
+$circleSmall: rem-calc(51);
+$circleLarge: rem-calc(68);
+
+$endCircleSmall: rem-calc(19);
+$endCircleLarge: rem-calc(54);
+
+//--------------------------------------------------
 // timeline
 //--------------------------------------------------
 .timeline {
-  padding: rem-calc(30 0 40 0);
+  padding-bottom: rem-calc(40);
 
-  @include breakpoint($small) { padding: rem-calc(50 0 60 0); };
+  @include breakpoint($small) { padding-bottom: rem-calc(60); };
 
 //--------------------------------------------------
 // year
 //--------------------------------------------------
   &__year {
-    padding-bottom: rem-calc(10);
-    @include breakpoint($small){ padding-bottom: rem-calc(30); }
-    @include breakpoint($medium){ padding-bottom: rem-calc(50); }
+    padding: rem-calc(10) 0 $endCircleSmall 0;
+
+    position: relative;
+    
+    @include breakpoint($small){ padding: rem-calc(30) 0 $endCircleLarge 0; }
+    @include breakpoint($medium){ padding: rem-calc(30) 0 $endCircleLarge 0; }
 
     &-title {
       @extend .text-1;
