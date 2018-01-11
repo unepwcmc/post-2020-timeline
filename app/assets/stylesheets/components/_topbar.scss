@@ -1,12 +1,24 @@
 //--------------------------------------------------
+// topbar wrapper
+//--------------------------------------------------
+.topbar-wrapper {
+  height: $topbarHeightSmall;
+
+  @include breakpoint($small){ height: $topbarHeightLarge; }
+}
+
+//--------------------------------------------------
 // topbar
 //--------------------------------------------------
 .topbar {
   background-color: $grey-light;
-  padding: rem-calc(10) $gutter-small;
+  padding: 0 $gutter-small;
+  width: 100%; height: $topbarHeightSmall;
 
-  @include breakpoint($small){ padding: rem-calc(22) $gutter-medium; }
-  @include breakpoint($medium){ padding: rem-calc(44 16); }
+  @include breakpoint($small){ 
+    padding: 0 $gutter-medium;
+    height: $topbarHeightLarge;
+  }
 
   &__logo {
     width: rem-calc(137);

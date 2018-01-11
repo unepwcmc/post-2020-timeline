@@ -6,7 +6,7 @@
 // - dimensions
 // - breakpoins
 // - padding
-// - buttons
+// - topbar
 //
 //--------------------------------------------------
 // colours
@@ -52,10 +52,11 @@ $large: $site-width-large;
 //--------------------------------------------------
 // padding
 //--------------------------------------------------
-$gutter-small: rem-calc(16); 
-$gutter-medium: rem-calc(20);
+$gutter-small: rem-calc(11); 
+$gutter-medium: rem-calc(16);
 
 //--------------------------------------------------
-// buttons
+// topbar variables
 //--------------------------------------------------
-// $radius-global: rem-calc(7);
+$topbarHeightSmall: rem-calc(66);
+$topbarHeightLarge: rem-calc(86);

@@ -80,6 +80,13 @@
         var section = document.getElementById('year-' + id)
 
         return section.clientHeight
+      },
+
+      updateScrollMagicDurations () {
+        this.scrollMagicScenes.forEach(scene => {
+
+          scene.scene.duration()
+        })
       }
     }
   }

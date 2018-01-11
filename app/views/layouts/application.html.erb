@@ -11,13 +11,17 @@
         <filters :filters="<%= @filters %>"></filters>
       </reveal-target>
 
-      <sticky-nav>
+      <sticky>
         <%= render 'global/topbar' %>
-
-        <%= render 'global/header' %>
-
-        <%= render 'global/control-bar' %>
-      </sticky-nav>
+        
+        <div class="header-wrapper" slot="header">
+          <%= render 'global/header' %>
+        </div>
+        
+        <div slot="control-bar">
+          <%= render 'global/control-bar' %>
+        </div>
+      </sticky>
       
       <%= yield %>
 

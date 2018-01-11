@@ -1,4 +1,13 @@
 //--------------------------------------------------
+// control bar wrapper
+//--------------------------------------------------
+.control-bar-wrapper {
+  height: $topbarHeightSmall;
+
+  @include breakpoint($small){ height: $topbarHeightLarge; }
+}
+
+//--------------------------------------------------
 // control bar
 //--------------------------------------------------
 .control-bar {
@@ -15,5 +24,11 @@
       flex: 1;
       visibility: hidden;
     }
+  }
+
+  &--stuck {
+    top: $topbarHeightSmall;
+
+    @include breakpoint($small){ top: $topbarHeightLarge; }
   }
 }
