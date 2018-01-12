@@ -62,7 +62,7 @@ class Event < ApplicationRecord
     timeline.to_json
   end
 
-  def self.events_to_calendar(format = nil, filename)
+  def self.events_to_calendar(format = nil)
     events = Event.all
     calendar = Icalendar::Calendar.new
 
