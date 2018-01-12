@@ -1,11 +1,13 @@
-//--------------------------------------------------
-// topbar wrapper
-//--------------------------------------------------
-.topbar-wrapper {
-  height: $topbarHeightSmall;
+// //--------------------------------------------------
+// // topbar wrapper
+// //--------------------------------------------------
+// .topbar-wrapper {
+//   height: $topbarHeightSmall;
 
-  @include breakpoint($small){ height: $topbarHeightLarge; }
-}
+//   @include breakpoint($small){ height: $topbarHeightLarge; }
+
+//   position: fixed;
+// }
 
 //--------------------------------------------------
 // topbar
