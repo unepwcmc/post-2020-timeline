@@ -70,10 +70,10 @@ class Event < ApplicationRecord
       EXTRACT(month from end_date) = ?
     }
     monthly_events_list = year_events.where(sql, month, month).order(:start_date)
-    current_events_list = find_current_events
+    current_event_id = find_current_event_id
 
     monthly_events_list.map do |monthly_event|
-      current_event = current_events_list.include?(monthly_event.id) rescue nil
+      current_event = current_event_id == monthly_event.id
       past_event = (monthly_event.end_date < Date.today) rescue nil
       start_day = format('%02d', monthly_event.start_date.day) rescue nil
       start_month = format('%02d', monthly_event.start_date.month) rescue nil
@@ -99,20 +99,20 @@ class Event < ApplicationRecord
     end
   end
 
-  def self.find_current_events
+  def self.find_current_event_id
     sql = %{
       start_date <= ? AND
       end_date >= ?
     }
-    current_events = Event.all.where(sql, Date.today, Date.today).map(&:id)
-    return current_events if current_events.present?
+    current_event = Event.all.where(sql, Date.today, Date.today).order(start_date: :asc).first.id rescue nil
+    return current_event if current_event.present?
 
     # We haven't found any current_events so we need to find the next event
     sql = %{
       start_date > ?
     }
 
-    next_event = [Event.all.where(sql, Date.today).order(start_date: :asc).first.id] rescue nil
+    next_event = Event.all.where(sql, Date.today).order(start_date: :asc).first.id rescue nil
   end
 
 end
