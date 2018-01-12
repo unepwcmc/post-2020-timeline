@@ -54,7 +54,7 @@
 
         this.children.forEach(child => {
           if(child.isSelected){ 
-            selectedArray.push(child.option) 
+            selectedArray.push(child.option)
           }
         })
 

@@ -45,7 +45,21 @@
     },
 
     computed: {
+      // create an array of all selection options in the child filters
+      selectedOptions () {
+        let arr = []
 
+        this.children.forEach(filter => {
+          let obj = {}
+
+          obj['name'] = filter.title
+          obj['options'] = filter.selectedOptions
+
+          arr.push(obj)
+        })
+
+        return arr
+      }
     },
 
     methods: {
@@ -72,15 +86,10 @@
       apply () {
         //update the active filters array
         this.activeOptions = this.selectedOptions
-        
-        const newFilterOptions = {
-          filter: this.name,
-          options: this.activeOptions
-        }
 
-        this.$store.commit('updateFilterOptions', newFilterOptions)
+        this.$store.commit('filters/updateFilterOptions', this.activeOptions)
 
-        eventHub.$emit('callFilterItems')
+        eventHub.$emit('filterEvents')
       }
     }
   }
