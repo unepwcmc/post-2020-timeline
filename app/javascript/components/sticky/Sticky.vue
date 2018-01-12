@@ -57,7 +57,8 @@
               event = current.offsetTop,
               parent = current.offsetParent.offsetHeight
 
-        this.currentEvent = event + parent
+        // this.currentEvent = event + parent
+        this.currentEvent = current.getBoundingClientRect().top
       },
 
       setOffset () {
@@ -68,11 +69,12 @@
         window.addEventListener('scroll', () => {
           console.log('scroll')
           this.scrollY = window.pageYOffset
+          const current = document.getElementById('v-current-event')
 
           console.log('y', this.scrollY)
-          console.log('current', this.currentEvent)
+          console.log('current', current.getBoundingClientRect().top)
 
-          this.isClosed = this.scrollY > this.currentEvent ? true : false
+          this.isClosed = this.scrollY > this.scrollY + current.getBoundingClientRect().top ? true : false
         })
 
         // check the location of the window every 100ms to see whether the 

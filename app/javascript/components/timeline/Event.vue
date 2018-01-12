@@ -40,12 +40,8 @@
     },
 
     computed: {
-      isCurrent () {
-        return this.title == 'Third Meeting of the UN Environment Assembly (UNEA 3)'
-      },
-
       id () {
-        return this.isCurrent ? 'v-current-event' : ''
+        return this.currentEvent ? 'v-current-event' : ''
       },
 
       start () {
