@@ -70,8 +70,11 @@ class Event < ApplicationRecord
       EXTRACT(month from end_date) = ?
     }
     monthly_events_list = year_events.where(sql, month, month).order(:start_date)
+    current_event_id = find_current_event_id
 
     monthly_events_list.map do |monthly_event|
+      current_event = current_event_id == monthly_event.id
+      past_event = (monthly_event.end_date < Date.today) rescue nil
       start_day = format('%02d', monthly_event.start_date.day) rescue nil
       start_month = format('%02d', monthly_event.start_date.month) rescue nil
       end_day = format('%02d', monthly_event.end_date.day) rescue nil
@@ -85,6 +88,8 @@ class Event < ApplicationRecord
         end_year: monthly_event.end_date&.year,
         end_month: end_month,
         end_day: end_day,
+        current_event: current_event,
+        past_event: past_event,
         location: monthly_event.location,
         organisers: monthly_event.organisers.pluck(:name),
         summary: monthly_event.summary,
@@ -92,6 +97,18 @@ class Event < ApplicationRecord
         outputs: monthly_event.outputs
       }
     end
+  end
+
+  def self.find_current_event_id
+    sql = %{
+      start_date <= ? AND
+      end_date >= ?
+    }
+    current_event = Event.where(sql, Date.today, Date.today).order(start_date: :asc).first.id rescue nil
+    return current_event if current_event.present?
+
+    # We haven't found the current_event so we need to find the next event
+    Event.where("start_date > ?", Date.today).order(start_date: :asc).first.id rescue nil
   end
 
 end
