@@ -11,10 +11,7 @@
       </div>
 
       <div id="v-control-bar" class="control-bar-wrapper" :class="{'sticky--stuck' : isControlBarSticky}">
-        <div class="sticky__control-bar">
-        <!-- <div class="sticky__control-bar" > -->
-          <slot name="control-bar"></slot>
-        </div>
+        <slot name="control-bar"></slot>
       </div>
     </div>
   </div>
@@ -40,19 +37,14 @@
         headerHeight: 0,
         scrollY: 0,
         isAbsolute: false,
-        headerAbsolute: false
+        headerAbsolute: false,
       }
     },
 
     mounted () {
-      // add margin to the top of the timeline to push it below the fixed header
-      this.headerHeight = document.getElementById('v-topbar').clientHeight + document.getElementById('v-header-wrapper').clientHeight
-      this.setOffset()
+      // set up positioning of elements and locate the current event
+      this.setup()
 
-      document.getElementById('v-header-wrapper').style.top = document.getElementById('topbar').clientHeight + 'px'
-
-      // create trigger for collapsible header
-      this.setStickyTrigger()
       this.scrollHandler()
 
       // check for changes to the window width
@@ -60,17 +52,23 @@
     },
 
     methods: {
-      setStickyTrigger () {
+      setup () {
+        this.topbarHeight = document.getElementById('topbar').clientHeight
+
+        // add margin to the top of the timeline to push it below the fixed header
+        this.headerHeight = document.getElementById('v-topbar').clientHeight + document.getElementById('v-header-wrapper').clientHeight
+
+        document.getElementById('v-timeline').style.paddingTop = this.headerHeight + 'px'
+
+        // set the top position of the header wrapper so that it sits below the topbar
+        document.getElementById('v-header-wrapper').style.top = this.topbarHeight + 'px'
+
+        // locate current event and set scroll location
         const current = document.getElementById('v-current-event'),
               event = current.offsetTop,
               parent = current.offsetParent.offsetHeight
 
-        // this.currentEvent = event + parent
         this.currentEvent = current.getBoundingClientRect().top
-      },
-
-      setOffset () {
-        document.getElementById('v-timeline').style.paddingTop = this.headerHeight + 'px'
       },
 
       scrollHandler () {
@@ -79,7 +77,6 @@
 
           this.scrollY = window.pageYOffset
           this.headerTrigger = this.scrollY + current - this.headerHeight
-          this.topbarHeight = document.getElementById('topbar').clientHeight + 'px'
 
           this.checkHeader()
           this.checkControlBar()
@@ -97,15 +94,13 @@
             this.isAbsolute = true
             this.headerAbsolute = true
 
-            const tempOffset = document.getElementById('topbar').clientHeight
-
-            headerWrapper.style.top = this.scrollY + tempOffset  +'px'
+            headerWrapper.style.top = this.scrollY + this.topbarHeight  + 'px'
           }
 
         } else {
           this.headerAbsolute = false
           this.isAbsolute = false
-          headerWrapper.style.top = this.topbarHeight
+          headerWrapper.style.top = this.topbarHeight + 'px'
         }
       },
 
@@ -117,7 +112,7 @@
 
         if(this.scrollY > controlBarTrigger){
           this.isControlBarSticky = true
-          controlBar.style.top = this.topbarHeight
+          controlBar.style.top = this.topbarHeight + 'px'
         } else {
           this.isControlBarSticky = false
         }
@@ -125,9 +120,6 @@
 
       monitorResize () {
         window.addEventListener('resize', () => {
-          let width = window.clientWidth
-
-          this.setStickyTrigger()
 
           eventHub.$emit('window-resized')
         })
