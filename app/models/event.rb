@@ -107,7 +107,7 @@ class Event < ApplicationRecord
     current_event = Event.all.where(sql, Date.today, Date.today).order(start_date: :asc).first.id rescue nil
     return current_event if current_event.present?
 
-    # We haven't found any current_events so we need to find the next event
+    # We haven't found the current_event so we need to find the next event
     sql = %{
       start_date > ?
     }
