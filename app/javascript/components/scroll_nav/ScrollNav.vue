@@ -52,28 +52,16 @@
 
     methods: {
       setStartPosition () {
-        const current = document.getElementById('v-current-event'),
-              event = current.offsetTop,
-              parent = current.offsetParent.offsetHeight,
-              header = document.getElementById('v-header').clientHeight,
-              offset = 48
+        const current = document.getElementById('v-current-event').getBoundingClientRect().top
 
-        console.log(event)
-        console.log(parent)
-        console.log(header)
-
-        const start = event + parent + header + offset
-
-        window.scrollTo({ top: start, behavior: 'smooth' })
+        window.scrollTo({ top: current, behavior: 'instant' })
       },
 
       // scroll down to the section of the page which corresponds to the
       // link that has been clicked
       scroll (year) {
         const offset = document.getElementById('year-' + year).offsetTop
-
-        console.log(offset - this.triggerOffset)
-
+        
         window.scrollTo({ top: offset - this.triggerOffset, behavior: 'smooth' })
       },
 

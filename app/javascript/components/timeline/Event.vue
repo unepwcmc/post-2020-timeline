@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:id="id" class="timeline__event">
+  <div v-bind:id="id" class="timeline__event" :class="{ 'timeline__event--current' : isCurrent }">
     <div class="timeline__event__date flex-center">
       <span>{{ start }}</br>-</br>{{ end }}</span>
     </div>
@@ -32,8 +32,12 @@
     },
 
     computed: {
+      isCurrent () {
+        return this.title == 'Third Meeting of the UN Environment Assembly (UNEA 3)'
+      },
+
       id () {
-        return this.title == 'Third Meeting of the UN Environment Assembly (UNEA 3)' ? 'v-current-event' : ''
+        return this.isCurrent ? 'v-current-event' : ''
       },
 
       start () {

@@ -1,5 +1,5 @@
 <template>
-  <div class="timeline">
+  <div id="v-timeline" class="timeline">
     <year v-for="year in timeline"
       :year="year.year"
       :months="year.months"

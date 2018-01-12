@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" class="timeline__year">
+  <div :id="id" class="timeline__year v-year">
     <span class="timeline__year-title">{{ year }}</span>
     
     <div class="timeline__months flex flex-column">
