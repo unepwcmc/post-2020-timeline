@@ -13,9 +13,7 @@ class HomeController < ApplicationController
       filename += '.ics'
     end
 
-    calendar_event = Event.events_to_calendar(params[:format],
-                                              type: 'text/calendar', disposition: 'attachment',
-                                              filename: filename)
-    send_data calendar_event
+    calendar_event = Event.events_to_calendar(params[:format])
+    send_data calendar_event, type: 'text/calendar', disposition: 'attachment', filename: filename
   end
 end
