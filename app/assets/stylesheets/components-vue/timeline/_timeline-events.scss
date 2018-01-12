@@ -83,10 +83,16 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
             left: initial;
           }
         }
+
+        .timeline__event--past & { border-right-color: $grey; }
       }
 
       &--current {
         
+      }
+
+      &--past {
+        border-color: $grey; 
       }
 
 //--------------------------------------------------
@@ -113,6 +119,8 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
             left: 0;
           }
         }
+
+        .timeline__event--past & { background-color: $grey; }
       }
 
 //--------------------------------------------------

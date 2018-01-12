@@ -81,6 +81,8 @@
       @include breakpoint($medium){
         left: calc(50% - (#{$endCircleLarge}/ 2)); 
       }
+
+      .timeline__event--past & { background-color: $grey; }
     }  
   }
 
@@ -131,6 +133,8 @@
             right: calc(-0.5 * #{$circleLarge});
           }            
         }
+
+        .timeline__month--past & { background-color: $grey; }
       }
     }
 }

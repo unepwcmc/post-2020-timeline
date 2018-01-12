@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:id="id" class="timeline__event" :class="{ 'timeline__event--current' : isCurrent }">
+  <div v-bind:id="id" class="timeline__event" :class="{ 'timeline__event--current' : currentEvent, 'timeline__event--past' : pastEvent }">
     <div class="timeline__event__date flex-center">
       <span>{{ start }}</br>-</br>{{ end }}</span>
     </div>
@@ -28,7 +28,15 @@
       endDay: {
         required: true,
         type: String
-      }
+      },
+      currentEvent: {
+        required: true,
+        type: Boolean
+      },
+      pastEvent: {
+        required: true,
+        type: Boolean
+      }      
     },
 
     computed: {

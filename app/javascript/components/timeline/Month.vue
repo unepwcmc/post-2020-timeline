@@ -8,6 +8,8 @@
         :title="event.title"
         :startDay="event.start_day"
         :endDay="event.end_day"
+        :currentEvent="event.current_event"
+        :pastEvent="event.past_event"
       ></event>
     </div>
   </div>
