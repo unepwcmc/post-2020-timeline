@@ -62,7 +62,39 @@ class Event < ApplicationRecord
     timeline.to_json
   end
 
+  def self.events_to_calendar(format = nil)
+    events = Event.all
+    calendar = Icalendar::Calendar.new
+
+    if format == 'vcs'
+      calendar.prodid = '-//Microsoft Corporation//Outlook MIMEDIR//EN'
+      calendar.version = '1.0'
+    else # ical
+      calendar.prodid = '-//Acme Widgets, Inc.//NONSGML ExportToCalendar//EN'
+      calendar.version = '2.0'
+    end
+
+    events.each do |event|
+       calendar_event = Icalendar::Event.new
+       calendar_event.dtstart = event.start_date
+       calendar_event.dtend = event.end_date
+       calendar_event.summary = event.title
+       calendar_event.description = event.summary
+       calendar_event.url = post_2020_website
+       calendar_event.location = event.location
+
+       calendar.add_event(calendar_event)
+       calendar.publish
+     end
+
+    calendar.to_ical
+  end
+
   private
+
+  def self.post_2020_website
+    "http://www.google.com"
+  end
 
   def self.group_by_month(year_events, month, year)
     sql = %{
