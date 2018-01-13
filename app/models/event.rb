@@ -75,17 +75,17 @@ class Event < ApplicationRecord
     end
 
     events.each do |event|
-       calendar_event = Icalendar::Event.new
-       calendar_event.dtstart = event.start_date
-       calendar_event.dtend = event.end_date
-       calendar_event.summary = event.title
-       calendar_event.description = event.summary
-       calendar_event.url = post_2020_website
-       calendar_event.location = event.location
+      calendar_event = Icalendar::Event.new
+      calendar_event.dtstart = event.start_date
+      calendar_event.dtend = event.end_date
+      calendar_event.summary = event.title
+      calendar_event.description = event.summary
+      calendar_event.url = post_2020_website
+      calendar_event.location = event.location
 
-       calendar.add_event(calendar_event)
-       calendar.publish
-     end
+      calendar.add_event(calendar_event)
+      calendar.publish
+    end
 
     calendar.to_ical
   end
