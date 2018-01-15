@@ -5,6 +5,7 @@ class Event < ApplicationRecord
     events = Event.all.order(id: :asc)
     unique_categories = events.pluck(:category).compact.uniq.sort
     unique_organisers = Organiser.pluck(:name).compact.sort
+    unique_cbd_relations = events.pluck(:cbd_relation).compact.uniq.sort
 
     filters = [
       {
@@ -17,6 +18,12 @@ class Event < ApplicationRecord
         name: 'organisers',
         title: 'organisers',
         options: unique_organisers,
+        multiple: true
+      },
+      {
+        name: 'cbd_relation',
+        title: 'CBD relation',
+        options: unique_cbd_relations,
         multiple: true
       }
     ].to_json
@@ -128,7 +135,8 @@ class Event < ApplicationRecord
         organisers: monthly_event.organisers.pluck(:name),
         summary: monthly_event.summary,
         relevance: monthly_event.relevance,
-        outputs: monthly_event.outputs
+        outputs: monthly_event.outputs,
+        cbd_relation: monthly_event.cbd_relation
       }
     end
   end
