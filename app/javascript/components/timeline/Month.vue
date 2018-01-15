@@ -41,13 +41,15 @@
 
     data () {
       return {
-        activeEvents: 0
+        inactiveFilters: false,
+        activeEvents: 0,
       }
     },
 
     computed: {
       hasActiveEvents () {
-        return this.activeEvents > 0 ? true : false
+        // show the month if it has active events or there a no selected filter options
+        return this.activeEvents > 0 || this.inactiveFilters ? true : false
       }
     },
 
@@ -65,6 +67,8 @@
 
         // keep track of whether the month has any active events
         let activeEvents = 0
+        // keep track of whether there are filters with no selected options
+        let inactiveFilters = 0
         
         this.events.forEach(event => {
           // show all the events on page load
@@ -77,13 +81,14 @@
             let filterMatch = true
 
             // loop through all filters for each event to see if there is a match
-            activeFilters.forEach(filter => {
+            activeFilters.forEach(activeFilter => {
 
-              if (filter.options.length !== 0) {
+              // if there are some selected options check to see if one matches
+              if (activeFilter.options.length !== 0) {
                 let optionMatch = false
 
-                filter.options.forEach(option => {
-                  if(event[filter.name] == option) {
+                activeFilter.options.forEach(option => {
+                  if(event[activeFilter.name] == option) {
                     optionMatch = true
                     activeEvents++
                   }
@@ -92,15 +97,19 @@
                 // once filterMatch is set to false it will always be false and the item
                 // will not be shown because it did not match at least one option in every active filter
                 filterMatch = filterMatch && optionMatch
-              }
 
+              } else {
+                inactiveFilters++
+              }
+              
               // update the active state of each the event
               this.$set(event, 'isActive', filterMatch)
             })
           }
         })
 
-        // update activeEvents property 
+        // update properties so that the active state of the month can be calculated
+        this.inactiveFilters = activeFilters.length == inactiveFilters
         this.activeEvents = activeEvents
       }
     }

@@ -32,16 +32,20 @@
       }
     },
 
-    mounted () {
-      eventHub.$on('clickDropdown', this.updateDropdowns)
-      eventHub.$on('closeReveal', this.cancel)
-    },
-
     data () {
       return {
         children: this.$children,
         activeFilters: []
       }
+    },
+
+    mounted () {
+      eventHub.$on('clickDropdown', this.updateDropdowns)
+      eventHub.$on('closeReveal', this.cancel)
+
+      // on page load create an array of all the filter options
+      // so that all events are shown to start with
+      // this.createActiveFilters()
     },
 
     computed: {
