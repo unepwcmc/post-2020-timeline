@@ -3,7 +3,7 @@
     <year v-for="year in timeline"
       :year="year.year"
       :months="year.months"
-      :pastYear="year.pastYear"
+      :pastYear="year.past_year"
     >
     </year>
   </div>

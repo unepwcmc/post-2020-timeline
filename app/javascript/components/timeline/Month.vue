@@ -1,5 +1,5 @@
 <template>
-  <div class="timeline__month" :class="{ 'timeline__month--past' : pastMonth }">
+  <div v-show="hasActiveEvents" class="timeline__month" :class="{ 'timeline__month--past' : pastMonth }">
     <span class="timeline__month-title">{{ month }}</span>
 
     <div class="timeline__events">
@@ -39,6 +39,18 @@
       }
     },
 
+    data () {
+      return {
+        activeEvents: true
+      }
+    },
+
+    computed: {
+      hasActiveEvents () {
+        return this.activeEvents > 0 ? true : false
+      }
+    },
+
     created () {
       this.updateActiveEvents(true)
     },
@@ -50,16 +62,19 @@
     methods: {
       updateActiveEvents (pageLoad = false) {
         const activeFilters = this.$store.state.filters.activeFilters
+
+        // keep track of whether the month has any active events
+        let activeEvents = 0
         
         this.events.forEach(event => {
           // show all the events on page load
           if(pageLoad) {
 
             this.$set(event, 'isActive', true)
+            activeEvents++
 
           } else {
             let filterMatch = true
-            let activeEvents = []
 
             // loop through all filters for each event to see if there is a match
             activeFilters.forEach(filter => {
@@ -68,7 +83,10 @@
                 let optionMatch = false
 
                 filter.options.forEach(option => {
-                  if(event[filter.name] == option) optionMatch = true
+                  if(event[filter.name] == option) {
+                    optionMatch = true
+                    activeEvents++
+                  }
                 })
 
                 // once filterMatch is set to false it will always be false and the item
@@ -81,6 +99,9 @@
             })
           }
         })
+
+        // update activeEvents property 
+        this.activeEvents = activeEvents
       }
     }
   }
