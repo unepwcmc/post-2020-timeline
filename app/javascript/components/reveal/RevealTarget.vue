@@ -18,7 +18,7 @@
     },
 
     created () {
-      eventHub.$on('applyFilters', this.closeReveal)
+      eventHub.$on('applyFilters', this.applyFilters)
     },
 
     methods: {
