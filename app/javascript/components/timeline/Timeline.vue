@@ -42,31 +42,10 @@
 
     methods: {
       filterEvents () {
-        const activeFilters = this.$store.state.filters.activeFilters
-
-        // loop through all events
+        // loop through all months and check for events that match the filter options
         this.years.forEach(year => {
           year.months.forEach(month => {
-            month.events.forEach(event => {
-              let filterMatch = true
-
-              // loop through all filters for each event to see if there is a match
-              activeFilters.forEach(filter => {
-
-                if (filter.options.length !== 0) {
-                  let optionMatch = false
-
-                  filter.options.forEach(option => {
-
-                    if(event[filter.name] == option) { console.log('match')}
-                  })
-                }
-
-                // once filterMatch is set to false it will always be false and the item
-                // will not be shown because it did not match at least one option in every active filter
-                filterMatch = filterMatch && optionMatch
-              })
-            })
+            eventHub.$emit('updateActiveEvents')
           })
         })
       }
