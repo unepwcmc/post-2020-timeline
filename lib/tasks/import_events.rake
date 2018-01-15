@@ -30,7 +30,7 @@ namespace :import do
 
       event_hash.keys.each do |key|
         next if key == :organisers
-        if [:outputs, :summary, :category, :cbd_relation].include? key
+        if [:outputs, :summary, :category, :cbd_relation, :relevance].include? key
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || "Empty"
         elsif [:start_date, :end_date].include? key
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || nil

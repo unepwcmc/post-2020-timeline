@@ -121,6 +121,7 @@ class Event < ApplicationRecord
       end_day = format('%02d', monthly_event.end_date.day) rescue nil
       end_month = format('%02d', monthly_event.end_date.month) rescue nil
       {
+        id: monthly_event.id,
         title: monthly_event.title,
         category: monthly_event.category,
         start_year: monthly_event.start_date&.year,
