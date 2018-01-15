@@ -41,7 +41,7 @@
 
     data () {
       return {
-        activeEvents: true
+        activeEvents: 0
       }
     },
 
@@ -61,9 +61,8 @@
 
     methods: {
       updateActiveEvents (pageLoad = false) {
-console.log('update active events')
         const activeFilters = this.$store.state.filters.activeFilters
-        
+
         // keep track of whether the month has any active events
         let activeEvents = 0
         
