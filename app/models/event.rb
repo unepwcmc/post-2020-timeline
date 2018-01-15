@@ -7,13 +7,13 @@ class Event < ApplicationRecord
     unique_organisers = Organiser.pluck(:name).compact.sort
 
     filters = [
-     {
+      {
         name: 'category',
         title: 'category',
         options: unique_categories,
         multiple: false
       },
-     {
+      {
         name: 'organisers',
         title: 'organisers',
         options: unique_organisers,
@@ -77,17 +77,17 @@ class Event < ApplicationRecord
     end
 
     events.each do |event|
-       calendar_event = Icalendar::Event.new
-       calendar_event.dtstart = event.start_date
-       calendar_event.dtend = event.end_date
-       calendar_event.summary = event.title
-       calendar_event.description = event.summary
-       calendar_event.url = post_2020_website
-       calendar_event.location = event.location
+      calendar_event = Icalendar::Event.new
+      calendar_event.dtstart = event.start_date
+      calendar_event.dtend = event.end_date
+      calendar_event.summary = event.title
+      calendar_event.description = event.summary
+      calendar_event.url = post_2020_website
+      calendar_event.location = event.location
 
-       calendar.add_event(calendar_event)
-       calendar.publish
-     end
+      calendar.add_event(calendar_event)
+      calendar.publish
+    end
 
     calendar.to_ical
   end
@@ -147,11 +147,12 @@ class Event < ApplicationRecord
 
   def self.past_month(year_events, month)
     sql = %{
-      EXTRACT(month from start_date) = ? OR
-      EXTRACT(month from end_date) = ?
+      (EXTRACT(month from start_date) = ? OR
+      EXTRACT(month from end_date) = ?) AND
+      end_date >= ?
     }
 
-    year_events.where(sql, month, month).where("end_date >= ?", Date.today).blank?
+    year_events.where(sql, month, month, Date.today).blank?
   end
 
   def self.past_year(year_events)
