@@ -51,7 +51,11 @@ $endCircleLarge: rem-calc(54);
         @include breakpoint($medium){ display: none; }
       }
 
-      .timeline__event--title & { color: $grey; }
+      .timeline__year--past & { 
+        color: $grey; 
+
+        &:after { background-image: url('icons/chevron-double-down-grey.svg'); }
+      }
     }
   }
 }

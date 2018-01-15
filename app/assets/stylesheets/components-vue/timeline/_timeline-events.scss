@@ -83,8 +83,6 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
             left: initial;
           }
         }
-
-        .timeline__event--past & { border-right-color: $grey; }
       }
 
       &--current {
@@ -93,6 +91,8 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
 
       &--past {
         border-color: $grey; 
+
+        &:first-child:before { border-right-color: $grey; }
       }
 
 //--------------------------------------------------

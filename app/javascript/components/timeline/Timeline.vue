@@ -3,6 +3,7 @@
     <year v-for="year in timeline"
       :year="year.year"
       :months="year.months"
+      :pastYear="year.past_year"
     >
     </year>
   </div>
@@ -32,18 +33,12 @@
 
     created () {
       eventHub.$on('filterEvents', this.filterEvents)
-
-      this.years = this.timeline
-    },
-
-    mounted () {
-
     },
 
     methods: {
       filterEvents () {
         // loop through all months and check for events that match the filter options
-        this.years.forEach(year => {
+        this.timeline.forEach(year => {
           year.months.forEach(month => {
             eventHub.$emit('updateActiveEvents')
           })

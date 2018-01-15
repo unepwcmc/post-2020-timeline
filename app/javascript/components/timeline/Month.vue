@@ -1,5 +1,5 @@
 <template>
-  <div class="timeline__month">
+  <div class="timeline__month" :class="{ 'timeline__month--past' : pastMonth }">
     <span class="timeline__month-title">{{ month }}</span>
 
     <div class="timeline__events">
@@ -32,6 +32,10 @@
       },
       events: {
         type: Array
+      },
+      pastMonth: {
+        required: true,
+        type: Boolean
       }
     },
 
