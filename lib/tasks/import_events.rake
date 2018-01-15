@@ -20,7 +20,8 @@ namespace :import do
       summary: csv_headers[5],
       relevance: csv_headers[6],
       outputs: csv_headers[7],
-      category: csv_headers[8]
+      category: csv_headers[8],
+      cbd_relation: csv_headers[10].chomp
     }
 
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
@@ -29,7 +30,7 @@ namespace :import do
 
       event_hash.keys.each do |key|
         next if key == :organisers
-        if [:outputs, :summary, :category].include? key
+        if [:outputs, :summary, :category, :cbd_relation].include? key
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || "Empty"
         elsif [:start_date, :end_date].include? key
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || nil
