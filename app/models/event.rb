@@ -137,7 +137,8 @@ class Event < ApplicationRecord
         summary: monthly_event.summary,
         relevance: monthly_event.relevance,
         outputs: monthly_event.outputs,
-        cbd_relation: monthly_event.cbd_relation
+        cbd_relation: monthly_event.cbd_relation,
+        is_provisional_date: monthly_event.is_provisional_date
       }
     end
   end
