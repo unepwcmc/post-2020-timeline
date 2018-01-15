@@ -7,13 +7,13 @@ class Event < ApplicationRecord
     unique_organisers = Organiser.pluck(:name).compact.sort
 
     filters = [
-     {
+      {
         name: 'category',
         title: 'category',
         options: unique_categories,
         multiple: false
       },
-     {
+      {
         name: 'organisers',
         title: 'organisers',
         options: unique_organisers,
@@ -48,12 +48,14 @@ class Event < ApplicationRecord
       monthly_events = months.map do |month|
       {
         month: Date::ABBR_MONTHNAMES[month].downcase,
+        past_month: past_month(year_events, month),
         events: group_by_month(year_events, month, year)
       }
       end
 
       yearly_events_hash = {
         year: year,
+        past_year: past_year(year_events),
         months: monthly_events
       }
 
@@ -75,17 +77,17 @@ class Event < ApplicationRecord
     end
 
     events.each do |event|
-       calendar_event = Icalendar::Event.new
-       calendar_event.dtstart = event.start_date
-       calendar_event.dtend = event.end_date
-       calendar_event.summary = event.title
-       calendar_event.description = event.summary
-       calendar_event.url = post_2020_website
-       calendar_event.location = event.location
+      calendar_event = Icalendar::Event.new
+      calendar_event.dtstart = event.start_date
+      calendar_event.dtend = event.end_date
+      calendar_event.summary = event.title
+      calendar_event.description = event.summary
+      calendar_event.url = post_2020_website
+      calendar_event.location = event.location
 
-       calendar.add_event(calendar_event)
-       calendar.publish
-     end
+      calendar.add_event(calendar_event)
+      calendar.publish
+    end
 
     calendar.to_ical
   end
@@ -141,6 +143,20 @@ class Event < ApplicationRecord
 
     # We haven't found the current_event so we need to find the next event
     Event.where("start_date > ?", Date.today).order(start_date: :asc).first.id rescue nil
+  end
+
+  def self.past_month(year_events, month)
+    sql = %{
+      (EXTRACT(month from start_date) = ? OR
+      EXTRACT(month from end_date) = ?) AND
+      end_date >= ?
+    }
+
+    year_events.where(sql, month, month, Date.today).blank?
+  end
+
+  def self.past_year(year_events)
+    year_events.where("end_date >= ?", Date.today).blank?
   end
 
 end
