@@ -48,7 +48,12 @@
       }
     },
 
+    created () {
+      eventHub.$on('updateFilterOptionsState', this.updateFilterOptionsState)
+    },
+
     computed: {
+      // create an array of all selected options in this filter
       selectedOptions () {
         let selectedArray = []
 
@@ -83,6 +88,21 @@
       closeSelect () {
         this.isOpen = false
       },
+
+      // set each option to the correct selected state
+      updateFilterOptionsState () {
+        const activeFilters = this.$store.state.filters.activeFilters
+
+        // get the activeFilter object that matches the current filter
+        let activeFilter = activeFilters.filter(activeFilter => {
+          return activeFilter.name == this.name
+        })
+
+        // check to see if the filter options are present in the array of active options
+        this.children.forEach(child => {
+          child.isSelected = activeFilter[0].options.includes(child.option) ? true : false
+        })
+      }
     }
   }
 </script>

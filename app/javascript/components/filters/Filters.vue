@@ -40,26 +40,27 @@
     data () {
       return {
         children: this.$children,
-        activeOptions: []
+        activeFilters: []
       }
     },
 
     computed: {
-      // create an array of all selection options in the child filters
-      selectedOptions () {
+      // create an array of all selected options in the child filters
+      selectedFilters () {
         let arr = []
 
         this.children.forEach(filter => {
           let obj = {}
+          const regex = new RegExp(' ', 'g')
 
-          obj['name'] = filter.title
+          obj['name'] = filter.title.toLowerCase().replace(regex, '_')
           obj['options'] = filter.selectedOptions
 
           arr.push(obj)
         })
 
         return arr
-      }
+      },
     },
 
     methods: {
@@ -70,13 +71,7 @@
       },
 
       cancel() {
-        console.log('cancel')
-        // this.closeSelect()
-        
-        // // reset each option to the correct state
-        // this.children.forEach(child => {
-        //   child.isSelected = this.activeOptions.includes(child.option) ? true : false
-        // })
+        eventHub.$emit('updateFilterOptionsState')
       },
 
       clear () {
@@ -85,9 +80,9 @@
 
       apply () {
         //update the active filters array
-        this.activeOptions = this.selectedOptions
+        this.activeFilters = this.selectedFilters
 
-        this.$store.commit('filters/updateFilterOptions', this.activeOptions)
+        this.$store.commit('filters/updateFilterOptions', this.activeFilters)
 
         eventHub.$emit('filterEvents')
         eventHub.$emit('applyFilters')

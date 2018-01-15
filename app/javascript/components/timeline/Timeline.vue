@@ -39,6 +39,7 @@
 
     methods: {
       filterEvents () {
+console.log('filter events')
         // loop through all months and check for events that match the filter options
         this.years.forEach(year => {
           year.months.forEach(month => {
