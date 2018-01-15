@@ -18,7 +18,7 @@
   &--secondary { 
     background-color: $secondary; 
     color: white;
-    padding: rem-calc(8 46 8 16);
+    padding: rem-calc(8 36 8 16);
 
     @include breakpoint($small){ padding: rem-calc(15 76 15 46); }
   }
@@ -47,18 +47,24 @@
     position: relative;
 
     &:after {
-      // background-image: url('images/icons/filter.svg');
+      background-image: url('icons/filter.svg');
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
       content: '';
-      width: rem-calc(27);
+      width: rem-calc(18);
 
       display: block;
       position: absolute;
       top: 0;
-      right: rem-calc(46);
+      right: rem-calc(14);
       bottom: 0;
+
+      @include breakpoint($small) { 
+        width: rem-calc(27);
+
+        right: rem-calc(46); 
+      }
     }
   }
 }
