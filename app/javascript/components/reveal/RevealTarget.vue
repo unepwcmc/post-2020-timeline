@@ -17,11 +17,19 @@
       }
     },
 
+    created () {
+      eventHub.$on('applyFilters', this.closeReveal)
+    },
+
     methods: {
       closeReveal () {
         this.$store.commit('reveal/toggleActiveState')
 
         eventHub.$emit('closeReveal')
+      },
+
+      applyFilters () {
+        this.$store.commit('reveal/toggleActiveState')        
       }
     }
   }

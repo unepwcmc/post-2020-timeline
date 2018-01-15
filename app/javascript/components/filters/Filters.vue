@@ -90,6 +90,7 @@
         this.$store.commit('filters/updateFilterOptions', this.activeOptions)
 
         eventHub.$emit('filterEvents')
+        eventHub.$emit('applyFilters')
       }
     }
   }
