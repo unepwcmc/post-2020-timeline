@@ -88,8 +88,6 @@
       getScrollY () {
         // add top padding if being viewed on medium or large breakpoints
         this.top = window.innerWidth <= this.config.smallBreakpoint ? window.scrollY : window.scrollY + 40
-
-
       }
     }
   }
