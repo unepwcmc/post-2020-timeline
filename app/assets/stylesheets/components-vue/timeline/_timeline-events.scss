@@ -36,6 +36,7 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
     &__event {
       border: solid rem-calc(1) $primary;
       box-shadow: $grey-light 2px 2px 2px 2px;
+      cursor: pointer;
       margin-bottom: rem-calc(14);
       padding: rem-calc(14);
       padding-right: $datePaddingSmall;

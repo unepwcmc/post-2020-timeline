@@ -3,6 +3,7 @@
     v-bind:id="id" 
     class="timeline__event" 
     :class="{ 'timeline__event--current' : currentEvent, 'timeline__event--past' : pastEvent }"
+    @click="openModal"
     >
 
     <div class="timeline__event__date flex-center">
@@ -15,6 +16,8 @@
 </template>
 
 <script>
+  import { eventHub } from '../../home.js'
+
   export default {
     name: 'event',
 
@@ -76,6 +79,11 @@
         }
 
         return styled
+      },
+
+      openModal () {
+console.log('open modal')
+        eventHub.$emit('openModal')
       }
     }
   }

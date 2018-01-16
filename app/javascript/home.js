@@ -1,6 +1,7 @@
 import Vue from 'vue/dist/vue.esm'
 import store from './store/store.js'
 import Filters from './components/filters/Filters.vue'
+import Modal from './components/modal/Modal.vue'
 import RevealTarget from './components/reveal/RevealTarget.vue'
 import RevealTrigger from './components/reveal/RevealTrigger.vue'
 import Timeline from './components/timeline/Timeline.vue'
@@ -17,6 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { Filters, RevealTarget, RevealTrigger, Timeline, ScrollNav, Sticky }
+    components: { Filters, Modal, RevealTarget, RevealTrigger, Timeline, ScrollNav, Sticky }
   })
 })
