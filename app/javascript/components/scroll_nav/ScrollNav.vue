@@ -55,6 +55,8 @@
         const current = document.getElementById('v-current-event').getBoundingClientRect().top
 
         window.scrollTo({ top: current, behavior: 'instant' })
+
+        this.$store.commit('filters/updateCurrentEvent', current)
       },
 
       // scroll down to the section of the page which corresponds to the

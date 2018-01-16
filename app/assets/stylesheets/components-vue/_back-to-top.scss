@@ -1,0 +1,14 @@
+//--------------------------------------------------
+// back to top
+//--------------------------------------------------
+.back-to-top {
+  background-color: $accent;
+  border: 0;
+  cursor: pointer;
+  width: rem-calc(70); height: rem-calc(62);
+
+  position: fixed;
+  right: rem-calc(20);
+  bottom: rem-calc(20);
+  z-index: 1;
+}

@@ -20,4 +20,11 @@
 
     @include breakpoint($small){ height: rem-calc(38); }
   }
+
+  &--back-to-top {
+    background: url('icons/chevron-up.svg') center no-repeat;
+    background-size: contain;
+
+    width: rem-calc(29); height: rem-calc(17);
+  }
 }
