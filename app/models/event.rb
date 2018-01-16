@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   has_and_belongs_to_many :organisers, class_name: 'Organiser', join_table: 'event_organisers'
+  has_and_belongs_to_many :categories, class_name: 'Category', join_table: 'event_categories'
 
   def self.filters_to_json
     events = Event.all.order(id: :asc)
