@@ -72,7 +72,7 @@ class Event < ApplicationRecord
   end
 
   def self.events_to_calendar(format = nil)
-    events = Event.all
+    events = Event.where(is_provisional_date: FALSE)
     calendar = Icalendar::Calendar.new
 
     if format == 'vcs'
@@ -84,7 +84,6 @@ class Event < ApplicationRecord
     end
 
     events.each do |event|
-      next if event.is_provisional_date
       calendar_event = Icalendar::Event.new
       calendar_event.dtstart = event.start_date
       calendar_event.dtend = event.end_date
