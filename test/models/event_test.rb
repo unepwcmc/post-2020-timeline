@@ -34,7 +34,9 @@ class EventTest < ActiveSupport::TestCase
                 outputs: "http://www.unep-wcmc.org",
                 cbd_relation: nil
               }
-            ]}]}].to_json
+            ]
+          }]
+        }].to_json
 
     json = Event.events_to_json
     assert_equal expected_json, json
@@ -80,6 +82,16 @@ class EventTest < ActiveSupport::TestCase
     json = Event.filters_to_json
     assert_equal expected_json, json
 
+  end
+
+  test "years json should be correct" do
+    event1 = FactoryBot.create(:event, start_date: Date.new(2017, 1, 1), end_date: Date.new(2018, 1, 1))
+    event2 = FactoryBot.create(:event, start_date: Date.new(2019, 1, 1), end_date: Date.new(2020, 1, 1))
+
+    expected_json = [2017,2018,2019,2020].to_json
+    json = Event.years_to_json
+
+    assert_equal expected_json, json
   end
 
 end
