@@ -45,7 +45,7 @@
 }
 
 .text-4 { 
-  font-size: rem-calc(14); 
+  font-size: rem-calc(16); 
   font-weight: bold;
 
   @include breakpoint($small) { font-size: rem-calc(19); }
@@ -59,7 +59,7 @@
 
 .text-7 { 
   color: $grey;
-  font-size: rem-calc(12); 
+  font-size: rem-calc(14); 
   font-weight: bold;
   
   @include breakpoint($small) { font-size: rem-calc(13); }

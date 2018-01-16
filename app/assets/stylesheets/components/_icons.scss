@@ -1,0 +1,23 @@
+//--------------------------------------------------
+// icons
+//--------------------------------------------------
+.icon {
+  background: transparent center no-repeat;
+  background-size: contain;
+  display: inline-block;
+
+  width: rem-calc(23); height: rem-calc(23);
+
+  @include breakpoint($small){ width: rem-calc(31); height: rem-calc(31); }
+
+  &--calendar {
+    background-image: url('icons/calendar');
+  }
+
+  &--pin {
+    background-image: url('icons/pin');
+    height: rem-calc(26);
+
+    @include breakpoint($small){ height: rem-calc(38); }
+  }
+}

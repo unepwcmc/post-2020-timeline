@@ -20,6 +20,20 @@ h2 {
   font-size: rem-calc(22);
 }
 
+h3 {
+  @extend .text-4;
+  margin-top: 0;
+}
+
+h4 {
+  @extend .text-4;
+  margin-bottom: rem-calc(8);
+}
+
+p {
+  margin-top: 0;
+}
+
 //--------------------------------------------------
 // site structure
 //--------------------------------------------------

@@ -82,7 +82,7 @@
         obj['startDate'] = this.startDay + '/' + this.startMonth + '/' + this.startYear
         obj['endDate'] = this.endDay + '/' + this.endMonth + '/' + this.endYear
         obj['location'] = this.location
-        obj['organisers'] = this.organisers
+        obj['organisers'] = this.organisers.join(', ')
         obj['meetingSummary'] = this.meetingSummary
         obj['relevance'] = this.relevance
         obj['outputs'] = this.outputs
