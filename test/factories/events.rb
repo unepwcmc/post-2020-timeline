@@ -7,5 +7,10 @@ FactoryBot.define do
     location "London, UK"
     outputs "http://www.unep-wcmc.org"
     category "Intergovernmental processes"
+
+    factory :event_no_end_date do
+      end_date nil
+    end
   end
+
 end

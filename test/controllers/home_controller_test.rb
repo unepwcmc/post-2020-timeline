@@ -9,6 +9,13 @@ class HomeControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "index action returns 200 if end_date not present" do
+    event = FactoryBot.create(:event_no_end_date)
+
+    get :index
+    assert_response :success
+  end
+
   test "download calendar returns 200 with params" do
     event = FactoryBot.create(:event)
 
