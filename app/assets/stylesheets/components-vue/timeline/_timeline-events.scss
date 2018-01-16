@@ -57,44 +57,11 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
         }
       }
 
-      &:first-child:before {
-        border-top: rem-calc(11) solid transparent;
-        border-bottom: rem-calc(11) solid transparent; 
-        border-right: $arrowWidthSmall solid $primary; 
-        content: '';
-        width: 0; height: 0;
-
-        position: absolute;
-        top: rem-calc(-1);
-        left: $arrowPositionSmall;
-
-        @include breakpoint($medium){
-          border-top-width: rem-calc(13);
-          border-right-width: $arrowWidthLarge;
-          
-          left: $arrowPositionLarge;
-        }
-
-        .timeline__month:nth-child(even) & {
-          @include breakpoint($medium){
-            border-right: none;
-            border-left: $arrowWidthLarge solid $primary;
-            
-            right: $arrowPositionLarge;
-            left: initial;
-          }
-        }
-      }
-
       &--current {
         
       }
 
-      &--past {
-        border-color: $grey; 
-
-        &:first-child:before { border-right-color: $grey; }
-      }
+      &--past { border-color: $grey; }
 
 //--------------------------------------------------
 // date

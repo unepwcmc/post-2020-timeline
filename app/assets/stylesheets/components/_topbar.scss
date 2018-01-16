@@ -17,6 +17,8 @@
   padding: 0 $gutter-small;
   width: 100%; height: $topbarHeightSmall;
 
+  z-index: 3;
+
   @include breakpoint($small){ 
     padding: 0 $gutter-medium;
     height: $topbarHeightLarge;
