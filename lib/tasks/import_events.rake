@@ -15,13 +15,14 @@ namespace :import do
       title: csv_headers[0],
       start_date: csv_headers[1],
       end_date: csv_headers[2],
-      location: csv_headers[3],
-      organisers: csv_headers[4],
-      summary: csv_headers[5],
-      relevance: csv_headers[6],
-      outputs: csv_headers[7],
-      category: csv_headers[8],
-      cbd_relation: csv_headers[10].chomp
+      is_provisional_date: csv_headers[3],
+      location: csv_headers[4],
+      organisers: csv_headers[5],
+      summary: csv_headers[6],
+      relevance: csv_headers[7],
+      outputs: csv_headers[8],
+      category: csv_headers[9],
+      cbd_relation: csv_headers[11].chomp
     }
 
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
@@ -30,10 +31,12 @@ namespace :import do
 
       event_hash.keys.each do |key|
         next if key == :organisers
-        if [:outputs, :summary, :category, :cbd_relation].include? key
-          event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || "Empty"
+        if [:outputs, :summary, :category, :cbd_relation, :relevance].include? key
+          event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || ""
         elsif [:start_date, :end_date].include? key
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || nil
+        elsif key == :is_provisional_date
+          event_row_hash[key] = csv_event_row[event_hash[key]].present?
         else
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip
         end

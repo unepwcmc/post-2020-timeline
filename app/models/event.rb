@@ -73,7 +73,7 @@ class Event < ApplicationRecord
   end
 
   def self.events_to_calendar(format = nil)
-    events = Event.all
+    events = Event.where(is_provisional_date: false)
     calendar = Icalendar::Calendar.new
 
     if format == 'vcs'
@@ -122,6 +122,7 @@ class Event < ApplicationRecord
       end_day = format('%02d', monthly_event.end_date.day) rescue nil
       end_month = format('%02d', monthly_event.end_date.month) rescue nil
       {
+        id: monthly_event.id,
         title: monthly_event.title,
         category: monthly_event.category,
         start_year: monthly_event.start_date&.year,
@@ -137,7 +138,8 @@ class Event < ApplicationRecord
         summary: monthly_event.summary,
         relevance: monthly_event.relevance,
         outputs: monthly_event.outputs,
-        cbd_relation: monthly_event.cbd_relation
+        cbd_relation: monthly_event.cbd_relation,
+        is_provisional_date: monthly_event.is_provisional_date
       }
     end
   end
