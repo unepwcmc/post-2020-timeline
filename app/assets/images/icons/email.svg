@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="20px" viewBox="0 0 26 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>003-close-envelope</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1398.000000, -451.000000)">
+        <g id="003-close-envelope" transform="translate(1398.000000, 451.000000)" fill="#343434" fill-rule="nonzero">
+            <path d="M13.0029181,14.0212578 L9.63352039,11 L0,19.4599203 C0.35016835,19.7927369 0.822895623,20 1.34425739,20 L24.6615788,20 C25.1809951,20 25.651777,19.7927369 26,19.4599203 L16.3723158,11 L13.0029181,14.0212578 Z" id="Shape"></path>
+            <path d="M26,0.542 C25.6498578,0.206 25.1791112,0 24.6558432,0 L1.34026635,0 C0.820888822,0 0.350142152,0.208 0,0.546 L12.9980548,12 L26,0.542 Z" id="Shape"></path>
+            <polygon id="Shape" points="0 2 0 18 9 10.0905152"></polygon>
+            <polygon id="Shape" points="17 10.0933702 26 18 26 2"></polygon>
+        </g>
+    </g>
+</svg>
