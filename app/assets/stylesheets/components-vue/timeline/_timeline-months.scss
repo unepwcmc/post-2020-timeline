@@ -1,4 +1,21 @@
 //--------------------------------------------------
+// month variables
+//--------------------------------------------------
+$arrowWidthSmall: rem-calc(14);
+$arrowWidthLarge: rem-calc(17);
+
+$arrowPositionSmall: calc(-1px - #{$arrowWidthSmall});
+$arrowPositionLarge: calc(-1px - #{$arrowWidthLarge});
+
+$monthTopPaddingSmall: calc((#{$circleSmall} / 2) - 11px);
+$monthSidePaddingSmall: calc(#{$circleSmall} + 6px);
+
+$monthSidePaddingMedium: calc(#{$circleLarge} + 6px);
+
+$monthTopPaddingLarge: calc((#{$circleLarge} / 2) - 13px);
+$monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
+
+//--------------------------------------------------
 // reusable styles
 //--------------------------------------------------
 %circle {
@@ -89,21 +106,24 @@
     } 
   }
 
+//--------------------------------------------------
+// month
+//--------------------------------------------------
     &__month {
       margin-bottom: rem-calc(14);
-      padding-top: calc((#{$circleSmall} / 2) - 11px);
-      padding-left: calc(#{$circleSmall} + 6px);
+      padding-top: $monthTopPaddingSmall;
+      padding-left: $monthSidePaddingSmall;
       position: relative;
 
       @include breakpoint($small){ 
         margin-bottom: rem-calc(24);
-        padding-left: calc(#{$circleLarge} + 6px); 
+        padding-left: $monthSidePaddingMedium;
       }
 
       @include breakpoint($medium){ 
         margin-bottom: rem-calc(32);
-        padding-top: calc((#{$circleLarge} / 2) - 13px);
-        padding-left: calc((#{$circleLarge} / 2) + 14px);
+        padding-top: $monthTopPaddingLarge;
+        padding-left: $monthSidePaddingLarge;
         width: 50%; 
 
         align-self: flex-end;
@@ -111,13 +131,62 @@
 
       &:nth-child(even){ 
         @include breakpoint($medium){ 
-          padding-right: calc((#{$circleLarge} / 2) + 14px);
+          padding-right: $monthSidePaddingLarge;
           padding-left: 0;
 
           align-self: flex-start;
         }
       }
 
+//--------------------------------------------------
+// arrows
+//--------------------------------------------------
+      &:nth-child(even):before {
+        @include breakpoint($medium){
+          border-right: none;
+          border-left: $arrowWidthLarge solid $primary;
+          
+          right: $monthSidePaddingLarge;
+          left: initial;
+        }
+      }
+
+      &:before {
+        border-top: rem-calc(11) solid transparent;
+        border-bottom: rem-calc(11) solid transparent; 
+        border-right: $arrowWidthSmall solid $primary; 
+        content: '';
+        width: 0; height: 0;
+
+        position: absolute;
+        top: $monthTopPaddingSmall;
+        left: $monthSidePaddingSmall;
+        z-index: 1;
+
+        @include breakpoint($small){
+          border-top-width: rem-calc(13);
+          border-right-width: $arrowWidthLarge;
+          
+          left: $monthSidePaddingMedium;
+        }
+
+        @include breakpoint($medium){
+          top: $monthTopPaddingLarge;
+          left: $monthSidePaddingLarge;
+        }
+      }
+
+      &--past {
+        &:nth-child(even):before,
+        &:before { 
+          border-right-color: $grey;
+          border-left-color: $grey;
+        }
+      }
+
+//--------------------------------------------------
+// month title
+//--------------------------------------------------
       &-title {
         @extend %circleSmall;
         
