@@ -7,6 +7,8 @@ class EventTest < ActiveSupport::TestCase
 
   test "event timeline json should be correct" do
     event = FactoryBot.create(:event)
+    organiser1 = FactoryBot.create(:organiser, name: "CBD Secretariat")
+    event.organisers << organiser1
     expected_json = [
       {
         year: 2017,
@@ -18,23 +20,23 @@ class EventTest < ActiveSupport::TestCase
             events: [
               {
                 id: event.id,
-                title: "Awesome event",
-                category: "Intergovernmental processes",
-                start_year: 2017,
-                start_month: "01",
-                start_day: "01",
-                end_year: 2018,
-                end_month: "01",
-                end_day: "01",
+                title: event.title,
+                category: event.category,
+                start_year: event.start_date.year,
+                start_month: format('%02d', event.start_date.month),
+                start_day: format('%02d', event.start_date.day),
+                end_year: event.end_date.year,
+                end_month: format('%02d', event.end_date.month),
+                end_day: format('%02d', event.end_date.day),
                 current_event: false,
                 past_event: true,
-                location: "London, UK",
-                organisers: [],
-                summary: "This is awesome",
-                relevance: nil,
-                outputs: "http://www.unep-wcmc.org",
-                cbd_relation: nil,
-                is_provisional_date: false
+                location: event.location,
+                organisers: [organiser1.name],
+                summary: event.summary,
+                relevance: event.relevance,
+                outputs: event.outputs,
+                cbd_relation: event.cbd_relation,
+                is_provisional_date: event.is_provisional_date
               }
             ]
           }]
