@@ -17,6 +17,7 @@ class EventTest < ActiveSupport::TestCase
             past_month: true,
             events: [
               {
+                id: event.id,
                 title: "Awesome event",
                 category: "Intergovernmental processes",
                 start_year: 2017,
@@ -32,7 +33,8 @@ class EventTest < ActiveSupport::TestCase
                 summary: "This is awesome",
                 relevance: nil,
                 outputs: "http://www.unep-wcmc.org",
-                cbd_relation: nil
+                cbd_relation: nil,
+                is_provisional_date: false
               }
             ]
           }]
