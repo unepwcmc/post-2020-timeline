@@ -5,12 +5,14 @@ import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex/dist/vuex.esm'
 import { storeReveal } from './store-reveal.js'
 import { storeFilters } from './store-filters.js'
+import { storeModal } from './store-modal.js'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     reveal: storeReveal,
-    filters: storeFilters
+    filters: storeFilters,
+    modal: storeModal
   }
 })

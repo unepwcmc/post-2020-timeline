@@ -26,7 +26,7 @@
 //--------------------------------------------------
 .modal {
   background-color: white;
-  padding: rem-calc(0);
+  padding: rem-calc(12);
   width: 100%;
 
   @include breakpoint($small) {
@@ -34,10 +34,18 @@
     max-width: $site-width;
   }
 
+  h4 { margin-top: rem-calc(18); }
+
   &__title-box {
     border: solid rem-calc(1) $grey;
-
+    margin-bottom: rem-calc(20);
+    padding: rem-calc(18 45);
     position: relative;
+
+    @include breakpoint($small) {
+      margin-bottom: rem-calc(30);
+      padding: rem-calc(50 30);
+    }
   }
 
     &__close {

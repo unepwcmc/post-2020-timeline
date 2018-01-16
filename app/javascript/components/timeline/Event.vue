@@ -22,29 +22,21 @@
     name: 'event',
 
     props: {
-      title: {
-        required: true,
-        type: String
-      },
-      category: {
-        type: String
-      },
-      startDay: {
-        required: true,
-        type: String
-      },
-      endDay: {
-        required: true,
-        type: String
-      },
-      currentEvent: {
-        required: true,
-        type: Boolean
-      },
-      pastEvent: {
-        required: true,
-        type: Boolean
-      }
+      title: { required: true, type: String },
+      category: { type: String },
+      organisers: { type: Array },
+      location: { type: String },
+      outputs: { type: String },
+      relevance: { type: String },
+      meetingSummary: { type: String },
+      startDay: { required: true },
+      startMonth: { required: true },
+      startYear: { required: true },
+      endDay: { required: true },
+      endMonth: { required: true },
+      endYear: { required: true },
+      currentEvent: { required: true, type: Boolean },
+      pastEvent: { required: true },
     },
 
     computed: {
@@ -82,7 +74,21 @@
       },
 
       openModal () {
-console.log('open modal')
+        // create object of event information and commit to store
+        let obj = {}
+
+        obj['title'] = this.title
+        obj['category'] = this.category
+        obj['startDate'] = this.startDay + '/' + this.startMonth + '/' + this.startYear
+        obj['endDate'] = this.endDay + '/' + this.endMonth + '/' + this.endYear
+        obj['location'] = this.location
+        obj['organisers'] = this.organisers
+        obj['meetingSummary'] = this.meetingSummary
+        obj['relevance'] = this.relevance
+        obj['outputs'] = this.outputs
+
+        this.$store.commit('modal/updateModalContent', obj)
+
         eventHub.$emit('openModal')
       }
     }
