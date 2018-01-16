@@ -84,6 +84,7 @@ class Event < ApplicationRecord
     end
 
     events.each do |event|
+      next if event.is_provisional_date
       calendar_event = Icalendar::Event.new
       calendar_event.dtstart = event.start_date
       calendar_event.dtend = event.end_date
