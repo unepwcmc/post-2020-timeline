@@ -9,8 +9,8 @@ class EventTest < ActiveSupport::TestCase
     event = FactoryBot.create(:event)
     expected_json = [
       {
-        year:2017,
-        past_year:true,
+        year: 2017,
+        past_year: true,
         months: [
           {
             month: "jan",
@@ -20,7 +20,7 @@ class EventTest < ActiveSupport::TestCase
                 title: "Awesome event",
                 category: "Intergovernmental processes",
                 start_year: 2017,
-                start_month:"01",
+                start_month: "01",
                 start_day: "01",
                 end_year: 2018,
                 end_month: "01",
@@ -63,7 +63,7 @@ class EventTest < ActiveSupport::TestCase
       {
         name: "category",
         title: "category",
-        options: ["Area-based conservation", "Communications", "Intergovernmental processes","Marine-focus"],
+        options: ["Area-based conservation", "Communications", "Intergovernmental processes", "Marine-focus"],
         multiple: false
       },
       {
