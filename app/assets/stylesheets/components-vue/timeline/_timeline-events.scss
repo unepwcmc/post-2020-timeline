@@ -93,7 +93,11 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
       &--past {
         border-color: $grey; 
 
-        &:first-child:before { border-right-color: $grey; }
+        &:first-child:before { 
+          border-right-color: $grey; 
+          
+          .timeline__month:nth-child(even) & { border-left-color: $grey; }
+        }
       }
 
 //--------------------------------------------------
