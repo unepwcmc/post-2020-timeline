@@ -6,7 +6,6 @@
 // - dimensions
 // - breakpoins
 // - padding
-// - topbar
 //
 //--------------------------------------------------
 // colours
@@ -42,6 +41,12 @@ $body-font-color: $black;
 $site-width: rem-calc(960);
 $site-width-large: $site-width * 1.5;
 
+$topbarHeightSmall: rem-calc(66);
+$topbarHeightLarge: rem-calc(86);
+
+$controlBarHeightSmall: rem-calc(54);
+$controlBarHeightLarge: rem-calc(82);
+
 //--------------------------------------------------
 // breakpoints
 //--------------------------------------------------
@@ -54,9 +59,3 @@ $large: $site-width-large;
 //--------------------------------------------------
 $gutter-small: rem-calc(11); 
 $gutter-medium: rem-calc(16);
-
-//--------------------------------------------------
-// topbar variables
-//--------------------------------------------------
-$topbarHeightSmall: rem-calc(66);
-$topbarHeightLarge: rem-calc(86);

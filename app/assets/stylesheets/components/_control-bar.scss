@@ -1,21 +1,17 @@
 //--------------------------------------------------
-// control bar wrapper
-//--------------------------------------------------
-.control-bar-wrapper {
-  height: $topbarHeightSmall;
-
-  @include breakpoint($small){ height: $topbarHeightLarge; }
-}
-
-//--------------------------------------------------
 // control bar
 //--------------------------------------------------
 .control-bar {
   background-color: white; 
   box-shadow: lighten($grey, 30%) 0 2px 4px 0px;
   padding: rem-calc(9) $gutter-small;
+  height: $controlBarHeightSmall;
 
-  @include breakpoint($small){ padding: rem-calc(15) $gutter-medium; }
+  @include breakpoint($small){ 
+    padding: rem-calc(15) $gutter-medium; 
+    height: $controlBarHeightLarge;
+  }
+  
   @include breakpoint($medium){ padding: rem-calc(15); }
 
   &:before { // hack to center and right align child components
@@ -24,11 +20,5 @@
       flex: 1;
       visibility: hidden;
     }
-  }
-
-  &--stuck {
-    top: $topbarHeightSmall;
-
-    @include breakpoint($small){ top: $topbarHeightLarge; }
   }
 }

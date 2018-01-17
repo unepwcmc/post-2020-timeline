@@ -1,4 +1,10 @@
 //--------------------------------------------------
+// base variables
+//--------------------------------------------------
+$bodyPaddingSmall: $topbarHeightSmall + $controlBarHeightSmall; 
+$bodyPaddingLarge: $topbarHeightLarge + $controlBarHeightLarge;
+
+//--------------------------------------------------
 // html elements
 //--------------------------------------------------
 * { 
@@ -9,6 +15,9 @@
 body {
   font-family: $body-font;
   margin: 0;
+  padding-top: $bodyPaddingSmall;
+
+  @include breakpoint($small) { padding-top: $bodyPaddingLarge; }
 }
 
 h1 {

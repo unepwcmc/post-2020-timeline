@@ -8,7 +8,6 @@ import RevealTarget from './components/reveal/RevealTarget.vue'
 import RevealTrigger from './components/reveal/RevealTrigger.vue'
 import Timeline from './components/timeline/Timeline.vue'
 import ScrollNav from './components/scroll_nav/ScrollNav.vue'
-import Sticky from './components/sticky/Sticky.vue'
 
 import ScrollMagic from 'scrollmagic'
 
@@ -20,6 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { BackToTop, Filters, Modal, ModalWrapper, RevealTarget, RevealTrigger, Timeline, ScrollNav, Sticky }
+    components: { BackToTop, Filters, Modal, ModalWrapper, RevealTarget, RevealTrigger, Timeline, ScrollNav }
   })
 })
