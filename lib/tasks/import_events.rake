@@ -21,7 +21,7 @@ namespace :import do
       summary: csv_headers[6],
       relevance: csv_headers[7],
       outputs: csv_headers[8],
-      category: csv_headers[9],
+      categories: csv_headers[9],
       cbd_relation: csv_headers[11].chomp
     }
 
@@ -30,7 +30,7 @@ namespace :import do
       event_row_hash = {}
 
       event_hash.keys.each do |key|
-        next if key == :organisers
+        next if key == :organisers || key == :categories
         if [:outputs, :summary, :category, :cbd_relation, :relevance].include? key
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || ""
         elsif [:start_date, :end_date].include? key
@@ -56,14 +56,17 @@ namespace :import do
         end
       end
 
-      list_of_organisers = csv_event_row[event_hash[:organisers]]&.strip
-      unless list_of_organisers.nil?
-        list_of_organisers = list_of_organisers.split(",")
-        list_of_organisers.each do |organiser|
-          organiser = organiser&.strip
-          new_organiser = Organiser.find_or_create_by(name: organiser)
-          unless event.organisers.exists?(new_organiser.id)
-            event.organisers << new_organiser
+      fields = ["categories", "organisers"]
+
+      fields.each do |field|
+        list_of_children = csv_event_row[event_hash[field.to_sym]]&.strip
+        next if list_of_children.nil?
+        list_of_children = list_of_children.split(",")
+        list_of_children.each do |child_name|
+          child_name = child_name&.strip
+          new_child = field.camelize.singularize.constantize.find_or_create_by(name: child_name)
+          unless event.send(field.to_sym).exists?(new_child.id)
+            event.send(field.to_sym) << new_child
           end
         end
       end
