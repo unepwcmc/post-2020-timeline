@@ -22,21 +22,60 @@
     name: 'event',
 
     props: {
-      title: { required: true, type: String },
-      category: { type: String },
-      organisers: { type: Array },
-      location: { type: String },
-      outputs: { type: String },
-      relevance: { type: String },
-      meetingSummary: { type: String },
-      startDay: { required: true },
-      startMonth: { required: true },
-      startYear: { required: true },
-      endDay: { required: true },
-      endMonth: { required: true },
-      endYear: { required: true },
-      currentEvent: { required: true, type: Boolean },
-      pastEvent: { required: true },
+      title: { 
+        required: true, 
+        type: String 
+      },
+      category: { 
+        type: String 
+      },
+      organisers: { 
+        type: Array 
+      },
+      location: { 
+        type: String 
+      },
+      outputs: { 
+        type: String 
+      },
+      relevance: { 
+        type: String 
+      },
+      meetingSummary: { 
+        type: String
+      },
+      startDay: { 
+        required: true,
+        type: String 
+      },
+      startMonth: { 
+        required: true,
+        type: String
+      },
+      startYear: { 
+        required: true,
+        type: Number
+      },
+      endDay: { 
+        required: true,
+        type: String
+      },
+      endMonth: { 
+        required: true, 
+        type: String 
+      },
+      endYear: { 
+        required: true, 
+        type: Number 
+      },
+      currentEvent: { 
+        required: true, 
+        type: Boolean 
+      },
+      pastEvent: { 
+        required: true,
+        type: Boolean
+      },
     },
 
     computed: {
