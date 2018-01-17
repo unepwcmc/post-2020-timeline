@@ -7,6 +7,10 @@ namespace :import do
     import_csv_file(args.csv_file)
   end
 
+  def logger
+    @logger ||= Logger.new("#{Rails.root}/log/import.log")
+  end
+
   def import_csv_file file
     csv = File.open(file, encoding: "utf-8")
     csv_headers = File.readlines(csv).first.split(",")
@@ -28,6 +32,7 @@ namespace :import do
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
       csv_event_row = row.to_hash
       event_row_hash = {}
+      skip_row = false
 
       event_hash.keys.each do |key|
         next if key == :organisers || key == :categories
@@ -35,8 +40,8 @@ namespace :import do
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || ""
         elsif [:start_date, :end_date].include? key
           date = Date.parse(csv_event_row[event_hash[key]]&.strip) rescue nil
+          (skip_row = true) && break unless date
           event_row_hash[key] = date
-          Rails.logger.info "Invalid date! for #{event_row_hash[:title]}" unless date
         elsif key == :is_provisional_date
           event_row_hash[key] = csv_event_row[event_hash[key]].present?
         else
@@ -44,17 +49,20 @@ namespace :import do
         end
       end
 
+      error_message = "Invalid date for #{event_row_hash[:title]}. Skipping..."
+      logger.info(error_message) && next if skip_row
+
       current_event_title = csv_event_row[event_hash[:title]]
 
       if Event.exists?(title: current_event_title)
         event = Event.find_by(title: current_event_title)
         unless event.update_attributes(event_row_hash)
-          Rails.logger.info "Cannot update! #{event.title}"
+          logger.info "Cannot update! #{event.title}"
         end
       else
         event = Event.new(event_row_hash)
         unless event.save!
-          Rails.logger.info "Cannot import! #{event.title}"
+          logger.info "Cannot import! #{event.title}"
         end
       end
 
@@ -77,7 +85,7 @@ namespace :import do
 
     csv.close
 
-    Rails.logger.info "Imported Events, total records: #{Event.count}"
+    logger.info "Imported Events, total records: #{Event.count}"
 
   end
 
