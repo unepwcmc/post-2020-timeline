@@ -11,8 +11,8 @@
     methods: {
       scrollUp () {
         const currentEvent = this.$store.state.filters.currentEvent
-
-        window.scrollTo({ 'top': currentEvent })
+        
+        window.scrollTo({ top: currentEvent, behavior: 'smooth' })
       }
     }
   }  
