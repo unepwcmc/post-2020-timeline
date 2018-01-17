@@ -13,22 +13,32 @@
         <i class="icon icon--calendar modal__icon--calendar"></i>{{ modalContent.startDate }} - {{ modalContent.endDate }}
       </span>
       
-      <span class="flex flex-v-center">
-        <i class="icon icon--pin modal__icon--pin"></i> {{ modalContent.location }}
-      </span>
+      <template v-if="hasContent(modalContent.location)">
+        <span class="flex flex-v-center">
+          <i class="icon icon--pin modal__icon--pin"></i> {{ modalContent.location }}
+        </span>
+      </template>
     </div>
     
-    <h4>Organisers</h4>
-    <p>{{ modalContent.organisers }}</p>
-
-    <h4>Meeting summary</h4>
-    <p>{{ modalContent.meetingSummary }}</p>
-
-    <h4>Relevance to post 2020</h4>
-    <p>{{ modalContent.relevance }}</p>
-
-    <h4>Outputs</h4>
-    <p>{{ modalContent.outputs }}</p>
+    <template v-if="hasContent(modalContent.organisers)">
+      <h4>Organisers</h4>
+      <p>{{ modalContent.organisers }}</p>
+    </template>
+    
+    <template v-if="hasContent(modalContent.meetingSummary)">
+      <h4>Meeting summary</h4>
+      <p>{{ modalContent.meetingSummary }}</p>
+    </template>
+    
+    <template v-if="hasContent(modalContent.relevance)">
+      <h4>Relevance to post 2020</h4>
+      <p>{{ modalContent.relevance }}</p>
+    </template>
+    
+    <template v-if="hasContent(modalContent.outputs)">
+      <h4>Outputs</h4>
+      <p>{{ modalContent.outputs }}</p>
+    </template>
   </div>
 </template>
 
@@ -88,6 +98,10 @@
       getScrollY () {
         // add top padding if being viewed on medium or large breakpoints
         this.top = window.innerWidth <= this.config.smallBreakpoint ? window.scrollY : window.scrollY + 40
+      },
+
+      hasContent (property) {
+        return !!property
       }
     }
   }

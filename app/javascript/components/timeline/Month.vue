@@ -72,7 +72,6 @@
 
     methods: {
       updateActiveEvents (pageLoad = false) {
-console.log('updateActiveEvents')
         const activeFilters = this.$store.state.filters.activeFilters
 
         // keep track of whether the month has any active events
