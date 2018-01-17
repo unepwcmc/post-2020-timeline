@@ -3,7 +3,6 @@
     <li v-for="item in navArray" class="scroll-nav__item">
       <a 
         :id="'link-' + item" 
-        href="" 
         :title="'See events in ' + item" 
         class="scroll-nav__link"
         @click.prevent="scroll(item)">
@@ -52,7 +51,7 @@
 
     methods: {
       setStartPosition () {
-        const current = document.getElementById('v-current-event').getBoundingClientRect().top
+        const current = document.getElementById('v-current-event').getBoundingClientRect().top - this.triggerOffset - 10
 
         window.scrollTo({ top: current, behavior: 'instant' })
 
@@ -105,6 +104,10 @@
       getSceneDuration (id) {
         // find the height of the scene (year div)
         let section = document.getElementById('year-' + id)
+        console.log(section)
+        console.log(section.clientHeight)
+        console.log(section.offsetHeight)
+        console.log(section.scrollHeight)
 
         return section.clientHeight
       },
