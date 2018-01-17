@@ -98,10 +98,14 @@
           return activeFilter.name == this.name
         })
 
-        // check to see if the filter options are present in the array of active options
-        this.children.forEach(child => {
-          child.isSelected = activeFilter[0].options.includes(child.option) ? true : false
-        })
+        //check that an active filter was found
+        if(activeFilter.length) {
+
+          // check to see if the filter options are present in the array of active options
+          this.children.forEach(child => {
+            child.isSelected = activeFilter[0].options.includes(child.option) ? true : false
+          })
+        }
       }
     }
   }
