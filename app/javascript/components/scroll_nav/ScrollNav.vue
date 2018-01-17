@@ -104,10 +104,6 @@
       getSceneDuration (id) {
         // find the height of the scene (year div)
         let section = document.getElementById('year-' + id)
-        console.log(section)
-        console.log(section.clientHeight)
-        console.log(section.offsetHeight)
-        console.log(section.scrollHeight)
 
         return section.clientHeight
       },
