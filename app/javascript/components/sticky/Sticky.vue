@@ -139,13 +139,12 @@
       z-index: 2;
     }
 
-    // &--hidden { display: none; }
     &--absolute { 
       position: absolute;
     }
 
     &__topbar {
-      z-index: 2;
+      z-index: 3;
     }
   }
 </style>
