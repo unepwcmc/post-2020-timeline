@@ -34,9 +34,11 @@ namespace :import do
         if [:outputs, :summary, :category, :cbd_relation, :relevance].include? key
           event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || ""
         elsif [:start_date, :end_date].include? key
-          event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || nil
+          event_row_hash[key] = csv_event_row[event_hash[key]]&.strip
           valid_date = Date.parse(event_row_hash[key]) rescue nil
-          Rails.logger.info "Invalid date! for #{event_row_hash[:title]}" if valid_date.nil?
+          unless valid_date
+            Rails.logger.info "Invalid date! for #{event_row_hash[:title]}"
+          end
         elsif key == :is_provisional_date
           event_row_hash[key] = csv_event_row[event_hash[key]].present?
         else
