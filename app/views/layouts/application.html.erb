@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render 'global/head' %>    
+    <%= render 'global/head' %>
   </head>
 
   <body>
@@ -13,16 +13,16 @@
 
       <sticky>
         <%= render 'global/topbar' %>
-        
+
         <div class="header-wrapper" slot="header">
           <%= render 'global/header' %>
         </div>
-        
+
         <div slot="control-bar">
           <%= render 'global/control-bar' %>
         </div>
       </sticky>
-      
+
       <%= yield %>
 
     </div>
@@ -30,5 +30,9 @@
     <%= render 'global/footer' %>
 
     <%= javascript_pack_tag 'application' %>
+    <% if Rails.env == 'production' %>
+      <%= render 'shared/google_analytics' %>
+    <% end %>
+
   </body>
 </html>
