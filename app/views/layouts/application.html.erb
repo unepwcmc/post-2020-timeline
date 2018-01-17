@@ -16,12 +16,9 @@
         <filters :filters="<%= @filters %>"></filters>
       </reveal-target>
 
-      <header class="header">
+      <header id="v-header" class="header">
         <%= render 'global/topbar' %>
-        
-        <div slot="control-bar">
-          <%= render 'global/control-bar' %>
-        </div>
+        <%= render 'global/control-bar' %>
       </header>
       
       <%= yield %>
