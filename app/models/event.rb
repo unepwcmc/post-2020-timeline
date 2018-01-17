@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   has_and_belongs_to_many :organisers, class_name: 'Organiser', join_table: 'event_organisers'
   has_and_belongs_to_many :categories, class_name: 'Category', join_table: 'event_categories'
+  validates :title, presence: true
 
   def self.filters_to_json
     events = Event.all.order(id: :asc)
@@ -32,9 +33,9 @@ class Event < ApplicationRecord
 
   def self.years_to_json
     events = Event.all
-    start_year = events.pluck(:start_date).compact.sort.first.year
-    end_year = events.pluck(:end_date).compact.sort.last.year
-    years = start_year.upto(end_year).to_a
+    start_year = events.pluck(:start_date).compact.sort.first.year rescue nil
+    end_year = events.pluck(:end_date).compact.sort.last.year rescue nil
+    years = start_year.upto(end_year).to_a rescue nil
     years.to_json
   end
 
