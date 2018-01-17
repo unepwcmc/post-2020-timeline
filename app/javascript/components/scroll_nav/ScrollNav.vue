@@ -99,7 +99,7 @@
 
       setTriggerOffset () {
         // this offset accounts for the sticky bars at the top of the window
-        this.triggerOffset = document.getElementById('topbar').clientHeight + document.getElementById('control-bar').clientHeight
+        this.triggerOffset = document.getElementById('v-header').clientHeight
       },
 
       getSceneDuration (id) {
