@@ -5,8 +5,8 @@ class Event < ApplicationRecord
 
   def self.filters_to_json
     events = Event.all.order(id: :asc)
-    unique_categories = events.pluck(:category).compact.uniq.sort
-    unique_organisers = Organiser.pluck(:name).compact.sort
+    unique_categories = Category.pluck(:name).compact.uniq.sort
+    unique_organisers = Organiser.pluck(:name).compact.uniq.sort
     unique_cbd_relations = events.pluck(:cbd_relation).compact.uniq.sort
 
     filters = [
@@ -125,7 +125,7 @@ class Event < ApplicationRecord
       {
         id: monthly_event.id,
         title: monthly_event.title,
-        category: monthly_event.category,
+        category: monthly_event.categories.pluck(:name),
         start_year: monthly_event.start_date&.year,
         start_month: start_month,
         start_day: start_day,

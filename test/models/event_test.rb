@@ -8,7 +8,9 @@ class EventTest < ActiveSupport::TestCase
   test "event timeline json should be correct" do
     event = FactoryBot.create(:event)
     organiser1 = FactoryBot.create(:organiser, name: "CBD Secretariat")
+    category1 = FactoryBot.create(:category, name: "Intergovernmental processes")
     event.organisers << organiser1
+    event.categories << category1
     expected_json = [
       {
         year: 2017,
@@ -21,7 +23,7 @@ class EventTest < ActiveSupport::TestCase
               {
                 id: event.id,
                 title: event.title,
-                category: event.category,
+                category: [category1.name],
                 start_year: event.start_date.year,
                 start_month: format('%02d', event.start_date.month),
                 start_day: format('%02d', event.start_date.day),
@@ -50,18 +52,22 @@ class EventTest < ActiveSupport::TestCase
     organiser1 = FactoryBot.create(:organiser, name: "CBD Secretariat")
     organiser2 = FactoryBot.create(:organiser, name: "UNEP-WCMC")
     organiser3 = FactoryBot.create(:organiser, name: "United Nations")
-    event1 = FactoryBot.create(:event)
+    category1 = FactoryBot.create(:category)
+    category2 = FactoryBot.create(:category, name: "Marine-focus")
+    category3 = FactoryBot.create(:category, name: "Communications")
+    category4 = FactoryBot.create(:category, name: "Area-based conservation")
+    event1 = FactoryBot.create(:event, categories: [category1])
     event2 = FactoryBot.create(:event,
                                organisers: [organiser1],
-                               category: "Marine-focus",
+                               categories: [category2],
                                cbd_relation: "Other relevance")
     event3 = FactoryBot.create(:event,
                                organisers: [organiser2],
-                               category: "Communications",
+                               categories: [category3],
                                cbd_relation: "Direct contribution")
     event4 = FactoryBot.create(:event,
                                organisers: [organiser3],
-                               category: "Area-based conservation",
+                               categories: [category4],
                                cbd_relation: "Part of the process")
     expected_json = [
       {
