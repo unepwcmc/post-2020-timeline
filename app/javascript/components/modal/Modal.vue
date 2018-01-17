@@ -2,7 +2,7 @@
   <div class="modal" :class="{ 'modal--active' : isActive }" :style="{ 'top' : topPosition }">
     
     <div class="modal__title-box">
-      <p class="modal__category">{{ modalContent.category }}</p>
+      <p class="modal__category">{{ categories }}</p>
       <h3>{{ modalContent.title }}</h3>
 
       <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
@@ -69,6 +69,10 @@
     computed: {
       topPosition () {
         return this.top + 'px'
+      },
+
+      categories () {
+        return this.modalContent.category && this.modalContent.category.length ? this.modalContent.category.join(', ') : ''
       }
     },
 

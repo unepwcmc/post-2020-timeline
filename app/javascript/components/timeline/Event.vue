@@ -10,7 +10,7 @@
       <span>{{ start }}</br>-</br>{{ end }}</span>
     </div>
 
-    <span class="timeline__event__category">{{ category }}</span>
+    <span class="timeline__event__category">{{ categories }}</span>
     <span class="timeline__event__title">{{ title }}</span>
   </div>
 </template>
@@ -27,7 +27,7 @@
         type: String 
       },
       category: { 
-        type: String 
+        type: Array 
       },
       organisers: { 
         type: Array 
@@ -89,6 +89,10 @@
 
       end () {
         return this.styledDate(this.endDay)
+      },
+
+      categories () {
+        return this.category.join(', ')
       }
     },
 
