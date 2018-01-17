@@ -39,7 +39,6 @@ $body-font-color: $black;
 // dimensions
 //--------------------------------------------------
 $site-width: rem-calc(960);
-$site-width-large: $site-width * 1.5;
 
 $topbarHeightSmall: rem-calc(66);
 $topbarHeightLarge: rem-calc(86);
@@ -52,7 +51,6 @@ $controlBarHeightLarge: rem-calc(82);
 //--------------------------------------------------
 $small: rem-calc(720);
 $medium: $site-width;
-$large: $site-width-large;
 
 //--------------------------------------------------
 // padding

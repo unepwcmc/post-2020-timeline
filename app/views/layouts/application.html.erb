@@ -6,9 +6,13 @@
 
   <body>
     <div id="v-app">
-
-      <modal></modal>
+      
       <modal-wrapper></modal-wrapper>
+      <modal>
+        <slot>
+          <%= render 'global/hero' %>          
+        </slot>
+      </modal>
 
       <back-to-top></back-to-top>
 
