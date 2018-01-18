@@ -61,7 +61,7 @@
         config: {
           smallBreakpoint: 720 // must match scss file
         },
-        isActive: false,
+        isActive: true,
         modalContent: {},
         top: 0,
         hero: true
@@ -71,11 +71,6 @@
     created () {
       eventHub.$on('openModal', this.openModal)
       eventHub.$on('closedModalWrapper', this.toggleModal)
-    },
-
-    mounted () {
-      // trigger modal and modal wrapper to open on page load
-      eventHub.$emit('openModal')
     },
 
     computed: {
