@@ -8,25 +8,26 @@ class Event < ApplicationRecord
     unique_categories = Category.pluck(:name).compact.uniq.sort
     unique_organisers = Organiser.pluck(:name).compact.uniq.sort
     unique_cbd_relations = events.pluck(:cbd_relation).compact.uniq.sort
+    unique_cbd_relations.insert(0, "Show all")
 
     filters = [
       {
         name: 'category',
         title: 'category',
         options: unique_categories,
-        multiple: false
+        type: 'multiple'
       },
       {
         name: 'organisers',
         title: 'organisers',
         options: unique_organisers,
-        multiple: true
+        type: 'multiple'
       },
       {
         name: 'cbd_relation',
         title: 'CBD relation',
         options: unique_cbd_relations,
-        multiple: true
+        type: 'radio'
       }
     ].to_json
   end
