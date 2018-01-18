@@ -21,7 +21,7 @@
         :currentEvent="event.current_event"
         :pastEvent="event.past_event"
       ></event>
-    </div>
+    </div> 
   </div>
 </template>
 

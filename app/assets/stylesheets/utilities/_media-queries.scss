@@ -6,3 +6,9 @@
     @content;
   } 
 }
+
+@mixin breakpoint-down($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  } 
+}

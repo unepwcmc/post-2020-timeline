@@ -1,0 +1,29 @@
+//--------------------------------------------------
+// message
+//--------------------------------------------------
+.timeline {
+  &__message-month {
+    @include breakpoint($medium) {
+      justify-content: flex-end;
+    }
+  }
+
+    &__message-wrapper {
+      @extend %month-padding;
+      flex: 1;
+      
+      @include breakpoint-down($small) { padding-top: 0; }
+      @include breakpoint($medium){ flex: none; }
+    }
+
+      &__message {
+        @extend %events-margin;
+        @extend %event-box;
+
+        &:before {
+          @extend %arrow;
+
+          @include breakpoint-down($small) { top: 0; }
+        }
+      }
+}

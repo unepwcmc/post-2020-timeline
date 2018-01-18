@@ -53,6 +53,49 @@ $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
   }
 }
 
+%arrow {
+  border-top: rem-calc(11) solid transparent;
+  border-bottom: rem-calc(11) solid transparent; 
+  border-right: $arrowWidthSmall solid $primary; 
+  content: '';
+  width: 0; height: 0;
+
+  position: absolute;
+  top: $monthTopPaddingSmall;
+  left: $monthSidePaddingSmall;
+  z-index: 1;
+
+  @include breakpoint($small){
+    border-top-width: rem-calc(13);
+    border-right-width: $arrowWidthLarge;
+    
+    left: $monthSidePaddingMedium;
+  }
+
+  @include breakpoint($medium){
+    top: $monthTopPaddingLarge;
+    left: $monthSidePaddingLarge;
+  }
+}
+
+%month-padding {
+  padding-top: $monthTopPaddingSmall;
+  padding-left: $monthSidePaddingSmall;
+
+  position: relative;
+
+  @include breakpoint($small){ 
+    margin-bottom: rem-calc(24);
+    padding-left: $monthSidePaddingMedium;
+  }
+
+  @include breakpoint($medium){ 
+    padding-top: $monthTopPaddingLarge;
+    padding-left: $monthSidePaddingLarge;
+    width: 50%;
+  }
+}
+
 //--------------------------------------------------
 // months
 //--------------------------------------------------
@@ -110,22 +153,13 @@ $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
 // month
 //--------------------------------------------------
     &__month {
+      @extend %month-padding;
       margin-bottom: rem-calc(14);
-      padding-top: $monthTopPaddingSmall;
-      padding-left: $monthSidePaddingSmall;
-      position: relative;
 
-      @include breakpoint($small){ 
-        margin-bottom: rem-calc(24);
-        padding-left: $monthSidePaddingMedium;
-      }
+      @include breakpoint($small){ margin-bottom: rem-calc(24); }
 
       @include breakpoint($medium){ 
         margin-bottom: rem-calc(32);
-        padding-top: $monthTopPaddingLarge;
-        padding-left: $monthSidePaddingLarge;
-        width: 50%; 
-
         align-self: flex-end;
       }
 
@@ -152,28 +186,7 @@ $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
       }
 
       &:before {
-        border-top: rem-calc(11) solid transparent;
-        border-bottom: rem-calc(11) solid transparent; 
-        border-right: $arrowWidthSmall solid $primary; 
-        content: '';
-        width: 0; height: 0;
-
-        position: absolute;
-        top: $monthTopPaddingSmall;
-        left: $monthSidePaddingSmall;
-        z-index: 1;
-
-        @include breakpoint($small){
-          border-top-width: rem-calc(13);
-          border-right-width: $arrowWidthLarge;
-          
-          left: $monthSidePaddingMedium;
-        }
-
-        @include breakpoint($medium){
-          top: $monthTopPaddingLarge;
-          left: $monthSidePaddingLarge;
-        }
+        @extend %arrow;
       }
 
       &--past {

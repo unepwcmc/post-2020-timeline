@@ -61,7 +61,6 @@
         const event = document.getElementById('v-current-event')
         const location = window.pageYOffset + event.getBoundingClientRect().top - this.triggerOffset - 10
 
-console.log('current event', location)
         this.$store.commit('filters/updateCurrentEvent', location)
 
         eventHub.$emit('backToTop')
@@ -125,7 +124,6 @@ console.log('current event', location)
       },
 
       windowResized () {
-console.log('window resized')
         // when the window is resized the heights of the sticky bars and
         // years will change so update js accordingly
         this.setTriggerOffset()

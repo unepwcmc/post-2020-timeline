@@ -14,13 +14,30 @@ $datePaddingSmall: calc(14px + #{$dateBoxSmall});
 $datePaddingLarge: calc(18px + #{$dateBoxLarge});
 
 //--------------------------------------------------
+// event reusable styles
+//--------------------------------------------------
+%event-box {
+  border: solid rem-calc(1) $primary;
+  box-shadow: $grey-light 2px 2px 2px 2px;
+  padding: rem-calc(14);
+
+  @include breakpoint($small){
+    padding: rem-calc(20 18);
+  }
+}
+
+%events-margin {
+  margin-left: $arrowWidthSmall;
+
+  @include breakpoint($small){ margin-left: $arrowWidthLarge; }
+}
+
+//--------------------------------------------------
 // events
 //--------------------------------------------------
 .timeline {
   &__events {
-    margin-left: $arrowWidthSmall; 
-
-    @include breakpoint($small){ margin-left: rem-calc(17); }
+    @extend %events-margin;
 
     .timeline__month:nth-child(even) & {
       @include breakpoint($medium){ 
@@ -34,18 +51,15 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
 // event
 //--------------------------------------------------
     &__event {
-      border: solid rem-calc(1) $primary;
-      box-shadow: $grey-light 2px 2px 2px 2px;
+      @extend %event-box;
       cursor: pointer;
       margin-bottom: rem-calc(14);
-      padding: rem-calc(14);
       padding-right: $datePaddingSmall;
       width: auto; min-height: $dateBoxSmall;
 
       position: relative;
 
       @include breakpoint($small){
-        padding: rem-calc(20 18);
         padding-right: $datePaddingLarge;
         min-height: calc(#{$dateBoxLarge} + 2px);
       }
@@ -55,10 +69,6 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
           padding-right: rem-calc(18);
           padding-left: $datePaddingLarge; 
         }
-      }
-
-      &--current {
-        
       }
 
       &--past { border-color: $grey; }
