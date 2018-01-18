@@ -17,6 +17,7 @@
 <script>
   import ScrollMagic from 'scrollmagic'
   import { eventHub } from '../../home.js'
+  import { resize } from '../../resize.js'
 
   export default {
     name: 'scroll-nav',
@@ -47,17 +48,23 @@
       this.scrollMagicHandlers()
 
       // set the start position of the timeline to the current event
-      // eventHub.$on('timeline-mounted', this.setStartPosition)
-      this.setStartPosition()
+      this.currentEvent()
+
+      // monitor window resizing
+      resize.add(function() {
+        eventHub.$emit('window-resized')
+      });
     },
 
     methods: {
-      setStartPosition () {
-        const current = document.getElementById('v-current-event').getBoundingClientRect().top - this.triggerOffset - 10
+      currentEvent () {
+        const event = document.getElementById('v-current-event')
+        const location = window.pageYOffset + event.getBoundingClientRect().top - this.triggerOffset - 10
 
-        window.scrollTo({ top: current, behavior: 'instant' })
+console.log('current event', location)
+        this.$store.commit('filters/updateCurrentEvent', location)
 
-        this.$store.commit('filters/updateCurrentEvent', current)
+        eventHub.$emit('backToTop')
       },
 
       // scroll down to the section of the page which corresponds to the
@@ -118,10 +125,12 @@
       },
 
       windowResized () {
+console.log('window resized')
         // when the window is resized the heights of the sticky bars and
         // years will change so update js accordingly
         this.setTriggerOffset()
         this.updateScrollMagicDurations()
+        this.currentEvent()
       },
 
       openModal () {
