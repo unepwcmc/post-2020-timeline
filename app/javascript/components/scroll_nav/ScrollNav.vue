@@ -1,5 +1,7 @@
 <template>
   <ul class="v-scroll-nav scroll-nav ul-unstyled ul-inline">
+    <button @click="openModal()">Info</button>
+
     <li v-for="item in navArray" class="scroll-nav__item">
       <a 
         :id="'link-' + item" 
@@ -120,6 +122,10 @@
         // years will change so update js accordingly
         this.setTriggerOffset()
         this.updateScrollMagicDurations()
+      },
+
+      openModal () {
+        eventHub.$emit('openModal')
       }
     }
   }

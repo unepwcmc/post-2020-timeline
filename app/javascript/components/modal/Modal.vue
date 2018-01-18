@@ -1,9 +1,8 @@
 <template>
   <div class="modal" :class="{ 'modal--active' : isActive }" :style="{ 'top' : topPosition }">
 
-    <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
-
     <div v-if="hero">
+      <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
       <slot></slot>
     </div>
     
@@ -88,7 +87,9 @@
         this.isActive = !this.isActive
       },
 
-      openModal () {
+      openModal ( hero = true ) {
+        this.hero = hero
+        
         // get the y position and open the modal and modal wrapper
         this.getScrollY()
         

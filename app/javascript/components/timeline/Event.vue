@@ -132,7 +132,7 @@
 
         this.$store.commit('modal/updateModalContent', obj)
 
-        eventHub.$emit('openModal')
+        eventHub.$emit('openModal', false)
       }
     }
   }
