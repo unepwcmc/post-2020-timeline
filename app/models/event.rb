@@ -8,6 +8,7 @@ class Event < ApplicationRecord
     unique_categories = Category.pluck(:name).compact.uniq.sort
     unique_organisers = Organiser.pluck(:name).compact.uniq.sort
     unique_cbd_relations = events.pluck(:cbd_relation).compact.uniq.sort
+    unique_cbd_relations.insert(0, "Show all")
 
     filters = [
       {
