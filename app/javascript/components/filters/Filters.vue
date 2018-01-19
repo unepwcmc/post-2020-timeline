@@ -41,6 +41,8 @@
     },
 
     mounted () {
+      this.createActiveFilters()
+
       eventHub.$on('clickDropdown', this.updateDropdowns)
       eventHub.$on('closeReveal', this.cancel)
     },
@@ -84,10 +86,14 @@
         //update the active filters array
         this.activeFilters = this.selectedFilters
 
-        this.$store.commit('filters/updateFilterOptions', this.activeFilters)
+        this.$store.commit('filters/updateFilterOptions', this.activeFilters)        
 
         eventHub.$emit('filterEvents')
         eventHub.$emit('applyFilters')
+      },
+
+      createActiveFilters () {
+        this.$store.commit('filters/updateFilterOptions', this.selectedFilters)
       }
     }
   }

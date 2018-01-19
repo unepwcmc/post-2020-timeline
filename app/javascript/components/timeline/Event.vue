@@ -1,5 +1,6 @@
 <template>
   <div 
+    v-show="isActive"
     v-bind:id="id" 
     class="timeline__event" 
     :class="{ 'timeline__event--current' : currentEvent, 'timeline__event--past' : pastEvent }"
@@ -83,6 +84,10 @@
     },
 
     computed: {
+      isActive () {
+        return this.checkIfActive()
+      },
+
       id () {
         return this.currentEvent ? 'v-current-event' : ''
       },
@@ -137,6 +142,63 @@
         this.$store.commit('modal/updateModalContent', obj)
 
         eventHub.$emit('openModal', false)
+      },
+
+      checkIfActive () {
+        //check if the event has any matching properties in each filter
+        const activeFilters = this.$store.state.filters.activeFilters
+        let filterMatch = true
+
+        // loop through all filters for each event to see if there is a match
+        activeFilters.forEach(activeFilter => {
+          if(activeFilter.options.length !== 0) {
+            const filterProp = this.underscoreToPascal(activeFilter.name)
+            let optionMatch = false
+
+            if(activeFilter.type == 'multiple') {
+              optionMatch = this.hasCheckboxMatch(activeFilter, filterProp)
+            }
+
+            if(activeFilter.type == 'radio') {
+              optionMatch = this.hasRadioButtonMatch(activeFilter, filterProp)
+            }
+
+            // once filterMatch is set to false it will always be false and the item
+            // will not be shown because it did not match at least one option in every active filter
+            filterMatch = filterMatch && optionMatch
+          }
+        })
+
+        return filterMatch
+      },
+
+      hasCheckboxMatch (activeFilter, filterProp) {
+        let hasMatch = false
+
+        activeFilter.options.forEach(option => {
+          if(this[filterProp].includes(option)) hasMatch = true
+        })
+
+        return hasMatch
+      },
+
+      hasRadioButtonMatch (activeFilter, filterProp) {
+        const selectedRadio = activeFilter.options[0]
+
+        //if the radio button is 'show all' return true for all events
+        if(selectedRadio.toLowerCase() == 'show all'){
+          return true
+        } else {
+          if(this[filterProp].includes(selectedRadio)) return true
+        }
+
+        return false
+      },
+
+      underscoreToPascal (string) {
+        const regex = new RegExp(/_([a-z])/g)
+
+        return string.replace(regex, g => { return g[1].toUpperCase() })
       }
     }
   }
