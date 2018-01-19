@@ -48,13 +48,9 @@
 
 <script>
   import { eventHub } from '../../home.js'
-  import FilterOption from './FilterOption.vue'
-  import RadioButton from './RadioButton.vue'
 
   export default {
     name: 'v-filter',
-
-    components: { FilterOption, RadioButton },
 
     props: {
       name: {
