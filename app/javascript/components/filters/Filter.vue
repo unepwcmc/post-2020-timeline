@@ -38,6 +38,10 @@
       options: {
         required: true,
         type: Array
+      },
+      type: {
+        required: true,
+        type: String
       }
     },
 

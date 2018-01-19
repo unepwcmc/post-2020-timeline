@@ -76,6 +76,10 @@
         required: true,
         type: Boolean
       },
+      cbdRelation: {
+        required: true,
+        type: String
+      }
     },
 
     computed: {

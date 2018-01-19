@@ -6,6 +6,7 @@
       :name="filter.name"
       :title="filter.title"
       :options="filter.options"
+      :type="filter.type"
     >
     </v-filter>
 
@@ -42,10 +43,6 @@
     mounted () {
       eventHub.$on('clickDropdown', this.updateDropdowns)
       eventHub.$on('closeReveal', this.cancel)
-
-      // on page load create an array of all the filter options
-      // so that all events are shown to start with
-      // this.createActiveFilters()
     },
 
     computed: {
@@ -57,7 +54,8 @@
           let obj = {}
           const regex = new RegExp(' ', 'g')
 
-          obj['name'] = filter.title.toLowerCase().replace(regex, '_')
+          obj['name'] = filter.name.toLowerCase().replace(regex, '_')
+          obj['type'] = filter.type
           obj['options'] = filter.selectedOptions
 
           arr.push(obj)

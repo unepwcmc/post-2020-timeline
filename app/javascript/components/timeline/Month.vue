@@ -20,6 +20,7 @@
         :outputs="event.outputs"
         :currentEvent="event.current_event"
         :pastEvent="event.past_event"
+        :cbdRelation="event.cbd_relation"
       ></event>
     </div> 
   </div>
@@ -90,15 +91,39 @@
             activeFilters.forEach(activeFilter => {
 
               // if there are some selected options check to see if one matches
-              if (activeFilter.options.length !== 0) {
+              if(activeFilter.options.length !== 0) {
+                const filterProp = this.underscoreToPascal(activeFilter.name)
                 let optionMatch = false
 
-                activeFilter.options.forEach(option => {
-                  
-                  if(event[activeFilter.name].includes(option)) {
-                    optionMatch = true
-                  }
-                })
+                // checkboxes
+                if(activeFilter.type == 'multiple') {
+
+                  activeFilter.options.forEach(option => {
+                    
+                    if(event[filterProp].includes(option)) {
+                      optionMatch = true
+                    }
+                  })
+
+                // radio buttons
+                } else if(activeFilter.type == 'radio') {
+
+                  activeFilter.options.forEach(option => {
+                    
+                    //if the radio button is 'show all' return true for all events
+                    if(option.toLowerCase() == 'show all'){
+                      
+                      optionMatch = true
+
+                    } else {
+                      
+                      if(event[filterProp].includes(option)) {
+                        
+                        optionMatch = true
+                      }
+                    }
+                  })
+                }
 
                 // once filterMatch is set to false it will always be false and the item
                 // will not be shown because it did not match at least one option in every active filter
@@ -116,6 +141,12 @@
 
         // update properties so that the active state of the month can be calculated
         this.activeEvents = activeEvents
+      },
+
+      underscoreToPascal (string) {
+        const regex = new RegExp('/_([a-z])/g')
+
+        return string.replace(regex, () => { return g[1].toUpperCase() })
       }
     }
   }
