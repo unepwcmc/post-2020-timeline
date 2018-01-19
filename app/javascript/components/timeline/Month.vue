@@ -73,36 +73,27 @@
     methods: {
       updateActiveEvents (pageLoad = false) {
         const activeFilters = this.$store.state.filters.activeFilters
-// console.log('activeFilters', activeFilters)
 
         // keep track of whether the month has any active events
         let activeEvents = 0
-
-// console.log('events', this.events)        
+     
         this.events.forEach(event => {
           // show all the events on page load
           if(pageLoad) {
-// console.log('page load')
             this.$set(event, 'isActive', true)
             activeEvents++
 
           } else {
-// console.log('event', event)
             let filterMatch = true
 
             // loop through all filters for each event to see if there is a match
             activeFilters.forEach(activeFilter => {
-// console.log('activeFilter', activeFilter)
-console.log('activeFilter options', activeFilter.options)
-console.log(event.title)
+
               // if there are some selected options check to see if one matches
               if (activeFilter.options.length !== 0) {
                 let optionMatch = false
 
                 activeFilter.options.forEach(option => {
-console.log('option', option)
-console.log('event[activeFilter.name]', event[activeFilter.name])
-
                   
                   if(event[activeFilter.name].includes(option)) {
                     optionMatch = true
@@ -113,7 +104,7 @@ console.log('event[activeFilter.name]', event[activeFilter.name])
                 // will not be shown because it did not match at least one option in every active filter
                 filterMatch = filterMatch && optionMatch
               }
-console.log('filterMatch', filterMatch)
+
               // update the active state of each the event
               this.$set(event, 'isActive', filterMatch)
 
