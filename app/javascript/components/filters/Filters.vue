@@ -56,7 +56,7 @@
 
           obj['name'] = filter.name.toLowerCase().replace(regex, '_')
           obj['type'] = filter.type
-          obj['options'] = filter.selectedOptions
+          obj['options'] = filter.selected
 
           arr.push(obj)
         })

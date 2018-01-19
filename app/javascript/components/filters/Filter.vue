@@ -1,18 +1,47 @@
 <template>
   <div class="filter">
-
-    <p
+    
+    <p v-if="type === 'multiple'"
       @click="openSelect()" 
-      class="filter__button button flex flex-v-center" 
-      :class="{ 'filter__button--active' : isOpen , 'filter__button--has-selected' : hasSelected }">
+      class="filter__button filter__button-controls button flex flex-v-center" 
+      :class="{ 'filter__button--active' : isOpen }">
 
       <span>{{ title }}</span><span v-show="hasSelected" class="filter__button-total">{{ totalSelectedOptions }}</span>
     </p>
 
-    <ul class="filter__options ul-unstyled" :class="{ 'filter__options--active' : isOpen }">
-      <filter-option v-for="option in options" 
-        :option="option">
-      </filter-option>
+    <p v-else class="filter__button button flex flex-v-center filter__button--active">
+      <span>{{ title }}</span>
+    </p>
+
+    <ul v-if="type === 'multiple'" class="filter__options ul-unstyled" :class="{ 'filter__options--active' : isOpen }">
+      <li v-for="option in options" class="filter__option flex flex-h-start flex-v-center">
+
+        <input
+          type="checkbox" 
+          :id="optionId(option)" 
+          v-model="selectedCheckbox" 
+          :name="name" 
+          :value="option" 
+          class="filter__checkbox" 
+          :class="{ 'filter__checkbox--active' : isSelected(option) }">
+        
+        <label :for="optionId(option)" class="filter__checkbox-label">{{ option }}</label>
+      </li>
+    </ul>
+
+    <ul v-else class="filter__options ul-unstyled filter__options--active">
+      <li v-for="option in options" class="filter__option flex flex-h-start flex-v-center">
+
+        <input v-if="type === 'radio'" 
+          type="radio" 
+          :id="optionId(option)" 
+          v-model="selectedRadio" 
+          :name="name" 
+          :value="option" 
+          class="filter__radio">    
+        
+        <label :for="optionId(option)" class="filter__checkbox-label">{{ option }}</label>
+      </li>
     </ul>
   </div>
 </template>
@@ -20,11 +49,12 @@
 <script>
   import { eventHub } from '../../home.js'
   import FilterOption from './FilterOption.vue'
+  import RadioButton from './RadioButton.vue'
 
   export default {
     name: 'v-filter',
 
-    components: { FilterOption },
+    components: { FilterOption, RadioButton },
 
     props: {
       name: {
@@ -48,39 +78,47 @@
     data () {
       return {
         isOpen: false,
-        children: this.$children
+        children: this.$children,
+        selectedCheckbox: [],
+        selectedRadio: 'Show all'
       }
     },
 
     created () {
       eventHub.$on('updateFilterOptionsState', this.updateFilterOptionsState)
+      eventHub.$on('clearSelected', this.clearSelected)
+
+      if(!this.isCheckboxes) this.isOpen = true
     },
 
     computed: {
-      // create an array of all selected options in this filter
-      selectedOptions () {
-        let selectedArray = []
+      // ensure the format of selected is an array
+      selected () {
+        let selected = []
 
-        this.children.forEach(child => {
-          if(child.isSelected){ 
-            selectedArray.push(child.option)
-          }
-        })
+        if(this.type == 'multiple') selected = this.selectedCheckbox
+        if(this.type == 'radio') selected.push(this.selectedRadio)
 
-        return selectedArray
+          return selected
+      },
+
+      totalSelectedOptions () {
+        return this.selected.length
       },
 
       hasSelected () {
         return this.totalSelectedOptions > 0
       },
 
-      totalSelectedOptions () {
-        return this.selectedOptions.length
-      },
+      isCheckboxes () {
+        return this.type === 'multiple'
+      }
     },
 
     methods: {
       openSelect () {
+        if(!this.isCheckboxes) return false
+
         // if the filter is open is close it, else open it and close the others
         if(this.isOpen){
           this.isOpen = false
@@ -91,6 +129,11 @@
 
       closeSelect () {
         this.isOpen = false
+      },
+
+      clearSelected () {
+        this.selectedCheckbox = []
+        this.selectedRadio = 'Show all'
       },
 
       // set each option to the correct selected state
@@ -110,6 +153,14 @@
             child.isSelected = activeFilter[0].options.includes(child.option) ? true : false
           })
         }
+      },
+
+      optionId (string) {
+        return string.replace(' |(|)|_', '-').toLowerCase()
+      },
+
+      isSelected (string) {
+        return this.selected.includes(string)
       }
     }
   }

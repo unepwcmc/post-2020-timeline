@@ -59,21 +59,24 @@ $total-size: rem-calc(25);
       padding: $padding-medium;
     }
 
-    &:after {
-      background: transparent url('icons/plus.svg') right no-repeat;
-      background-size: 100%;
-      content: '';
-      width: rem-calc(20); height: rem-calc(20);
+    &-controls {
 
-      display: block;
-      position: absolute;
-      right: rem-calc(16);
+      &:after {
+        background: transparent url('icons/plus.svg') right no-repeat;
+        background-size: 100%;
+        content: '';
+        width: rem-calc(20); height: rem-calc(20);
 
-      @include breakpoint($small){ width: rem-calc(24); height: rem-calc(24); }
-    }
+        display: block;
+        position: absolute;
+        right: rem-calc(16);
 
-    &--active {
-      &:after { background-image: url('icons/minus.svg'); }
+        @include breakpoint($small){ width: rem-calc(24); height: rem-calc(24); }
+      }
+
+      &.filter__button--active {
+        &:after { background-image: url('icons/minus.svg'); }
+      }
     }
 
       &-total {
