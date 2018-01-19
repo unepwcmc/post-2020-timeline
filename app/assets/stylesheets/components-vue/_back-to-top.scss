@@ -4,8 +4,9 @@
 .back-to-top {
   background-color: $accent;
   border: 0;
+  border-radius: rem-calc(100);
   cursor: pointer;
-  width: rem-calc(70); height: rem-calc(62);
+  width: rem-calc(70); height: rem-calc(70);
 
   position: fixed;
   right: rem-calc(20);
