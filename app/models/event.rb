@@ -9,6 +9,7 @@ class Event < ApplicationRecord
     unique_organisers = Organiser.pluck(:name).compact.uniq.sort
     unique_cbd_relations = events.pluck(:cbd_relation).compact.uniq.sort
     unique_cbd_relations.insert(0, "Show all")
+    unique_cbd_relations.delete("Other relevance")
 
     filters = [
       {
@@ -25,7 +26,7 @@ class Event < ApplicationRecord
       },
       {
         name: 'cbd_relation',
-        title: 'CBD relation',
+        title: 'Relevance to Post 2020',
         options: unique_cbd_relations,
         type: 'radio'
       }
