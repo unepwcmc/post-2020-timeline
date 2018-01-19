@@ -26,7 +26,7 @@ class Event < ApplicationRecord
       },
       {
         name: 'cbd_relation',
-        title: 'CBD relation',
+        title: 'Relevance to Post 2020',
         options: unique_cbd_relations,
         type: 'radio'
       }
