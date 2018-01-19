@@ -108,21 +108,18 @@
                 // radio buttons
                 } else if(activeFilter.type == 'radio') {
 
-                  activeFilter.options.forEach(option => {
-                    
-                    //if the radio button is 'show all' return true for all events
-                    if(option.toLowerCase() == 'show all'){
-                      
-                      optionMatch = true
+                  const selectedRadio = activeFilter.options[0]
+                  
+                  //if the radio button is 'show all' return true for all events
+                  if(selectedRadio.toLowerCase() == 'show all'){
+                    optionMatch = true
 
-                    } else {
-                      
-                      if(event[filterProp].includes(option)) {
-                        
-                        optionMatch = true
-                      }
+                  } else {
+
+                    if(event[filterProp].includes(selectedRadio)) {
+                      optionMatch = true
                     }
-                  })
+                  }
                 }
 
                 // once filterMatch is set to false it will always be false and the item

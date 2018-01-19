@@ -81,7 +81,7 @@
     },
 
     created () {
-      eventHub.$on('updateFilterOptionsState', this.updateFilterOptionsState)
+      eventHub.$on('updateSelected', this.updateSelected)
       eventHub.$on('clearSelected', this.clearSelected)
 
       if(!this.isCheckboxes) this.isOpen = true
@@ -132,8 +132,8 @@
         this.selectedRadio = 'Show all'
       },
 
-      // set each option to the correct selected state
-      updateFilterOptionsState () {
+      // the cancel button has been pressed, reset the selected option
+      updateSelected () {
         const activeFilters = this.$store.state.filters.activeFilters
 
         // get the activeFilter object that matches the current filter
@@ -141,13 +141,12 @@
           return activeFilter.name == this.name
         })
 
-        //check that an active filter was found
+        // update the selected filter options for the correct filter type
         if(activeFilter.length) {
+          const options = activeFilter[0].options
 
-          // check to see if the filter options are present in the array of active options
-          this.children.forEach(child => {
-            child.isSelected = activeFilter[0].options.includes(child.option) ? true : false
-          })
+          if(this.type === 'multiple') this.selectedCheckbox = options
+          if(this.type === 'radio') this.selectedRadio = options[0]
         }
       },
 
@@ -157,6 +156,12 @@
 
       isSelected (string) {
         return this.selected.includes(string)
+      },
+
+      underscoreToPascal (string) {
+        const regex = new RegExp('/_([a-z])/g')
+
+        return string.replace(regex, () => { return g[1].toUpperCase() })
       }
     }
   }

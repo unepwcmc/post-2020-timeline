@@ -73,7 +73,7 @@
       },
 
       cancel() {
-        eventHub.$emit('updateFilterOptionsState')
+        eventHub.$emit('updateSelected')
       },
 
       clear () {
