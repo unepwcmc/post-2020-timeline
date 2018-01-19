@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render 'global/head' %>    
+    <%= render 'global/head' %>
   </head>
 
   <body>
@@ -22,6 +22,7 @@
 
       <header id="v-header" class="header">
         <%= render 'global/topbar' %>
+
         <%= render 'global/control-bar' %>
       </header>
       
@@ -32,5 +33,9 @@
     <%= render 'global/footer' %>
 
     <%= javascript_pack_tag 'application' %>
+    <% if Rails.env == 'production' %>
+      <%= render 'shared/google_analytics' %>
+    <% end %>
+
   </body>
 </html>
