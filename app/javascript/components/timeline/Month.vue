@@ -55,14 +55,18 @@
     },
 
     computed: {
-      hasActiveEvents () {
+      activeEvents () {
         let activeEvents = 0
 
         this.children.forEach(child => {
           if(child.isActive) activeEvents++
         })
 
-        return activeEvents > 0
+        return activeEvents
+      },
+
+      hasActiveEvents () {
+        return this.activeEvents > 0
       }
     }
   }
