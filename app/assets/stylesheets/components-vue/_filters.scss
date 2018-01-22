@@ -68,8 +68,12 @@ $total-size: rem-calc(25);
         width: rem-calc(20); height: rem-calc(20);
 
         display: block;
+
         position: absolute;
+        top: 50%;
         right: rem-calc(16);
+
+        transform: translateY(-50%);
 
         @include breakpoint($small){ width: rem-calc(24); height: rem-calc(24); }
       }
