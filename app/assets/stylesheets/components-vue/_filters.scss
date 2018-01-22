@@ -14,6 +14,16 @@ $total-size: rem-calc(25);
   padding-bottom: rem-calc(60);
   width: 100%; height: 100%;
 
+  h3 {
+    font-size: rem-calc(20);
+    margin-bottom: rem-calc(32);
+
+    @include breakpoint($small){ 
+      font-size: rem-calc(25);
+      margin-bottom: rem-calc(42); 
+    }
+  }
+
 //--------------------------------------------------
 // filter controls
 //--------------------------------------------------

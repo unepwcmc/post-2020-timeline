@@ -34,9 +34,9 @@
     background: image-url('icons/cross.svg') center no-repeat;
     background-size: contain;
     padding: 0;
-    width: rem-calc(22); height: rem-calc(22);
+    width: rem-calc(18); height: rem-calc(18);
 
-    @include breakpoint($small) { width: rem-calc(28); height: rem-calc(28); }
+    @include breakpoint($small) { width: rem-calc(24); height: rem-calc(24); }
 
     &-black { background-image: image-url('icons/cross-black.svg'); }
   }

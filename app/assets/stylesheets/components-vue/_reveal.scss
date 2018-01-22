@@ -1,4 +1,9 @@
 //--------------------------------------------------
+// reveal variables
+//--------------------------------------------------
+$revealLargePadding: rem-calc(36);
+
+//--------------------------------------------------
 // reveal vue component
 //
 // app/javascripts/components/reveal/RevealTrigger.vue
@@ -12,7 +17,7 @@
     width: 100%;
 
     @include breakpoint($small){ 
-      padding: rem-calc(36);
+      padding: $revealLargePadding;
       width: auto;
     }
 
@@ -21,7 +26,10 @@
       top: rem-calc(20);
       right: $gutter-small;
 
-      @include breakpoint($small){ right: rem-calc(22); }
+      @include breakpoint($small){ 
+        top: $revealLargePadding;
+        right: $revealLargePadding; 
+      }
     }
   }
 }
