@@ -11,18 +11,6 @@ $titlePaddingLarge: rem-calc(30);
   background-color: rgba($grey-light, 0.6);
   overflow: scroll;
 
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 3;
-
-  &--active {
-    display: flex;
-  }
-
   @include breakpoint($small) {
     align-items: center;
   }
@@ -37,12 +25,6 @@ $titlePaddingLarge: rem-calc(30);
   padding: rem-calc(12);
   width: 100%;
 
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 4;
-
   @include breakpoint($small) {
     padding: rem-calc(40);
     width: 90%;
@@ -50,10 +32,6 @@ $titlePaddingLarge: rem-calc(30);
     
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  &--active {
-    display: block;
   }
   
   h3 { margin-bottom: 0; }

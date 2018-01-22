@@ -116,3 +116,15 @@
     }
   }
 </script>
+
+<style lang="scss">
+  .modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+
+    &--active { display: block; }
+  }
+</style>
