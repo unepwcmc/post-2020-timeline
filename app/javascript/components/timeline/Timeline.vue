@@ -23,29 +23,6 @@
         requied: true,
         type: Array
       }
-    },
-
-    data () {
-      return {
-        years: []
-      }
-    },
-
-    created () {
-      eventHub.$on('filterEvents', this.filterEvents)
-
-      this.years = this.timeline
-    },
-    
-    methods: {
-      filterEvents () {
-        // loop through all months and check for events that match the filter options
-        this.years.forEach(year => {
-          year.months.forEach(month => {
-            eventHub.$emit('updateActiveEvents')
-          })
-        })
-      }
     }
   }
 </script>

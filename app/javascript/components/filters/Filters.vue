@@ -88,7 +88,6 @@
 
         this.$store.commit('filters/updateFilterOptions', this.activeFilters)        
 
-        eventHub.$emit('filterEvents')
         eventHub.$emit('applyFilters')
       },
 
