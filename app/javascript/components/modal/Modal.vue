@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" :class="{ 'modal--active' : isActive }" :style="{ 'top' : topPosition }" v-cloak>
+  <div class="modal" :class="{ 'modal--active' : isActive }" :style="{ 'top' : topPosition }">
 
     <div v-if="hero">
       <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
