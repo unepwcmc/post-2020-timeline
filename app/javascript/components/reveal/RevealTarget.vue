@@ -29,7 +29,7 @@
       },
 
       applyFilters () {
-        this.$store.commit('reveal/toggleActiveState')        
+        this.$store.commit('reveal/toggleActiveState')
       }
     }
   }
