@@ -36,7 +36,7 @@ $endCircleLarge: rem-calc(54);
       @include breakpoint($small){ margin-bottom: rem-calc(24); }
 
       &:after {
-        background: transparent url('icons/chevron-double-down.svg') center no-repeat;
+        background: transparent image-url('icons/chevron-double-down.svg') center no-repeat;
         background-size: contain;
         content: '';
         margin: 0 auto;
@@ -54,7 +54,7 @@ $endCircleLarge: rem-calc(54);
       .timeline__year--past & { 
         color: $grey; 
 
-        &:after { background-image: url('icons/chevron-double-down-grey.svg'); }
+        &:after { background-image: uimage-urlrl('icons/chevron-double-down-grey.svg'); }
       }
     }
   }

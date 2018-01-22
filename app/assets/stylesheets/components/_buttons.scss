@@ -31,14 +31,14 @@
   }
 
   &--close {
-    background: url('icons/cross.svg') center no-repeat;
+    background: image-url('icons/cross.svg') center no-repeat;
     background-size: contain;
     padding: 0;
     width: rem-calc(22); height: rem-calc(22);
 
     @include breakpoint($small) { width: rem-calc(28); height: rem-calc(28); }
 
-    &-black { background-image: url('icons/cross-black.svg'); }
+    &-black { background-image: image-url('icons/cross-black.svg'); }
   }
 
   &--apply {
@@ -50,7 +50,7 @@
     position: relative;
 
     &:after {
-      background-image: url('icons/filter.svg');
+      background-image: image-url('icons/filter.svg');
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;

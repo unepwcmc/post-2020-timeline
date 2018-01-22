@@ -11,18 +11,18 @@
   @include breakpoint($small){ width: rem-calc(31); height: rem-calc(31); }
 
   &--calendar {
-    background-image: url('icons/calendar');
+    background-image: image-url('icons/calendar');
   }
 
   &--pin {
-    background-image: url('icons/pin');
+    background-image: image-url('icons/pin');
     height: rem-calc(26);
 
     @include breakpoint($small){ height: rem-calc(38); }
   }
 
   &--back-to-top {
-    background: url('icons/chevron-up.svg') center no-repeat;
+    background: image-url('icons/chevron-up.svg') center no-repeat;
     background-size: contain;
 
     width: rem-calc(29); height: rem-calc(17);

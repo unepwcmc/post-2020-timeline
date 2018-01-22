@@ -62,7 +62,7 @@ $total-size: rem-calc(25);
     &-controls {
 
       &:after {
-        background: transparent url('icons/plus.svg') right no-repeat;
+        background: transparent image-url('icons/plus.svg') right no-repeat;
         background-size: 100%;
         content: '';
         width: rem-calc(20); height: rem-calc(20);
@@ -75,7 +75,7 @@ $total-size: rem-calc(25);
       }
 
       &.filter__button--active {
-        &:after { background-image: url('icons/minus.svg'); }
+        &:after { background-image: image-url('icons/minus.svg'); }
       }
     }
 
@@ -126,7 +126,7 @@ $total-size: rem-calc(25);
         -ms-appearance: none;
 
         &--active:after {
-          background: transparent url('icons/tick.svg') center no-repeat;
+          background: transparent image-url('icons/tick.svg') center no-repeat;
           content: '';
           width: rem-calc(22); height: rem-calc(22);
 
