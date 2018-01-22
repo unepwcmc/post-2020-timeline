@@ -94,7 +94,6 @@
       },
 
       openModal ( hero = true ) {
-console.log('open modal')
         this.hero = hero
         
         // get the y position and open the modal and modal wrapper

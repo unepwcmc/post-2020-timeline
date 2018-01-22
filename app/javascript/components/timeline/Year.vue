@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { eventHub } from '../../home.js'
+  import { eventHub } from '../../home.js'
   import Month from './Month.vue'
 
   export default {
@@ -52,6 +52,7 @@ import { eventHub } from '../../home.js'
       // then open the hero modal
       eventHub.$emit('getCurrentEvent')
       eventHub.$emit('pageLoadModal')
+      eventHub.$emit('pageLoadSceneDurations')
     },
 
     data () {

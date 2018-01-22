@@ -50,6 +50,8 @@
       // set the start position of the timeline to the current event
       eventHub.$on('getCurrentEvent', this.currentEvent)
 
+      eventHub.$on('pageLoadSceneDurations', this.updateScrollMagicDurations)
+
       // monitor window resizing
       resize.add(function() {
         eventHub.$emit('window-resized')
@@ -93,7 +95,6 @@
           scene.id = link
 
           scene.scene = new ScrollMagic.Scene({ 
-            duration: this.getSceneDuration(link),
             triggerElement: '#' + id, 
             triggerHook: 'onLeave' 
           })
@@ -112,17 +113,16 @@
         this.triggerOffset = document.getElementById('v-header').clientHeight
       },
 
-      getSceneDuration (id) {
-        // find the height of the scene (year div)
-        let section = document.getElementById('year-' + id)
-
-        return section.clientHeight
-      },
-
       updateScrollMagicDurations () {
         // update the scene durations (year div heights)
         this.scrollMagicScenes.forEach(scene => {
-          scene.scene.duration(this.getSceneDuration(scene.id))
+          let section = document.getElementById('year-' + scene.id)
+          let height = 0
+
+
+          if(section) height = section.clientHeight
+
+          scene.scene.duration(height)
         })
       },
 
