@@ -47,7 +47,11 @@ import { eventHub } from '../../home.js'
     },
 
     updated () {
+      // after all the events have finished rendering
+      // get the location of the current event and scroll there
+      // then open the hero modal
       eventHub.$emit('getCurrentEvent')
+      eventHub.$emit('pageLoadModal')
     },
 
     data () {

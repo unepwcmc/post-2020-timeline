@@ -2,7 +2,7 @@
   <div class="modal" :class="{ 'modal--active' : isActive }" :style="{ 'top' : topPosition }">
 
     <div v-if="hero">
-      <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
+      <button class="button button--close button--close-black modal__close" @click="toggleModal"></button>
       <slot></slot>
     </div>
     
@@ -11,7 +11,7 @@
         <p class="modal__category">{{ categories }}</p>
         <h3>{{ modalContent.title }}</h3>
 
-        <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
+        <button class="button button--close button--close-black modal__close" @click="toggleModal"></button>
       </div>
       
       <div class="modal__info-box">
@@ -60,7 +60,6 @@
         config: {
           smallBreakpoint: 720 // must match scss file
         },
-        isActive: true,
         modalContent: {},
         top: 0,
         hero: true
@@ -68,11 +67,18 @@
     },
 
     created () {
+      // open the modal for the first time after the page has been scrolled 
+      // to the current event location
+      eventHub.$once('pageLoadModal', this.openModal)
+
       eventHub.$on('openModal', this.openModal)
-      eventHub.$on('closedModalWrapper', this.toggleModal)
     },
 
     computed: {
+      isActive () {
+        return this.$store.state.modal.isActive
+      },
+
       topPosition () {
         return this.top + 'px'
       },
@@ -84,10 +90,11 @@
 
     methods: {
       toggleModal () {
-        this.isActive = !this.isActive
+        this.$store.commit('modal/updateModalStatus')
       },
 
       openModal ( hero = true ) {
+console.log('open modal')
         this.hero = hero
         
         // get the y position and open the modal and modal wrapper
@@ -97,12 +104,6 @@
         if(!this.hero){ this.modalContent = this.$store.state.modal.modalContent }
 
         this.toggleModal()
-      },
-
-      closeModal () {
-        this.toggleModal()
-          
-        eventHub.$emit('closeModalWrapper')
       },
 
       getScrollY () {

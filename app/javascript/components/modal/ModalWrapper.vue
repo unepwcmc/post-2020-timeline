@@ -9,26 +9,15 @@
   export default {
     name: 'modal-wrapper',
 
-    data () {
-      return {
-        isActive: true
+    computed: {
+      isActive () {
+        return this.$store.state.modal.isActive
       }
     },
 
-    created () {
-      eventHub.$on('openModal', this.toggleModal)
-      eventHub.$on('closeModalWrapper', this.toggleModal)
-    },
-
     methods: {
-      toggleModal () {
-        this.isActive = !this.isActive
-      },
-
       closeModal () {
-        this.toggleModal()
-
-        eventHub.$emit('closedModalWrapper')
+        this.$store.commit('modal/updateModalStatus')
       }
     }
   }
