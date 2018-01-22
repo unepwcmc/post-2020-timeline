@@ -2,7 +2,7 @@
   <div class="modal" :class="{ 'modal--active' : isActive }" :style="{ 'top' : topPosition }">
 
     <div v-if="hero">
-      <button class="button button--close button--close-black modal__close" @click="toggleModal"></button>
+      <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
       <slot></slot>
     </div>
     
@@ -11,7 +11,7 @@
         <p class="modal__category">{{ categories }}</p>
         <h3>{{ modalContent.title }}</h3>
 
-        <button class="button button--close button--close-black modal__close" @click="toggleModal"></button>
+        <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
       </div>
       
       <div class="modal__info-box">
@@ -101,6 +101,18 @@
         
         // update the modal with the latest event content
         if(!this.hero){ this.modalContent = this.$store.state.modal.modalContent }
+
+        this.toggleModal()
+      },
+
+      closeModal () {
+        // make sure the current event is at the top of the page
+        // when the hero modal is first closed
+        if(this.$store.state.modal.isFirstModal) {
+          this.$store.commit('modal/notFirstModal')
+
+          eventHub.$emit('getCurrentEvent')
+        }
 
         this.toggleModal()
       },

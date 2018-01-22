@@ -17,8 +17,16 @@
 
     methods: {
       closeModal () {
+        // make sure the current event is at the top of the page
+        // when the first modal is closed
+        if(this.$store.state.modal.isFirstModal) {
+          this.$store.commit('modal/notFirstModal')
+
+          eventHub.$emit('getCurrentEvent')
+        }
+
         this.$store.commit('modal/updateModalStatus')
-      }
+      },
     }
   }
 </script>

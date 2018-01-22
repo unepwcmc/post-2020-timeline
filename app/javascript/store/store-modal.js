@@ -3,7 +3,8 @@ export const storeModal = {
 
   state: {
     modalContent: {},
-    isActive: false
+    isActive: false,
+    isFirstModal: true
   },
 
   mutations: {
@@ -13,6 +14,10 @@ export const storeModal = {
 
     updateModalStatus () {
       this.state.modal.isActive = !this.state.modal.isActive
+    },
+
+    notFirstModal () {
+      this.state.modal.isFirstModal = false
     }
   }
 }
