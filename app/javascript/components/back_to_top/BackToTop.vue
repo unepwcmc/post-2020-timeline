@@ -1,5 +1,5 @@
 <template>
-  <button class="back-to-top" @click="scroll">
+  <button class="back-to-top" @click="scroll('smooth')">
     <i class="icon icon--back-to-top"></i>
   </button>
 </template>
@@ -11,14 +11,14 @@
     name: 'back-to-top',
 
     created () {
-      eventHub.$on('back-to-top', this.scroll)
+      eventHub.$on('backToTop', this.scroll)
     },
 
     methods: {
-      scroll () {
+      scroll (behavior = 'instant') {
         const currentEvent = this.$store.state.filters.currentEvent
 
-        window.scrollTo({ top: currentEvent, behavior: 'smooth' })
+        window.scrollTo({ top: currentEvent, behavior: behavior })
       }
     }
   }  

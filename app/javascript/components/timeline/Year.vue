@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { eventHub } from '../../home.js'
   import Month from './Month.vue'
 
   export default {
@@ -43,6 +44,10 @@
         required: true,
         type: Boolean
       }
+    },
+
+    updated () {
+      eventHub.$emit('getCurrentEvent')
     },
 
     data () {

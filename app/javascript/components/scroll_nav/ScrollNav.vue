@@ -48,7 +48,7 @@
       this.scrollMagicHandlers()
 
       // set the start position of the timeline to the current event
-      this.currentEvent()
+      eventHub.$on('getCurrentEvent', this.currentEvent)
 
       // monitor window resizing
       resize.add(function() {
@@ -59,11 +59,14 @@
     methods: {
       currentEvent () {
         const event = document.getElementById('v-current-event')
-        const location = window.pageYOffset + event.getBoundingClientRect().top - this.triggerOffset - 10
+        
+        if(event) {
+          const location = window.pageYOffset + event.getBoundingClientRect().top - this.triggerOffset - 10
 
-        this.$store.commit('filters/updateCurrentEvent', location)
+          this.$store.commit('filters/updateCurrentEvent', location)
 
-        eventHub.$emit('backToTop')
+          eventHub.$emit('backToTop')
+        }
       },
 
       // scroll down to the section of the page which corresponds to the

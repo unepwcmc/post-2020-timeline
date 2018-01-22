@@ -36,7 +36,7 @@
 
       this.years = this.timeline
     },
-
+    
     methods: {
       filterEvents () {
         // loop through all months and check for events that match the filter options
