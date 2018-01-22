@@ -52,6 +52,7 @@
       
       // update scene durations
       eventHub.$once('pageLoadSceneDurations', this.updateScrollMagicDurations)
+      eventHub.$on('updateSceneDurations', this.updateScrollMagicDurations)
 
       // monitor window resizing
       resize.add(function() {

@@ -83,6 +83,10 @@
       }
     },
 
+    updated () { 
+      eventHub.$emit('updateSceneDurations')
+    },
+    
     computed: {
       isActive () {
         return this.checkIfActive()
@@ -104,7 +108,7 @@
         return this.category.join(', ')
       }
     },
-
+    
     methods: {
       styledDate (day) {
         let styled

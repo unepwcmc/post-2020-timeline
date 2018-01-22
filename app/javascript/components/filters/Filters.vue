@@ -89,6 +89,7 @@
         this.$store.commit('filters/updateFilterOptions', this.activeFilters)        
 
         eventHub.$emit('applyFilters')
+        eventHub.$emit('updateSceneDurations')
       },
 
       createActiveFilters () {
