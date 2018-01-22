@@ -49,8 +49,9 @@
 
       // set the start position of the timeline to the current event
       eventHub.$on('getCurrentEvent', this.currentEvent)
-
-      eventHub.$on('pageLoadSceneDurations', this.updateScrollMagicDurations)
+      
+      eventHub.$once('pageLoadCurrentEvent', this.currentEvent)
+      eventHub.$once('pageLoadSceneDurations', this.updateScrollMagicDurations)
 
       // monitor window resizing
       resize.add(function() {
