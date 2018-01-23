@@ -8,7 +8,6 @@
     
     <div v-else>
       <div class="modal__title-box">
-        <p class="modal__category">{{ categories }}</p>
         <h3>{{ modalContent.title }}</h3>
 
         <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
@@ -81,10 +80,6 @@
 
       topPosition () {
         return this.top + 'px'
-      },
-
-      categories () {
-        return this.modalContent.category && this.modalContent.category.length ? this.modalContent.category.join(', ') : ''
       }
     },
 

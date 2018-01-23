@@ -11,8 +11,7 @@
       <span>{{ start }}</br>-</br>{{ end }}</span>
     </div>
 
-    <span class="timeline__event__category">{{ categories }}</span>
-    <span class="timeline__event__title">{{ title }}</span>
+    <span class="timeline__event__title">{{ truncatedTitle }}</span>
   </div>
 </template>
 
@@ -104,8 +103,20 @@
         return this.styledDate(this.endDay)
       },
 
-      categories () {
-        return this.category.join(', ')
+      truncatedTitle () {
+        const title = this.title
+        const length = title.length
+        const characters = 60
+
+        let output
+
+        if (length <= characters) {
+          output = title
+        } else {
+          output = title.substring(0, characters -3) + '...'
+        }
+
+        return output
       }
     },
     
@@ -134,7 +145,6 @@
         let obj = {}
 
         obj['title'] = this.title
-        obj['category'] = this.category
         obj['startDate'] = this.startDay + '/' + this.startMonth + '/' + this.startYear
         obj['endDate'] = this.endDay + '/' + this.endMonth + '/' + this.endYear
         obj['location'] = this.location
