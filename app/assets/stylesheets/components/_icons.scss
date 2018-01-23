@@ -8,7 +8,7 @@
 
   width: rem-calc(23); height: rem-calc(23);
 
-  @include breakpoint($small){ width: rem-calc(31); height: rem-calc(31); }
+  @include breakpoint($small){ width: 31px; height: 31px; } // rem-calc wasn't rendering the sizes well in IE
 
   &--calendar {
     background-image: image-url('icons/calendar');
@@ -18,7 +18,7 @@
     background-image: image-url('icons/pin');
     height: rem-calc(26);
 
-    @include breakpoint($small){ height: rem-calc(38); }
+    @include breakpoint($small){ height: 38px; } // rem-calc wasn't rendering the sizes well in IE
   }
 
   &--back-to-top {
