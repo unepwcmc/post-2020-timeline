@@ -180,7 +180,8 @@
         let hasMatch = false
 
         activeFilter.options.forEach(option => {
-          if(this[filterProp].includes(option)) hasMatch = true
+          // use indexOf so it works in IE
+          if(this[filterProp].indexOf(option) != -1) hasMatch = true
         })
 
         return hasMatch
@@ -193,7 +194,8 @@
         if(selectedRadio.toLowerCase() == 'show all'){
           return true
         } else {
-          if(this[filterProp].includes(selectedRadio)) return true
+          // use indexOf so it works in IE
+          if(this[filterProp].indexOf(selectedRadio) != -1) return true
         }
 
         return false

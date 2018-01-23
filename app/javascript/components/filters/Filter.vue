@@ -155,7 +155,8 @@
       },
 
       isSelected (string) {
-        return this.selected.includes(string)
+        // use indexOf so it works in IE
+        return this.selected.indexOf(string) != -1
       },
 
       underscoreToPascal (string) {
