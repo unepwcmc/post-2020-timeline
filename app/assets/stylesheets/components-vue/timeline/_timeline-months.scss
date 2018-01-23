@@ -181,7 +181,7 @@ $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
           border-left: $arrowWidthLarge solid $primary;
           
           right: $monthSidePaddingLarge;
-          left: initial;
+          left: auto; // must be auto to work in IE
         }
       }
 
@@ -214,7 +214,7 @@ $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
 
         .timeline__month:nth-child(even) & {
           @include breakpoint($medium){
-            left: initial;
+            left: auto; // must be auto to work in IE
             right: calc(-0.5 * #{$circleLarge});
           }            
         }
