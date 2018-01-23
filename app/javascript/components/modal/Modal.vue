@@ -1,8 +1,8 @@
 <template>
-  <div class="modal" :class="{ 'modal--active' : isActive }" :style="{ 'top' : topPosition }">
+  <div class="modal" :class="{ 'modal--active' : isActive, 'modal--hero' : hero }" :style="{ 'top' : topPosition }">
 
     <div v-if="hero">
-      <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
+      <button class="button button--close modal__close" @click="closeModal"></button>
       <slot></slot>
     </div>
     

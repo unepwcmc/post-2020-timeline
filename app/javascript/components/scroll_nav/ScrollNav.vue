@@ -1,6 +1,5 @@
 <template>
   <ul class="v-scroll-nav scroll-nav ul-unstyled ul-inline">
-    <button @click="openModal()">Info</button>
 
     <li v-for="item in navArray" class="scroll-nav__item">
       <a 

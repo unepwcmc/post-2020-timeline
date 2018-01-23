@@ -88,4 +88,37 @@ $titlePaddingLarge: rem-calc(30);
 
       @include breakpoint($small) { margin: rem-calc(0 8 0 20); }
     }
+
+  &--hero {
+    background-color: $primary;
+    color: white;
+    padding: rem-calc(16) $gutter-small;
+    margin-top: $gutter-small;
+    width: 97%;
+    max-width: none;
+
+    right: 50%;
+    left: auto;
+
+    transform: translateX(50%);
+
+    @include breakpoint($small){ padding: rem-calc(24 36); }
+
+    @include breakpoint($medium){ 
+      padding: rem-calc(40 56);
+      width: 98%;
+    }
+
+    &__intro {
+      font-size: rem-calc(14);
+      line-height: 1.8;
+      margin: 0;
+
+      @include breakpoint($small){
+        font-size: rem-calc(16); 
+        line-height: 1.6;
+        width: 65%;
+      }
+    }
+  }
 }
