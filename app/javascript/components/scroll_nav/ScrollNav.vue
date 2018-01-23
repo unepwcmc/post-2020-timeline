@@ -78,7 +78,7 @@
       scroll (year) {
         const offset = document.getElementById('year-' + year).offsetTop
         
-        window.scrollTo({ top: offset - this.triggerOffset, behavior: 'smooth' })
+        window.scrollTo({ top: offset - this.triggerOffset, left: 0, behavior: 'smooth' })
       },
 
       // add scroll magic event listener for each nav item

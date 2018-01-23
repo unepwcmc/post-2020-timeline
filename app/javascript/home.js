@@ -1,3 +1,5 @@
+require('smoothscroll-polyfill').polyfill()
+
 import Vue from 'vue/dist/vue.esm'
 import store from './store/store.js'
 import BackToTop from './components/back_to_top/BackToTop.vue'
