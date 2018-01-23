@@ -30,8 +30,10 @@ $titlePaddingLarge: rem-calc(30);
     width: 90%;
     max-width: $site-width;
     
-    left: 50%;
-    transform: translateX(-50%);
+    right: 50%;
+    left: auto;
+    
+    transform: translateX(50%);
   }
   
   h3 { margin-bottom: 0; }
