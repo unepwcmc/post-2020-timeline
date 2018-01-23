@@ -64,6 +64,8 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
         min-height: calc(#{$dateBoxLarge} + 2px);
       }
 
+      &:hover { box-shadow: inset 0px 0px 0px 2px $primary; }
+
       .timeline__month:nth-child(even) & {
         @include breakpoint($medium){ 
           padding-right: rem-calc(18);
