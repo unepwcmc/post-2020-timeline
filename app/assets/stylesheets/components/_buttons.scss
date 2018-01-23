@@ -38,16 +38,26 @@
 
     @include breakpoint($small) { width: rem-calc(24); height: rem-calc(24); }
 
-    &-black { background-image: image-url('icons/cross-black.svg'); }
+    &:hover { opacity: .8; }
+
+    &-black { 
+      background-image: image-url('icons/cross-black.svg'); 
+
+      &:hover { opacity: .7; }
+    }
   }
 
   &--apply {
     background-color: $accent;
     text-transform: uppercase;
+
+    &:hover { background-color: lighten($accent, 5%); }
   }
 
   &--filter {
     position: relative;
+
+    &:hover { background-color: lighten($secondary, 5%); }
 
     &:after {
       background-image: image-url('icons/filter.svg');

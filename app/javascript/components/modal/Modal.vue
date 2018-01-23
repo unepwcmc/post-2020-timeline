@@ -13,37 +13,39 @@
         <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
       </div>
       
-      <div class="modal__info-box">
-        <span class="flex flex-v-center">
-          <i class="icon icon--calendar modal__icon--calendar"></i>{{ modalContent.startDate }} - {{ modalContent.endDate }}
-        </span>
-        
-        <template v-if="hasContent(modalContent.location)">
+      <div class="modal__content">
+        <div class="modal__info-box">
           <span class="flex flex-v-center">
-            <i class="icon icon--pin modal__icon--pin"></i> {{ modalContent.location }}
+            <i class="icon icon--calendar modal__icon--calendar"></i>{{ modalContent.startDate }} - {{ modalContent.endDate }}
           </span>
+          
+          <template v-if="hasContent(modalContent.location)">
+            <span class="flex flex-v-center">
+              <i class="icon icon--pin modal__icon--pin"></i> {{ modalContent.location }}
+            </span>
+          </template>
+        </div>
+        
+        <template v-if="hasContent(modalContent.organisers)">
+          <h4>Organisers</h4>
+          <p>{{ modalContent.organisers }}</p>
+        </template>
+        
+        <template v-if="hasContent(modalContent.meetingSummary)">
+          <h4>Meeting summary</h4>
+          <p>{{ modalContent.meetingSummary }}</p>
+        </template>
+        
+        <template v-if="hasContent(modalContent.relevance)">
+          <h4>Relevance to post 2020</h4>
+          <p>{{ modalContent.relevance }}</p>
+        </template>
+        
+        <template v-if="hasContent(modalContent.outputs)">
+          <h4>Outputs</h4>
+          <p>{{ modalContent.outputs }}</p>
         </template>
       </div>
-      
-      <template v-if="hasContent(modalContent.organisers)">
-        <h4>Organisers</h4>
-        <p>{{ modalContent.organisers }}</p>
-      </template>
-      
-      <template v-if="hasContent(modalContent.meetingSummary)">
-        <h4>Meeting summary</h4>
-        <p>{{ modalContent.meetingSummary }}</p>
-      </template>
-      
-      <template v-if="hasContent(modalContent.relevance)">
-        <h4>Relevance to post 2020</h4>
-        <p>{{ modalContent.relevance }}</p>
-      </template>
-      
-      <template v-if="hasContent(modalContent.outputs)">
-        <h4>Outputs</h4>
-        <p>{{ modalContent.outputs }}</p>
-      </template>
     </div>
   </div>
 </template>

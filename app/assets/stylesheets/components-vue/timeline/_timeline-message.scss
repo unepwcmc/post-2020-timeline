@@ -21,7 +21,7 @@
         @extend %event-box;
 
         &:before {
-          @extend %arrow;
+          @extend %arrowOutline;
 
           @include breakpoint-down($small) { top: 0; }
         }

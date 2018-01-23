@@ -1,11 +1,11 @@
 //--------------------------------------------------
 // month variables
 //--------------------------------------------------
-$arrowWidthSmall: rem-calc(14);
-$arrowWidthLarge: rem-calc(17);
+$arrowWidth: 17px;
+$arrowHeight: 26px;
 
-$arrowPositionSmall: calc(-1px - #{$arrowWidthSmall});
-$arrowPositionLarge: calc(-1px - #{$arrowWidthLarge});
+$arrowOutlineWidth: 19px;
+$arrowOutlineHeight: 30px;
 
 $monthTopPaddingSmall: calc((#{$circleSmall} / 2) - 11px);
 $monthSidePaddingSmall: calc(#{$circleSmall} + 6px);
@@ -14,6 +14,32 @@ $monthSidePaddingMedium: calc(#{$circleLarge} + 6px);
 
 $monthTopPaddingLarge: calc((#{$circleLarge} / 2) - 13px);
 $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
+
+//--------------------------------------------------
+// mixins
+//--------------------------------------------------
+@mixin arrow($colour, $width, $height) {
+  $widthSmall: $width - 3px;
+  $widthLarge: $width;
+
+  $heightLarge: ($height / 2);
+  $heightSmall: $heightLarge - 2px;
+
+  border-top: $heightSmall solid transparent;
+  border-right: $widthSmall solid $colour;
+  border-bottom: $heightSmall solid transparent;
+  content: '';
+  width: 0; height: 0;
+
+  position: absolute;
+  z-index: 1;
+
+  @include breakpoint($small){
+    border-top-width: $heightLarge;
+    border-right-width: $widthLarge;
+    border-bottom-width: $heightLarge;
+  }
+}
 
 //--------------------------------------------------
 // reusable styles
@@ -53,33 +79,41 @@ $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
   }
 }
 
-%arrow {
-  border-top: rem-calc(11) solid transparent;
-  border-bottom: rem-calc(11) solid transparent; 
-  border-right: $arrowWidthSmall solid $primary; 
-  content: '';
-  width: 0; height: 0;
+%arrowOutline {
+  &:before {
+    @include arrow($primary, $arrowWidth, $arrowHeight);
 
-  position: absolute;
-  top: $monthTopPaddingSmall;
-  left: $monthSidePaddingSmall;
-  z-index: 1;
+    top: $monthTopPaddingSmall;
+    left: $monthSidePaddingSmall;
 
-  @include breakpoint($small){
-    border-top-width: rem-calc(13);
-    border-right-width: $arrowWidthLarge;
-    
-    left: $monthSidePaddingMedium;
+    @include breakpoint($small){
+      left: $monthSidePaddingMedium;
+    }
+
+    @include breakpoint($medium){
+      top: $monthTopPaddingLarge;
+      left: $monthSidePaddingLarge;
+    }
   }
 
-  @include breakpoint($medium){
-    top: $monthTopPaddingLarge;
-    left: $monthSidePaddingLarge;
+  &:after {
+    @include arrow(white, $arrowOutlineWidth, $arrowOutlineHeight);
+
+    top: calc(#{$monthTopPaddingSmall} - 2px);
+    left: calc(#{$monthSidePaddingSmall} + 2px);
+
+    @include breakpoint($small){
+      left: calc(#{$monthSidePaddingMedium} + 2px);
+    }
+
+    @include breakpoint($medium){
+      top: calc(#{$monthTopPaddingLarge} - 2px);
+      left: calc(#{$monthSidePaddingLarge} + 2px);
+    }
   }
 }
 
 %month-padding {
-  padding-top: $monthTopPaddingSmall;
   padding-left: $monthSidePaddingSmall;
 
   position: relative;
@@ -90,7 +124,6 @@ $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
   }
 
   @include breakpoint($medium){ 
-    padding-top: $monthTopPaddingLarge;
     padding-left: $monthSidePaddingLarge;
     width: 50%;
   }
@@ -154,6 +187,7 @@ $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
 //--------------------------------------------------
     &__month {
       @extend %month-padding;
+      @extend %arrowOutline;
       margin-bottom: rem-calc(14);
 
       @include breakpoint($small){ margin-bottom: rem-calc(24); }
@@ -178,15 +212,21 @@ $monthSidePaddingLarge: calc((#{$circleLarge} / 2) + 14px);
       &:nth-child(even):before {
         @include breakpoint($medium){
           border-right: none;
-          border-left: $arrowWidthLarge solid $primary;
+          border-left: $arrowWidth solid $primary;
           
           right: $monthSidePaddingLarge;
           left: auto; // must be auto to work in IE
         }
       }
 
-      &:before {
-        @extend %arrow;
+      &:nth-child(even):after {
+        @include breakpoint($medium){
+          border-right: none;
+          border-left: $arrowOutlineWidth solid white;
+          
+          right: calc(#{$monthSidePaddingLarge} + 2px);
+          left: auto; // must be auto to work in IE
+        }
       }
 
       &--past {

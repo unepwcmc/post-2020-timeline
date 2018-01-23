@@ -1,6 +1,6 @@
 <template>
   <div class="filters">
-    <h3 class="text-3">Filters</h3>
+    <h3 class="text-3">Filter by:</h3>
 
     <v-filter v-for="filter in filters"
       :name="filter.name"

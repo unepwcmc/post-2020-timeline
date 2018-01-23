@@ -12,4 +12,6 @@
   right: rem-calc(20);
   bottom: rem-calc(20);
   z-index: 1;
+
+  &:hover { background-color: lighten($accent, 5%); }
 }
