@@ -119,7 +119,7 @@
 
       getScrollY () {
         // add top padding if being viewed on medium or large breakpoints
-        this.top = window.innerWidth <= this.config.smallBreakpoint ? window.scrollY : window.scrollY + 40
+        this.top = window.innerWidth <= this.config.smallBreakpoint ? window.pageYOffset : window.pageYOffset + 40
       },
 
       hasContent (property) {
