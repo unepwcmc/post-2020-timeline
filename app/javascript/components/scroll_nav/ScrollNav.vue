@@ -54,9 +54,7 @@
       eventHub.$on('updateSceneDurations', this.updateScrollMagicDurations)
 
       // monitor window resizing
-      resize.add(function() {
-        eventHub.$emit('window-resized')
-      });
+      window.onresize = this.windowResized
     },
 
     methods: {
