@@ -32,11 +32,15 @@
       return {
         navClass: '.v-scroll-nav',
         navY: 0,
-        triggerOffset: 0
+        triggerOffset: 0,
+        windowWidth: 0
       }
     },
 
     mounted () {
+      // set the initial window width
+      this.windowWidth = window.innerWidth
+
       // recalculate scene heights when the window is resized
       eventHub.$on('window-resized', this.windowResized)
 
@@ -126,11 +130,17 @@
       },
 
       windowResized () {
-        // when the window is resized the heights of the sticky bars and
+        // when the window width is resized the heights of the sticky bars and
         // years will change so update js accordingly
-        this.setTriggerOffset()
-        this.updateScrollMagicDurations()
-        this.currentEvent()
+        const newWidth = window.innerWidth
+
+        if(newWidth > this.windowWidth || newWidth < this.windowWidth) {
+          this.setTriggerOffset()
+          this.updateScrollMagicDurations()
+          this.currentEvent()
+
+          this.windowWidth = newWidth
+        }
       },
 
       openModal () {
