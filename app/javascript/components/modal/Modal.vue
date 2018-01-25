@@ -37,7 +37,7 @@
         </template>
         
         <template v-if="hasContent(modalContent.relevance)">
-          <h4>Relevance to post 2020</h4>
+          <h4>Relevance to the post-2020 global biodiversity framework</h4>
           <p>{{ modalContent.relevance }}</p>
         </template>
         
