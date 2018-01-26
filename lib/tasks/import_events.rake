@@ -55,6 +55,7 @@ namespace :import do
       current_event_title = csv_event_row[event_hash[:title]]
 
       if Event.exists?(title: current_event_title)
+        logger.info "Event already exists #{current_event_title}"
         event = Event.find_by(title: current_event_title)
         unless event.update_attributes(event_row_hash)
           logger.info "Cannot update! #{event.title}"
