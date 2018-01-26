@@ -133,6 +133,7 @@ $total-size: rem-calc(25);
     }
 
       &__checkbox {
+        background-color: $primary;
         border: solid rem-calc(1) white;
         cursor: pointer;
         width: rem-calc(26); height: rem-calc(26);
@@ -142,7 +143,7 @@ $total-size: rem-calc(25);
         -ms-appearance: none;
 
         &--active:after {
-          background: $primary image-url('icons/tick.svg') center no-repeat;
+          background: transparent image-url('icons/tick.svg') center no-repeat;
           content: '';
           width: rem-calc(22); height: rem-calc(22);
 
