@@ -25,6 +25,9 @@
 
       &:hover { color: $secondary; }
 
+      &:active,
+      &:visited { color: $body-font-color; }
+
       &--active { color: $secondary; }
     }
 }
