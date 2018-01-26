@@ -52,14 +52,16 @@ namespace :import do
       error_message = "Invalid date for #{event_row_hash[:title]}. Skipping..."
       logger.info(error_message) && next if skip_row
 
-      current_event_title = csv_event_row[event_hash[:title]]
+      current_event_title = event_row_hash[:title]
 
       if Event.exists?(title: current_event_title)
+        logger.info "Event already exists #{current_event_title}"
         event = Event.find_by(title: current_event_title)
         unless event.update_attributes(event_row_hash)
           logger.info "Cannot update! #{event.title}"
         end
       else
+        logger.info "Processing #{current_event_title}..."
         event = Event.new(event_row_hash)
         unless event.save!
           logger.info "Cannot import! #{event.title}"
