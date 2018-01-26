@@ -142,7 +142,7 @@ $total-size: rem-calc(25);
         -ms-appearance: none;
 
         &--active:after {
-          background: transparent image-url('icons/tick.svg') center no-repeat;
+          background: $primary image-url('icons/tick.svg') center no-repeat;
           content: '';
           width: rem-calc(22); height: rem-calc(22);
 
