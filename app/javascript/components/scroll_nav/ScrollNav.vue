@@ -137,6 +137,7 @@
           this.setTriggerOffset()
           this.updateScrollMagicDurations()
           this.currentEvent()
+          eventHub.$emit('getScrollY')
 
           this.windowWidth = newWidth
         }
