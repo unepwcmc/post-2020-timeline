@@ -40,7 +40,7 @@
           :name="name" 
           :value="option">
         
-        <label :for="optionId(option)" class="filter__checkbox-label">{{ option }}</label>
+        <label :for="optionId(option)" class="filter__radio-label">{{ option }}</label>
       </li>
     </ul>
   </div>

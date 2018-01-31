@@ -163,13 +163,22 @@ $total-size: rem-calc(25);
 // radio
 //--------------------------------------------------
       &__radio {
+        margin-bottom: rem-calc(20);
         position: relative;
   
         &:before {
           border: solid rem-calc(2) white;
           border-radius: 100%;
           content: '';
+          cursor: pointer;
           width: rem-calc(21); height: rem-calc(21);
+
+          position: absolute;
+          top: rem-calc(-2);
+          left: rem-calc(-2);
+          z-index: -1;
+          
+          -webkit-transform: translateZ(0); // hack to fix corners appearing in safari when the after psuedo element is shown/hidden
         }
 
         &--active {
@@ -181,14 +190,17 @@ $total-size: rem-calc(25);
             width: rem-calc(13); height: rem-calc(13);
 
             position: absolute;
-            top: rem-calc(4);
-            left: rem-calc(4);
+            top: rem-calc(2);
+            left: rem-calc(2);
+            z-index: -2;
           }
         }
 
-        input { 
-          visibility: hidden; 
-          width: 0; height: 0;
-        }
+        input { display: none; }
+      }
+
+      &__radio-label {
+        cursor: pointer;
+        padding-left: rem-calc(30);
       }
 }
