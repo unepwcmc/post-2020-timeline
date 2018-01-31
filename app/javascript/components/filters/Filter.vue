@@ -30,15 +30,15 @@
     </ul>
 
     <ul v-else class="filter__options ul-unstyled filter__options--active">
-      <li v-for="option in options" class="filter__option flex flex-h-start flex-v-center">
+      <li v-for="option in options" class="filter__option flex flex-h-start flex-v-center filter__radio"
+          :class="{ 'filter__radio--active' : isRadioActive(option) }">
 
         <input v-if="type === 'radio'" 
           type="radio" 
           :id="optionId(option)" 
           v-model="selectedRadio" 
           :name="name" 
-          :value="option" 
-          class="filter__radio">    
+          :value="option">
         
         <label :for="optionId(option)" class="filter__checkbox-label">{{ option }}</label>
       </li>
@@ -157,6 +157,10 @@
       isSelected (string) {
         // use indexOf so it works in IE
         return this.selected.indexOf(string) != -1
+      },
+
+      isRadioActive (option) {
+        return this.selectedRadio.match(option)
       },
 
       underscoreToPascal (string) {

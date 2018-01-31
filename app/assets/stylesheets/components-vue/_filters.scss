@@ -132,6 +132,9 @@ $total-size: rem-calc(25);
       &:last-child { margin-bottom: 0; }
     }
 
+//--------------------------------------------------
+// checkbox
+//--------------------------------------------------
       &__checkbox {
         background-color: $primary;
         border: solid rem-calc(1) white;
@@ -154,5 +157,38 @@ $total-size: rem-calc(25);
       &__checkbox-label { 
         cursor: pointer;
         padding-left: rem-calc(8);
+      }
+
+//--------------------------------------------------
+// radio
+//--------------------------------------------------
+      &__radio {
+        position: relative;
+  
+        &:before {
+          border: solid rem-calc(2) white;
+          border-radius: 100%;
+          content: '';
+          width: rem-calc(21); height: rem-calc(21);
+        }
+
+        &--active {
+          &:after {
+            background-color: $accent;
+            border: solid rem-calc(2) white;
+            border-radius: 100%;
+            content: '';
+            width: rem-calc(13); height: rem-calc(13);
+
+            position: absolute;
+            top: rem-calc(4);
+            left: rem-calc(4);
+          }
+        }
+
+        input { 
+          visibility: hidden; 
+          width: 0; height: 0;
+        }
       }
 }
