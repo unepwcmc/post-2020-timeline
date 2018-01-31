@@ -73,6 +73,8 @@
       eventHub.$once('pageLoadModal', this.openModal)
 
       eventHub.$on('openModal', this.openModal)
+
+      eventHub.$on('getScrollY', this.getScrollY)
     },
 
     computed: {

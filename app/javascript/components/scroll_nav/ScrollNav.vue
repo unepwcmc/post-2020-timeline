@@ -16,7 +16,6 @@
 <script>
   import ScrollMagic from 'scrollmagic'
   import { eventHub } from '../../home.js'
-  import { resize } from '../../resize.js'
 
   export default {
     name: 'scroll-nav',
@@ -138,6 +137,7 @@
           this.setTriggerOffset()
           this.updateScrollMagicDurations()
           this.currentEvent()
+          eventHub.$emit('getScrollY')
 
           this.windowWidth = newWidth
         }

@@ -73,7 +73,11 @@ $datePaddingLarge: calc(18px + #{$dateBoxLarge});
         }
       }
 
-      &--past { border-color: $grey; }
+      &--past { 
+        border-color: $grey; 
+
+        &:hover { box-shadow: inset 0px 0px 0px 2px $grey; }
+      }
 
 //--------------------------------------------------
 // date
