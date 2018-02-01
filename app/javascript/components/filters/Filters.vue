@@ -46,7 +46,7 @@
       this.createActiveFilters()
 
       eventHub.$on('clickDropdown', this.updateDropdowns)
-      eventHub.$on('closeReveal', this.cancel)
+      eventHub.$on('closedReveal', this.cancel)
     },
 
     computed: {
