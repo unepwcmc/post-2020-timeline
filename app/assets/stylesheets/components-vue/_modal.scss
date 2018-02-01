@@ -92,7 +92,7 @@ $titlePaddingLarge: rem-calc(30);
   &--hero {
     background-color: $primary;
     color: white;
-    padding: rem-calc(16) $gutter-small;
+    padding: rem-calc(16 40 16) $gutter-small;
     margin-top: $gutter-small;
     width: 97%;
     max-width: none;
@@ -102,7 +102,7 @@ $titlePaddingLarge: rem-calc(30);
 
     transform: translateX(50%);
 
-    @include breakpoint($small){ padding: rem-calc(24 36); }
+    @include breakpoint($small){ padding: rem-calc(24 60 24 36); }
 
     @include breakpoint($medium){ 
       padding: rem-calc(40 56);
