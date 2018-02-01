@@ -15,6 +15,14 @@ module ApplicationHelper
     url_encode(request.base_url)
   end
 
+  def social_image
+    image_url('/unep-wcmc-frog-social-image.jpg')
+  end
+
+  def social_image_alt
+    'Tree frog'
+  end
+
   def create_social_facebook_link
     title = url_encode('Share ' + site_title + ' on Facebook')
     url = encoded_home_url
