@@ -22,7 +22,7 @@ $revealLargePadding: rem-calc(36);
     }
 
     &__button {
-      position: absolute;
+      float: right;
       top: rem-calc(20);
       right: $gutter-small;
 

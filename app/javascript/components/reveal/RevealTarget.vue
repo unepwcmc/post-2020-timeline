@@ -1,6 +1,5 @@
 <template>
   <div class="reveal--target" :class="{ 'reveal--target--active' : isActive }">
-    <button @click="closeReveal" class="reveal--target__button button button--plain button--close"></button>
     <slot></slot>  
   </div>
 </template>
@@ -18,6 +17,7 @@
     },
 
     created () {
+      eventHub.$on('closeReveal', this.closeReveal)
       eventHub.$on('applyFilters', this.applyFilters)
     },
 

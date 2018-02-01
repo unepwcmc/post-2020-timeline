@@ -11,7 +11,7 @@ $total-size: rem-calc(25);
 //--------------------------------------------------
 .filters {
   overflow: scroll;
-  overflow-y: hidden; // IE
+  // overflow-y: hidden; // IE
   padding-bottom: rem-calc(60);
   width: 100%; height: 100%;
 
@@ -33,7 +33,7 @@ $total-size: rem-calc(25);
     background-color: white;
     padding: rem-calc(12);
 
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 0;
     left: 0;

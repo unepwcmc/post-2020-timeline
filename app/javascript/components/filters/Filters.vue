@@ -1,5 +1,7 @@
 <template>
   <div class="filters">
+    <button @click="closeReveal" class="reveal--target__button button button--plain button--close"></button>
+
     <h3 class="text-3">Filter by:</h3>
 
     <v-filter v-for="filter in filters"
@@ -94,6 +96,10 @@
 
       createActiveFilters () {
         this.$store.commit('filters/updateFilterOptions', this.selectedFilters)
+      },
+
+      closeReveal () {
+        eventHub.$emit('closeReveal')
       }
     }
   }
