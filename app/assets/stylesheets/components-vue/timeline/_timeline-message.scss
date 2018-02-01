@@ -25,8 +25,6 @@
         .timeline__year--past & { border-color: $grey; }
 
         &:before {
-          @include breakpoint-down($small) { top: 0; }
-
           .timeline__year--past & { border-right-color: $grey; }
         }
       }
