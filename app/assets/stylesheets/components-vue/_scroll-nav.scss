@@ -22,8 +22,10 @@
       @include breakpoint($small){
         font-size: rem-calc(36);
       }
-
-      &:hover { color: $secondary; }
+      
+      &:hover { 
+        .can-hover & { color: $secondary; }
+      }
 
       &:active,
       &:visited { color: $body-font-color; }

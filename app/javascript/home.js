@@ -1,3 +1,5 @@
+import hoverCheck from './hoverCheck.js'
+
 import Vue from 'vue/dist/vue.esm'
 import store from './store/store.js'
 import BackToTop from './components/back_to_top/BackToTop.vue'
