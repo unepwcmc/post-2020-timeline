@@ -177,8 +177,6 @@ $total-size: rem-calc(25);
           top: rem-calc(-2);
           left: rem-calc(-2);
           z-index: -1;
-          
-          // -webkit-transform: translateZ(0); // hack to fix corners appearing in safari when the after psuedo element is shown/hidden
         }
 
         &--active {
@@ -187,11 +185,11 @@ $total-size: rem-calc(25);
             border: solid rem-calc(2) white;
             border-radius: 100%;
             content: '';
-            width: rem-calc(13); height: rem-calc(13);
+            width: rem-calc(11); height: rem-calc(11);
 
             position: absolute;
-            top: rem-calc(2);
-            left: rem-calc(2);
+            top: rem-calc(3);
+            left: rem-calc(3);
             z-index: -2;
           }
         }
