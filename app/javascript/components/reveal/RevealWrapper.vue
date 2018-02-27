@@ -18,7 +18,7 @@
       closeWrapper () {
         this.$store.commit('reveal/toggleActiveState')
 
-        eventHub.$emit('closeReveal')
+        eventHub.$emit('closedReveal')
       }
     }
   }  
