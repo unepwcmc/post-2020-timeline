@@ -2,8 +2,13 @@
   <div class="modal" :class="{ 'modal--active' : isActive, 'modal--hero' : hero }" :style="{ 'top' : topPosition }">
 
     <div v-if="hero">
-      <button class="button button--close modal__close" @click="closeModal"></button>
-      <slot></slot>
+      <div class="modal--hero__content">
+        <button class="button button--close-round button--close-black modal--hero__close" @click="closeModal"></button>
+        
+        <slot></slot>
+
+        <button class="button button--secondary" @click="closeModal">Explore</button>
+      </div>
     </div>
     
     <div v-else>

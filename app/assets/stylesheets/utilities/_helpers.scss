@@ -29,7 +29,7 @@
 }
 
 .text-2 { 
-  font-size: rem-calc(20); 
+  font-size: rem-calc(24); 
   font-weight: bold;
 
   @include breakpoint($small) { font-size: rem-calc(45); }

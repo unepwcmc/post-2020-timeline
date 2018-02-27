@@ -8,7 +8,7 @@ $titlePaddingLarge: rem-calc(30);
 // modal wrapper
 //--------------------------------------------------
 .modal-wrapper {
-  background-color: rgba($grey-light, 0.6);
+  background-color: rgba($grey, 0.6);
   overflow: scroll;
 
   @include breakpoint($small) {
@@ -90,35 +90,71 @@ $titlePaddingLarge: rem-calc(30);
     }
 
   &--hero {
-    background-color: $primary;
+    background: image-url('hero-modal.jpg') center;
+    background-size: cover;
     color: white;
-    padding: rem-calc(16 40 16) $gutter-small;
+    padding: $gutter-small;
     margin-top: $gutter-small;
-    width: 97%;
-    max-width: none;
+    width:96%;
+    max-width: $site-width;
 
     right: 50%;
     left: auto;
 
     transform: translateX(50%);
 
-    @include breakpoint($small){ padding: rem-calc(24 60 24 36); }
-
-    @include breakpoint($medium){ 
-      padding: rem-calc(40 56);
-      width: 98%;
+    @include breakpoint($small) { 
+      padding: $gutter-medium;
+      width: 90%; 
     }
 
-    &__intro {
-      font-size: rem-calc(14);
-      line-height: 1.8;
-      margin: 0;
+    @include breakpoint($medium) { 
+      padding: rem-calc(36);
+      width: 85%;
+    }
 
-      @include breakpoint($small){
-        font-size: rem-calc(16); 
-        line-height: 1.6;
-        width: 65%;
+    &__content {
+      background-color: rgba($grey-dark, 0.45);
+      border: solid rem-calc(2) white;
+      padding: rem-calc(42) calc(#{$gutter-small} * 2) rem-calc(32) calc(#{$gutter-small} * 2); 
+
+      @include breakpoint($small) { padding: rem-calc(82) calc(#{$gutter-medium} * 2) rem-calc(72) calc(#{$gutter-medium} * 2);  }
+      @include breakpoint($medium) { padding: rem-calc(132) 20% rem-calc(122 80); }
+    }
+
+      &__logo {
+        @extend .topbar__logo;
+        margin-bottom: rem-calc(18);
+
+        @include breakpoint($small) { margin-bottom: rem-calc(32); }
       }
-    }
+
+      &__intro {
+        font-size: rem-calc(15);
+        line-height: 1.7;
+        margin: 0 0 rem-calc(28) 0;
+
+        @include breakpoint($small){
+          font-size: rem-calc(18); 
+          line-height: 1.6;
+          margin-bottom: rem-calc(44);
+        }
+      }
+
+      &__close {
+        position: absolute;
+        top: calc(#{$gutter-small} * 3);
+        right: calc(#{$gutter-small} * 3);
+
+        @include breakpoint($small) {
+          top: calc(#{$gutter-medium} * 3);
+        right: calc(#{$gutter-medium} * 3);
+        }
+
+        @include breakpoint($medium) {
+          top: rem-calc(64);
+          right: rem-calc(64);
+        }
+      }
   }
 }
