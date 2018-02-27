@@ -26,7 +26,7 @@ class Event < ApplicationRecord
       },
       {
         name: 'cbd_relation',
-        title: 'Relation to the post-2020 process',
+        title: 'Relation to the CBD’s post-2020 process',
         options: unique_cbd_relations,
         type: 'radio'
       }
