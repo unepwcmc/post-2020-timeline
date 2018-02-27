@@ -14,7 +14,7 @@ class Event < ApplicationRecord
     filters = [
       {
         name: 'category',
-        title: 'category',
+        title: 'groupings',
         options: unique_categories,
         type: 'multiple'
       },
