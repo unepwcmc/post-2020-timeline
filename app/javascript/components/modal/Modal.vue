@@ -42,7 +42,7 @@
         </template>
         
         <template v-if="hasContent(modalContent.outputs)">
-          <h4>Outputs</h4>
+          <h4>Links to further information</h4>
           <p>{{ modalContent.outputs }}</p>
         </template>
       </div>
