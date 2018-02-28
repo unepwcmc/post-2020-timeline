@@ -4,51 +4,51 @@
     <div v-if="hero">
       <div class="modal--hero__content">
         <button class="button button--close-round button--close-black modal--hero__close" @click="closeModal"></button>
-        
+
         <slot></slot>
 
         <button class="button button--secondary" @click="closeModal">Explore</button>
       </div>
     </div>
-    
+
     <div v-else>
       <div class="modal__title-box">
         <h3>{{ modalContent.title }}</h3>
 
         <button class="button button--close button--close-black modal__close" @click="closeModal"></button>
       </div>
-      
+
       <div class="modal__content">
         <div class="modal__info-box">
           <span class="flex flex-v-center">
             <i class="icon icon--calendar modal__icon--calendar"></i> {{ dates }}
           </span>
-          
+
           <template v-if="hasContent(modalContent.location)">
             <span class="flex flex-v-center">
               <i class="icon icon--pin modal__icon--pin"></i> {{ modalContent.location }}
             </span>
           </template>
         </div>
-        
+
         <template v-if="hasContent(modalContent.organisers)">
           <h4>Organisers</h4>
           <p>{{ modalContent.organisers }}</p>
         </template>
-        
+
         <template v-if="hasContent(modalContent.meetingSummary)">
           <h4>Meeting summary</h4>
           <p>{{ modalContent.meetingSummary }}</p>
         </template>
-        
+
         <template v-if="hasContent(modalContent.relevance)">
           <h4>Relevance to the post-2020 global biodiversity framework</h4>
           <p>{{ modalContent.relevance }}</p>
         </template>
-        
+
         <template v-if="hasContent(modalContent.outputs)">
           <h4>Links to further information</h4>
-          <p>{{ modalContent.outputs }}</p>
+          <p v-html="modalContent.outputs"></p>
         </template>
       </div>
     </div>
@@ -73,7 +73,7 @@
     },
 
     created () {
-      // open the modal for the first time after the page has been scrolled 
+      // open the modal for the first time after the page has been scrolled
       // to the current event location
       eventHub.$once('pageLoadModal', this.openModal)
 
@@ -103,10 +103,10 @@
 
       openModal ( hero = true ) {
         this.hero = hero
-        
+
         // get the y position and open the modal and modal wrapper
         this.getScrollY()
-        
+
         // update the modal with the latest event content
         if(!this.hero){ this.modalContent = this.$store.state.modal.modalContent }
 
