@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def social_image
-    image_url('unep-wcmc-social-image.jpg')
+    image_url('unep-wcmc-social-image.png')
   end
 
   def social_image_alt
