@@ -20,6 +20,7 @@
         :currentEvent="event.current_event"
         :pastEvent="event.past_event"
         :cbdRelation="event.cbd_relation"
+        :isProvisionalDate="event.is_provisional_date"
       ></event>
     </div> 
   </div>

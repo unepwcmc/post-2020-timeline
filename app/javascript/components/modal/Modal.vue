@@ -21,7 +21,7 @@
       <div class="modal__content">
         <div class="modal__info-box">
           <span class="flex flex-v-center">
-            <i class="icon icon--calendar modal__icon--calendar"></i>{{ modalContent.startDate }} - {{ modalContent.endDate }}
+            <i class="icon icon--calendar modal__icon--calendar"></i> {{ dates }}
           </span>
           
           <template v-if="hasContent(modalContent.location)">
@@ -89,6 +89,10 @@
 
       topPosition () {
         return this.top + 'px'
+      },
+
+      dates () {
+        return this.modalContent.isProvisionalDate ? 'Dates to be confirmed' : this.modalContent.startDate + ' - ' + this.modalContent.endDate
       }
     },
 

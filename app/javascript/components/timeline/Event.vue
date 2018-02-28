@@ -7,9 +7,7 @@
     @click="openModal"
     >
 
-    <div class="timeline__event__date flex-center">
-      <span>{{ start }}</br>-</br>{{ end }}</span>
-    </div>
+    <div class="timeline__event__date flex-center" v-html="dates"></div>
 
     <span class="timeline__event__title">{{ truncatedTitle }}</span>
   </div>
@@ -79,6 +77,9 @@
       cbdRelation: {
         required: true,
         type: String
+      },
+      isProvisionalDate: {
+        type: Boolean
       }
     },
 
@@ -101,6 +102,10 @@
 
       end () {
         return this.styledDate(this.endDay)
+      },
+
+      dates () {
+        return this.isProvisionalDate ? 'TBC' : '<span>' + this.start + '</br>-</br>' + this.end + '</span>'
       },
 
       truncatedTitle () {
@@ -152,6 +157,7 @@
         obj['meetingSummary'] = this.meetingSummary
         obj['relevance'] = this.relevance
         obj['outputs'] = this.outputs
+        obj['isProvisionalDate'] = this.isProvisionalDate
 
         this.$store.commit('modal/updateModalContent', obj)
 
