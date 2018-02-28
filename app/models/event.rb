@@ -140,7 +140,7 @@ class Event < ApplicationRecord
         organisers: monthly_event.organisers.pluck(:name),
         summary: monthly_event.summary,
         relevance: monthly_event.relevance,
-        outputs: monthly_event.outputs,
+        outputs: generate_url(monthly_event.outputs),
         cbd_relation: monthly_event.cbd_relation,
         is_provisional_date: monthly_event.is_provisional_date
       }
@@ -173,4 +173,18 @@ class Event < ApplicationRecord
     year_events.where("end_date >= ?", Date.today).blank?
   end
 
+  def self.generate_url(output)
+    uris = URI.extract(output, ['http', 'https'])
+    emails = output.scan(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i)
+
+    uris.each do |uri|
+      output.sub!(uri, '<a href="' + uri + '">' + uri + '</a>')
+    end
+
+    emails.each do |email|
+      output.sub!(email, '<a href="mailto:' + email + '">' + email + '</a>')
+    end
+
+    output.html_safe
+  end
 end
