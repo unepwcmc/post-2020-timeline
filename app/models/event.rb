@@ -178,11 +178,11 @@ class Event < ApplicationRecord
     emails = output.scan(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i)
 
     uris.each do |uri|
-      output.sub!(uri, '<a href="' + uri + '" title="Visit '+ uri + '">' + uri + '</a>')
+      output.sub!(uri, "<a href='#{uri}' title='Visit #{uri}'>#{uri}</a>")
     end
 
     emails.each do |email|
-      output.sub!(email, '<a href="mailto:' + email + '" title="Email '+ email + '">' + email + '</a>')
+      output.sub!(email, "<a href='mailto:#{email}' title='Email #{email}'>#{email}</a>")
     end
 
     output.html_safe
