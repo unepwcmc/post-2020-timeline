@@ -123,10 +123,25 @@ $titlePaddingLarge: rem-calc(30);
     }
 
       &__logo {
-        @extend .topbar__logo;
         margin-bottom: rem-calc(18);
+        
+        @include breakpoint($small){ margin-bottom: rem-calc(32); }
 
-        @include breakpoint($small) { margin-bottom: rem-calc(32); }
+        &-unep-wcmc {
+          width: rem-calc(100); height: rem-calc(33);
+
+          @include breakpoint($small){ width: rem-calc(152); height: rem-calc(50); }
+        }
+
+        &-cbd {
+          margin-left: rem-calc(18);
+          width: rem-calc(100); height: rem-calc(38);  
+
+          @include breakpoint($small){ 
+            margin-left: rem-calc(46);
+            width: rem-calc(168); height: rem-calc(64);
+          }
+        }
       }
 
       &__intro {
