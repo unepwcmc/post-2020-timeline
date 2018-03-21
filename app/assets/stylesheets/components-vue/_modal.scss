@@ -135,7 +135,7 @@ $titlePaddingLarge: rem-calc(30);
 
         &-cbd {
           margin-left: rem-calc(18);
-          width: rem-calc(100); height: rem-calc(38);  
+          width: rem-calc(100); height: rem-calc(38);
 
           @include breakpoint($small){ 
             margin-left: rem-calc(46);

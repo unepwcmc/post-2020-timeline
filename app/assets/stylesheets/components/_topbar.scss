@@ -14,10 +14,20 @@
   }
 
   &__logo {
-    width: rem-calc(137); height: rem-calc(44);
+    &-unep-wcmc {
+      width: rem-calc(82); height: rem-calc(27);
+      
+      @include breakpoint($small){ width: rem-calc(152); height: rem-calc(50); }
+    }
 
-    @include breakpoint($small){ 
-      width: rem-calc(152); height: rem-calc(50);
+    &-cbd {
+      margin-left: rem-calc(14);
+      width: rem-calc(100); height: rem-calc(38);
+      
+      @include breakpoint($small){ 
+        margin-left: rem-calc(42);
+        width: rem-calc(148); height: rem-calc(58);
+      }
     }
   }
 }

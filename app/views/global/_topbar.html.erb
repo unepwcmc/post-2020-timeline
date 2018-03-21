@@ -1,7 +1,13 @@
 <div class="topbar flex flex-v-center flex-h-between">
-  <%= link_to 'http://www.unep-wcmc.org', title: 'The 2020 Biodiversity Strategic Planning Timeline', target: '_blank' do %>
-    <%= image_tag 'https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017.svg', alt: 'UN Environment World Conservation Monitoring Centre Logo', class: 'topbar__logo' %>
-  <% end %>
+  <div>
+    <%= link_to 'http://www.unep-wcmc.org', title: 'The UN Environment World Conservation Monitoring Centre', target: '_blank' do %>
+      <%= image_tag 'https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017.svg', alt: 'UN Environment World Conservation Monitoring Centre Logo', class: 'topbar__logo-unep-wcmc' %>
+    <% end %>
+
+    <%= link_to 'https://www.cbd.int/', title: 'Convention on Biological Diversity', target: '_blank' do %>
+      <%= image_tag 'logos/logo-cbd-green.svg', alt: 'Convention on Biological Diversity Logo', class: 'topbar__logo-cbd' %>
+    <% end %>
+  </div>
 
   <div>
     <%= render 'global/social' %>
