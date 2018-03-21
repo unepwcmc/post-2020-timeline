@@ -8,7 +8,7 @@ $titlePaddingLarge: rem-calc(30);
 // modal wrapper
 //--------------------------------------------------
 .modal-wrapper {
-  background-color: rgba($grey, 0.6);
+  background-color: rgba($black, 0.8);
   overflow: scroll;
 
   @include breakpoint($small) {
@@ -89,6 +89,9 @@ $titlePaddingLarge: rem-calc(30);
       @include breakpoint($small) { margin: rem-calc(0 8 0 20); }
     }
 
+//--------------------------------------------------
+// modal - hero
+//--------------------------------------------------
   &--hero {
     background: image-url('hero-modal.jpg') center;
     background-size: cover;
@@ -128,18 +131,18 @@ $titlePaddingLarge: rem-calc(30);
         @include breakpoint($small){ margin-bottom: rem-calc(32); }
 
         &-unep-wcmc {
-          width: rem-calc(100); height: rem-calc(33);
-
+          width: rem-calc(82); height: rem-calc(27);
+      
           @include breakpoint($small){ width: rem-calc(152); height: rem-calc(50); }
         }
 
         &-cbd {
-          margin-left: rem-calc(18);
+          margin-left: rem-calc(14);
           width: rem-calc(100); height: rem-calc(38);
-
+          
           @include breakpoint($small){ 
-            margin-left: rem-calc(46);
-            width: rem-calc(168); height: rem-calc(64);
+            margin-left: rem-calc(42);
+            width: rem-calc(148); height: rem-calc(58);
           }
         }
       }
@@ -171,5 +174,71 @@ $titlePaddingLarge: rem-calc(30);
           right: rem-calc(64);
         }
       }
+  }
+
+//--------------------------------------------------
+// modal - social
+//--------------------------------------------------
+  &--social {
+    background-color: transparent;
+    box-shadow: none;
+    color: white;
+    font-size: rem-calc(20);
+    font-weight: bold;
+    padding-top: rem-calc(40);
+
+    &__close {
+      background-color: $grey;
+      width: rem-calc(45); height: rem-calc(45);
+
+      position: absolute;
+      top: rem-calc(14);
+      right: rem-calc(14);
+
+      &:hover { background-color: lighten($grey, 10%); }
+    }
+
+    .icon--social {
+      @extend .flex;
+      @extend .flex-v-center;
+      margin-bottom: rem-calc(16);
+      text-decoration: none;
+      width: rem-calc(310); height: rem-calc(57);
+
+      &:after {
+        color: white;
+        margin-left: rem-calc(12);
+      }
+
+      &:hover { opacity: 0.8; }
+    }
+
+    .icon--social-facebook { 
+      @extend .icon--social-facebook-white; 
+      background-color: $facebook;
+
+      &:after { content: 'Facebook'; }
+    }
+
+    .icon--social-email { 
+      @extend .icon--social-email-white; 
+      background-color: $grey;
+
+      &:after { content: 'Email'; }
+    }
+
+    .icon--social-twitter { 
+      @extend .icon--social-twitter-white; 
+      background-color: $twitter;
+
+      &:after { content: 'Twitter'; }
+    }
+
+    .icon--social-linkedin { 
+      @extend .icon--social-linkedin-white; 
+      background-color: $linkedin;
+
+      &:after { content: 'LinkedIn'; }
+    }
   }
 }

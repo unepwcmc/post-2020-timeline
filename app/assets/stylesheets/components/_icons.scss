@@ -32,20 +32,37 @@
 // social
 //--------------------------------------------------
   &--social {
-    background: transparent center bottom no-repeat;
-    background-size: contain;
-    margin-left: rem-calc(12);
-    width: rem-calc(24); height: rem-calc(24);
+    &:before {
+      background: transparent center bottom no-repeat;
+      background-size: contain;
+      content: '';
+      margin-left: rem-calc(12);
+      width: rem-calc(24); height: rem-calc(24);
 
-    display: inline-block;
+      display: inline-block;
 
-    @include breakpoint($small){ width: rem-calc(32); height: rem-calc(32); }
+      @include breakpoint($small){ width: rem-calc(32); height: rem-calc(32); }
 
-    &:hover { opacity: .75; }
+      &:hover { opacity: .75; }
+    }
 
-    &-facebook { background-image: image-url('icons/facebook.svg'); }
-    &-email { background-image: image-url('icons/email.svg'); }
-    &-twitter { background-image: image-url('icons/twitter.svg'); }
-    &-linkedin { background-image: image-url('icons/linkedin.svg'); }
+    &-facebook:before { background-image: image-url('icons/facebook-black.svg'); }
+    &-email:before { background-image: image-url('icons/email-black.svg'); }
+    &-twitter:before { background-image: image-url('icons/twitter-black.svg'); }
+    &-linkedin:before { background-image: image-url('icons/linkedin-black.svg'); }
+
+    &-facebook-white:before { background-image: image-url('icons/facebook.svg'); }
+    &-email-white:before { background-image: image-url('icons/email.svg'); }
+    &-twitter-white:before { background-image: image-url('icons/twitter.svg'); }
+    &-linkedin-white:before { background-image: image-url('icons/linkedin.svg'); }
+
+    &-modal-trigger {
+      background-image: image-url('icons/share.svg');
+      background-size: contain;
+      cursor: pointer;
+      width: rem-calc(36); height: rem-calc(36);
+
+      display: inline-block;
+    }
   }
 }

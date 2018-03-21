@@ -9,9 +9,14 @@
       
       <modal-wrapper></modal-wrapper>
       <modal>
-        <slot>
+        <div slot="hero">
           <%= render 'global/hero' %>          
-        </slot>
+        </div>
+
+        <div slot="social">
+          <p>Share using:</p>
+          <%= render 'global/social' %>
+        </div>
       </modal>
 
       <back-to-top></back-to-top>
