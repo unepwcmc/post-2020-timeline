@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div v-if="isSocialModal" class="flex flex-h-center">
+    <div v-else-if="isSocialModal" class="flex flex-h-center">
       <button class="button button--close-round button--close modal--social__close" @click="closeModal"></button>
 
       <slot name="social"></slot>
