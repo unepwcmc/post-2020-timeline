@@ -63,6 +63,8 @@
       width: rem-calc(36); height: rem-calc(36);
 
       display: inline-block;
+
+      &:hover { opacity: .75; }
     }
   }
 }
