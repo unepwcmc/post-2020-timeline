@@ -21,6 +21,6 @@ class HomeController < ApplicationController
 
   private
     def allow_iframe
-      response.headers['X-Frame-Options'] = "ALLOW FROM https://www.cbd.int/"
+      response.headers['X-Frame-Options'] = "ALLOW FROM https://www.cbd.int"
     end
 end
