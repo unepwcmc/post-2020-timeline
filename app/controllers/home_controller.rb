@@ -21,11 +21,6 @@ class HomeController < ApplicationController
 
   private
     def allow_iframe
-      response.headers['X-Frame-Options'] = "ALLOW FROM http://uknea.unep-wcmc.org/test.html"
-
-      # white_list = ['https://www.cbd.int/', 'http://uknea.unep-wcmc.org/test.html']
-      # if white_list.include?(request.domain)
-      #   response.headers['X-Frame-Options'] = "ALLOW-FROM #{request.domain}"
-      # end
+      response.headers['X-Frame-Options'] = "ALLOW FROM https://www.cbd.int/"
     end
 end
