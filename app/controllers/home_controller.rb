@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  after_action :allow_iframe
+
   def index
     @filters  = Event.filters_to_json
     @nav      = Event.years_to_json
@@ -16,4 +18,12 @@ class HomeController < ApplicationController
     calendar_event = Event.events_to_calendar(params[:format])
     send_data calendar_event, type: 'text/calendar', disposition: 'attachment', filename: filename
   end
+
+  private
+    def allow_iframe
+      white_list = ['https://www.cbd.int/', 'http://uknea.unep-wcmc.org/test.html']
+      if white_list.include?(request.domain)
+        response.headers['X-Frame-Options'] = "ALLOW-FROM #{request.domain}"
+      end
+    end
 end
