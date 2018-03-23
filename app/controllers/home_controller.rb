@@ -21,6 +21,6 @@ class HomeController < ApplicationController
 
   private
     def allow_iframe
-      response.headers['X-Frame-Options'] = "ALLOW FROM http://uknea.unep-wcmc.org"
+      response.headers['X-Frame-Options'] = "ALLOW FROM http://uknea.unep-wcmc.org/test.html"
     end
 end
