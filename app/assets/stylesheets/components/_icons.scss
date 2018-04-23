@@ -31,6 +31,35 @@
 //--------------------------------------------------
 // social
 //--------------------------------------------------
+  &--contact {
+    &:before {
+      background: transparent center bottom no-repeat;
+      background-size: contain;
+      content: '';
+      margin-left: rem-calc(12);
+      width: rem-calc(24); height: rem-calc(24);
+
+      display: inline-block;
+
+      @include breakpoint($small){ width: rem-calc(32); height: rem-calc(32); }
+
+      &:hover { opacity: .75; }
+    }
+
+    &contact:before { background-image: image-url('icons/contact.svg'); }
+
+    &-popover {
+      background-image: image-url('icons/contact.svg');
+      background-size: contain;
+      cursor: pointer;
+      width: rem-calc(36); height: rem-calc(36);
+
+      display: inline-block;
+
+      &:hover { opacity: .75; }
+    }
+  }
+
   &--social {
     &:before {
       background: transparent center bottom no-repeat;
