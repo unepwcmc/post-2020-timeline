@@ -7,12 +7,12 @@ import Filters from './components/filters/Filters.vue'
 import Modal from './components/modal/Modal.vue'
 import ModalTrigger from './components/modal/ModalTrigger.vue'
 import ModalWrapper from './components/modal/ModalWrapper.vue'
+import Popup from './components/notifications/Popup.vue'
 import RevealWrapper from './components/reveal/RevealWrapper.vue'
 import RevealTarget from './components/reveal/RevealTarget.vue'
 import RevealTrigger from './components/reveal/RevealTrigger.vue'
 import Timeline from './components/timeline/Timeline.vue'
 import ScrollNav from './components/scroll_nav/ScrollNav.vue'
-import Popover from './components/notifications/Popover.vue'
 
 import ScrollMagic from 'scrollmagic'
 
@@ -24,6 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { BackToTop, Filters, Modal, ModalTrigger, ModalWrapper, RevealWrapper, RevealTarget, RevealTrigger, Timeline, ScrollNav, Popover }
+    components: { BackToTop, Filters, Modal, ModalTrigger, ModalWrapper, Popup, RevealWrapper, RevealTarget, RevealTrigger, Timeline, ScrollNav }
   })
 })
