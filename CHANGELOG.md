@@ -1,3 +1,10 @@
+### 0.0.2
+
+**Contact:**
+
+* Added contact link.
+
+
 ### 0.0.1
 
 **Updated csv import and data:**

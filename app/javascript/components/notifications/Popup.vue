@@ -1,10 +1,11 @@
 <template>
   <div class="popup">
     <div class="popup__trigger icon--contact-popup" @click="togglePopup">
-      Contact <span class="icon--social icon--social-email"></span>
+      <span class="icon--social icon--social-email"></span>
     </div>
+    <div class="popup__box__arrow_up" v-show="isActive"></div>
     <div class="popup__box" v-show="isActive">
-      Popup content
+      Contact us at post-2020@unep-wcmc.org
     </div>
   </div>
 </template>
