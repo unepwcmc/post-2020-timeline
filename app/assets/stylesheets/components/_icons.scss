@@ -28,6 +28,18 @@
     width: rem-calc(29); height: rem-calc(17);
   }
 
+
+  &--contact {
+    background-image: image-url('icons/contact.svg');
+    background-size: contain;
+    cursor: pointer;
+    width: rem-calc(36); height: rem-calc(36);
+
+    display: inline-block;
+
+    &:hover { opacity: .75; }
+}
+
 //--------------------------------------------------
 // social
 //--------------------------------------------------

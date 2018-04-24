@@ -1,7 +1,7 @@
 <template>
   <div class="popup">
     <div class="popup__trigger icon--contact-popup" @click="togglePopup">
-      <span class="icon--social icon--social-email"></span>
+      <span class="icon--social icon--contact"></span>
     </div>
     <div class="popup__box__arrow_up" v-show="isActive"></div>
     <div class="popup__box" v-show="isActive">
