@@ -7,7 +7,6 @@ import Filters from './components/filters/Filters.vue'
 import Modal from './components/modal/Modal.vue'
 import ModalTrigger from './components/modal/ModalTrigger.vue'
 import ModalWrapper from './components/modal/ModalWrapper.vue'
-import Popup from './components/notifications/Popup.vue'
 import RevealWrapper from './components/reveal/RevealWrapper.vue'
 import RevealTarget from './components/reveal/RevealTarget.vue'
 import RevealTrigger from './components/reveal/RevealTrigger.vue'
@@ -24,6 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { BackToTop, Filters, Modal, ModalTrigger, ModalWrapper, Popup, RevealWrapper, RevealTarget, RevealTrigger, Timeline, ScrollNav }
+    components: { BackToTop, Filters, Modal, ModalTrigger, ModalWrapper, RevealWrapper, RevealTarget, RevealTrigger, Timeline, ScrollNav }
   })
 })

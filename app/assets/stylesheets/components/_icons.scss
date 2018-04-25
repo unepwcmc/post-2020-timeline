@@ -38,6 +38,13 @@
     display: inline-block;
 
     &:hover { opacity: .75; }
+
+    .contact--address {
+      display: none;
+      @include breakpoint($small){
+        display: revert;
+      }
+    }
 }
 
 //--------------------------------------------------
