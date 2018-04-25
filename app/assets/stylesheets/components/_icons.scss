@@ -43,6 +43,15 @@
       display: none;
       @include breakpoint($small){
         display: block;
+        padding-left: rem-calc(40);
+        padding-right: rem-calc(200);
+        padding-top: rem-calc(10);
+
+        a {
+          text-decoration: none;
+          color: $black;
+        }
+
       }
     }
 }
