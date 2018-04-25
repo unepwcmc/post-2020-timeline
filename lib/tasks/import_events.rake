@@ -26,7 +26,7 @@ namespace :import do
       relevance: csv_headers[7],
       outputs: csv_headers[8],
       categories: csv_headers[9],
-      cbd_relation: csv_headers[11].chomp
+      cbd_relation: csv_headers[10].chomp
     }
 
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
