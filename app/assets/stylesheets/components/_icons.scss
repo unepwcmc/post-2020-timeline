@@ -42,7 +42,7 @@
     .contact--address {
       display: none;
       @include breakpoint($small){
-        display: revert;
+        display: block;
       }
     }
 }
