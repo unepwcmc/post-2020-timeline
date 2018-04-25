@@ -30,4 +30,21 @@
       }
     }
   }
+
+  &__contact {
+    // add some padding for mobile
+    color: $black;
+    text-decoration: none;
+        
+    @include breakpoint($small){
+      // update the padding so that it sits closer to the social icons
+      // you shouldnt need to use top padding
+      // you might want to use flexbox to vertically centre the text in line with the icon
+      padding-right: rem-calc(200);
+      padding-top: rem-calc(10);
+      padding-left: rem-calc(40);
+    }
+
+    // add hover state for link - maybe underline the text
+  }
 }
