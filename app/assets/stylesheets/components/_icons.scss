@@ -53,7 +53,7 @@
 
       display: inline-block;
 
-      @include breakpoint($small){ width: rem-calc(32); height: rem-calc(32); }
+      @include breakpoint($medium){ width: rem-calc(32); height: rem-calc(32); }
 
       &:hover { opacity: .75; }
     }
