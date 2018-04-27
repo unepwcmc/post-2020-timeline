@@ -35,11 +35,11 @@
     // add some padding for mobile
     color: $black;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @include breakpoint(medium){
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding-right: rem-calc(30);
       padding-left: rem-calc(80);
     }
