@@ -8,7 +8,7 @@
 
   z-index: 3;
 
-  @include breakpoint($small){
+  @include breakpoint($small) {
     padding: 0 $gutter-medium;
     height: $topbarHeightLarge;
   }
@@ -24,7 +24,7 @@
       margin-left: rem-calc(14);
       width: rem-calc(100); height: rem-calc(38);
 
-      @include breakpoint($small){
+      @include breakpoint($small) {
         margin-left: rem-calc(42);
         width: rem-calc(148); height: rem-calc(58);
       }
@@ -40,7 +40,7 @@
       text-decoration: underline;
     }
 
-    @include breakpoint($small){
+    @include breakpoint($small) {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -48,7 +48,7 @@
       padding-left: rem-calc(80);
     }
 
-    @include breakpoint($medium){
+    @include breakpoint($medium) {
       color: $black;
       text-decoration: none;
       display: flex;
