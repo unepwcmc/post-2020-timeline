@@ -32,8 +32,8 @@
   }
 
   &__contact {
-    // add some padding for mobile
     color: $black;
+    margin-right: rem-calc(10);
     text-decoration: none;
 
     &:hover {
@@ -41,19 +41,27 @@
     }
 
     @include breakpoint($small) {
-      display: flex;
       align-items: center;
       justify-content: center;
-      padding-right: rem-calc(30);
-      padding-left: rem-calc(80);
+
+      display: flex;
     }
 
     @include breakpoint($medium) {
       color: $black;
       text-decoration: none;
-      display: flex;
+
       align-items: center;
+      display: flex;
       justify-content: center;
+    }
+
+    &-icon{
+      display: none;
+
+      @include breakpoint($medium) {
+        display: block;
+      }
     }
   }
 }
