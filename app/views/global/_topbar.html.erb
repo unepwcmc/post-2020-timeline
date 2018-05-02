@@ -9,11 +9,18 @@
     <% end %>
   </div>
 
-  <modal-trigger type="social" class="breakpoint-small-down">
-    <span class="icon--social-modal-trigger"></span>
-  </modal-trigger>
-  
-  <div class="breakpoint-small-up">
-    <%= render 'global/social' %>
+  <div class="links">
+    <a class="topbar__contact" href="mailto:post-2020@unep-wcmc.org?subject=Post 2020 Feedback">
+      <i class="icon--contact"></i>
+      <span class="topbar__contact-text">post-2020@unep-wcmc.org</span>
+    </a>
+
+    <div class="breakpoint-small-up">
+      <%= render 'global/social' %>
+    </div>
+
+    <modal-trigger type="social" class="breakpoint-small-down">
+      <span class="icon--social-modal-trigger"></span>
+    </modal-trigger>
   </div>
 </div>
