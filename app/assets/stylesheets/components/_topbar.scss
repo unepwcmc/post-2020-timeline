@@ -8,7 +8,7 @@
 
   z-index: 3;
 
-  @include breakpoint($small){ 
+  @include breakpoint($small) {
     padding: 0 $gutter-medium;
     height: $topbarHeightLarge;
   }
@@ -16,17 +16,54 @@
   &__logo {
     &-unep-wcmc {
       width: rem-calc(82); height: rem-calc(27);
-      
+
       @include breakpoint($small){ width: rem-calc(152); height: rem-calc(50); }
     }
 
     &-cbd {
       margin-left: rem-calc(14);
       width: rem-calc(100); height: rem-calc(38);
-      
-      @include breakpoint($small){ 
+
+      @include breakpoint($small) {
         margin-left: rem-calc(42);
         width: rem-calc(148); height: rem-calc(58);
+      }
+    }
+  }
+
+  &__contact {
+    color: $black;
+    margin-right: rem-calc(10);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include breakpoint($small) {
+      align-items: center;
+      justify-content: center;
+
+      display: flex;
+    }
+
+    @include breakpoint($medium) {
+      color: $black;
+      text-decoration: none;
+
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-text {
+      display: none;
+
+      @include breakpoint($medium) {
+        font-size: rem-calc(15);
+        padding-left: rem-calc(6);
+
+        display: block;
       }
     }
   }

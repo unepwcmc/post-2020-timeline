@@ -28,6 +28,22 @@
     width: rem-calc(29); height: rem-calc(17);
   }
 
+
+  &--contact {
+    background-image: image-url('icons/contact.svg');
+    background-size: contain;
+    cursor: pointer;
+    width: rem-calc(36); height: rem-calc(36);
+
+    display: inline-block;
+
+    &:hover { opacity: .75; }
+
+    @include breakpoint($small) {
+      width: rem-calc(31); height: rem-calc(31);
+    }
+}
+
 //--------------------------------------------------
 // social
 //--------------------------------------------------
@@ -41,7 +57,7 @@
 
       display: inline-block;
 
-      @include breakpoint($small){ width: rem-calc(32); height: rem-calc(32); }
+      @include breakpoint($medium){ width: rem-calc(32); height: rem-calc(32); }
 
       &:hover { opacity: .75; }
     }
