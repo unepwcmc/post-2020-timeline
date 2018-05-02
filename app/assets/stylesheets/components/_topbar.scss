@@ -56,10 +56,13 @@
       justify-content: center;
     }
 
-    &-icon{
+    &-text {
       display: none;
 
       @include breakpoint($medium) {
+        font-size: rem-calc(15);
+        padding-left: rem-calc(6);
+
         display: block;
       }
     }

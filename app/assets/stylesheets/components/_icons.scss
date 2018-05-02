@@ -38,6 +38,10 @@
     display: inline-block;
 
     &:hover { opacity: .75; }
+
+    @include breakpoint($small) {
+      width: rem-calc(31); height: rem-calc(31);
+    }
 }
 
 //--------------------------------------------------
