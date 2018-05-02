@@ -1,8 +1,9 @@
 ### 0.0.2
 
-**Contact:**
+**Contact link and iframe embedding support:**
 
 * Added contact link.
+* Added support for iframe embedding.
 
 
 ### 0.0.1
