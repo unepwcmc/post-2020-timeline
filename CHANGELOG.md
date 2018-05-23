@@ -1,3 +1,10 @@
+### 0.0.4
+
+**Update csv data:**
+
+* Updated csv with updated events.
+
+
 ### 0.0.3
 
 **Update csv data to remove event:**
