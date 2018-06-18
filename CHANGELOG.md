@@ -1,3 +1,15 @@
+### 0.0.5
+
+**Update csv data and add sentence under the explore box:**
+
+* Updated csv with updated events;
+International Expert Workshop on Biodiversity Mainstreaming in the Sectors of Energy and Mining, Manufacturing and Processing and Infrastructure;
+COP 14 Business and Biodiversity Forum;
+Trondheim Conference on Biodiversity
+
+* Also added a sentence under the explore box; "Developed through support from (Proteus logo) and (UNEP-WCMC logo)".
+
+
 ### 0.0.4
 
 **Update csv data:**
