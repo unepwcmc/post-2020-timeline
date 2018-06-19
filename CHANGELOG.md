@@ -1,6 +1,6 @@
 ### 0.0.5
 
-**Update csv data and add sentence under the explore box:**
+**Update csv data:**
 
 * Updated csv with updated events;
 International Expert Workshop on Biodiversity Mainstreaming in the Sectors of Energy and Mining, Manufacturing and Processing and Infrastructure;
