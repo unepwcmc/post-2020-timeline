@@ -7,9 +7,6 @@ International Expert Workshop on Biodiversity Mainstreaming in the Sectors of En
 COP 14 Business and Biodiversity Forum;
 Trondheim Conference on Biodiversity
 
-* Also added a sentence under the explore box; "Developed through support from (Proteus logo) and (UNEP-WCMC logo)".
-
-
 ### 0.0.4
 
 **Update csv data:**
