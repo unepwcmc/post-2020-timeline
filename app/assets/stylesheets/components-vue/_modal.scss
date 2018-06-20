@@ -29,14 +29,14 @@ $titlePaddingLarge: rem-calc(30);
     padding: rem-calc(40);
     width: 90%;
     max-width: $site-width;
-    
+
     right: 50%;
     left: auto;
-    
+
     transform: translateX(50%);
   }
-  
-  h3 { 
+
+  h3 {
     margin-bottom: 0;
 
     @include breakpoint($small) { width: 90%; }
@@ -56,7 +56,7 @@ $titlePaddingLarge: rem-calc(30);
       padding: rem-calc(44) $titlePaddingLarge;
     }
   }
-  
+
     &__close {
       position: absolute;
       top: $titlePaddingSmall;
@@ -67,7 +67,7 @@ $titlePaddingLarge: rem-calc(30);
         right: $titlePaddingLarge;
       }
     }
-  
+
   &__content {
     @include breakpoint($small) { width: 90%; }
     @include breakpoint($medium) { width: 75%; }
@@ -77,13 +77,13 @@ $titlePaddingLarge: rem-calc(30);
       @include breakpoint($small) { display: flex; }
     }
 
-      &__icon--calendar { 
+      &__icon--calendar {
         margin: rem-calc(0 10 12 0);
 
         @include breakpoint($small) { margin: rem-calc(0 12 0 0); }
       }
 
-    &__icon--pin { 
+    &__icon--pin {
       margin-right: rem-calc(10);
 
       @include breakpoint($small) { margin: rem-calc(0 8 0 20); }
@@ -106,12 +106,12 @@ $titlePaddingLarge: rem-calc(30);
 
     transform: translateX(50%);
 
-    @include breakpoint($small) { 
+    @include breakpoint($small) {
       padding: $gutter-medium;
-      width: 90%; 
+      width: 90%;
     }
 
-    @include breakpoint($medium) { 
+    @include breakpoint($medium) {
       padding: rem-calc(36);
       width: 85%;
     }
@@ -119,7 +119,7 @@ $titlePaddingLarge: rem-calc(30);
     &__content {
       background-color: rgba($grey-dark, 0.45);
       border: solid rem-calc(2) white;
-      padding: rem-calc(42) calc(#{$gutter-small} * 2) rem-calc(32) calc(#{$gutter-small} * 2); 
+      padding: rem-calc(42) calc(#{$gutter-small} * 2) rem-calc(32) calc(#{$gutter-small} * 2);
 
       @include breakpoint($small) { padding: rem-calc(82) calc(#{$gutter-medium} * 2) rem-calc(72) calc(#{$gutter-medium} * 2);  }
       @include breakpoint($medium) { padding: rem-calc(132) 20% rem-calc(122 80); }
@@ -127,22 +127,38 @@ $titlePaddingLarge: rem-calc(30);
 
       &__logo {
         margin-bottom: rem-calc(18);
-        
+
         @include breakpoint($small){ margin-bottom: rem-calc(32); }
 
         &-unep-wcmc {
           width: rem-calc(82); height: rem-calc(27);
-      
+
           @include breakpoint($small){ width: rem-calc(152); height: rem-calc(50); }
+        }
+
+        &-unep-wcmc-bottom {
+          width: rem-calc(78); height: rem-calc(23);
+
+          @include breakpoint($small){ width: rem-calc(135); height: rem-calc(33); }
         }
 
         &-cbd {
           margin-left: rem-calc(14);
           width: rem-calc(100); height: rem-calc(38);
-          
-          @include breakpoint($small){ 
+
+          @include breakpoint($small){
             margin-left: rem-calc(42);
             width: rem-calc(148); height: rem-calc(58);
+          }
+        }
+
+        &-proteus {
+          margin-right: rem-calc(3);
+          width: rem-calc(75); height: rem-calc(20);
+
+          @include breakpoint($small){
+            margin-right: rem-calc(3);
+            width: rem-calc(128); height: rem-calc(38);
           }
         }
       }
@@ -153,9 +169,21 @@ $titlePaddingLarge: rem-calc(30);
         margin: 0 0 rem-calc(28) 0;
 
         @include breakpoint($small){
-          font-size: rem-calc(18); 
+          font-size: rem-calc(18);
           line-height: 1.6;
           margin-bottom: rem-calc(44);
+        }
+      }
+
+      &__powered-by {
+        position: relative;
+        top: rem-calc(25);
+        line-height: 1.7;
+
+        @include breakpoint($small){
+          position: relative;
+          top: rem-calc(35);
+          line-height: 1.6;
         }
       }
 
@@ -213,29 +241,29 @@ $titlePaddingLarge: rem-calc(30);
       &:hover { opacity: 0.8; }
     }
 
-    .icon--social-facebook { 
-      @extend .icon--social-facebook-white; 
+    .icon--social-facebook {
+      @extend .icon--social-facebook-white;
       background-color: $facebook;
 
       &:after { content: 'Facebook'; }
     }
 
-    .icon--social-email { 
-      @extend .icon--social-email-white; 
+    .icon--social-email {
+      @extend .icon--social-email-white;
       background-color: $grey;
 
       &:after { content: 'Email'; }
     }
 
-    .icon--social-twitter { 
-      @extend .icon--social-twitter-white; 
+    .icon--social-twitter {
+      @extend .icon--social-twitter-white;
       background-color: $twitter;
 
       &:after { content: 'Twitter'; }
     }
 
-    .icon--social-linkedin { 
-      @extend .icon--social-linkedin-white; 
+    .icon--social-linkedin {
+      @extend .icon--social-linkedin-white;
       background-color: $linkedin;
 
       &:after { content: 'LinkedIn'; }

@@ -1,3 +1,10 @@
+### 0.0.6
+
+**Add powered by text and logos**
+
+* Add powered by text at the bottom of the modal, along with Proteus and UNEP-WCMC logos.
+
+
 ### 0.0.5
 
 **Update csv data:**

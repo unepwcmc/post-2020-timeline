@@ -8,6 +8,8 @@
         <slot name="hero"></slot>
 
         <button class="button button--secondary" @click="closeModal">Explore</button>
+
+        <slot name="powered"></slot>
       </div>
     </div>
 

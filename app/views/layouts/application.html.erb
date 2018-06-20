@@ -6,13 +6,17 @@
 
   <body>
     <div id="v-app" v-cloak>
-      
+
       <modal-wrapper></modal-wrapper>
       <modal>
         <div slot="hero">
-          <%= render 'global/hero' %>          
+          <%= render 'global/hero' %>
         </div>
-        
+
+        <div slot="powered">
+          <%= render 'global/powered' %>
+        </div>
+
         <div slot="social">
           <p>Share using:</p>
           <%= render 'global/social' %>
@@ -20,7 +24,7 @@
       </modal>
 
       <back-to-top></back-to-top>
-      
+
       <reveal-wrapper></reveal-wrapper>
       <reveal-target>
         <filters :filters="<%= @filters %>"></filters>
@@ -31,7 +35,7 @@
 
         <%= render 'global/control-bar' %>
       </header>
-      
+
       <%= yield %>
 
     </div>
