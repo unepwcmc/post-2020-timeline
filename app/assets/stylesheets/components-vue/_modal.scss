@@ -137,9 +137,9 @@ $titlePaddingLarge: rem-calc(30);
         }
 
         &-unep-wcmc-bottom {
-          width: rem-calc(75); height: rem-calc(20);
+          width: rem-calc(78); height: rem-calc(23);
 
-          @include breakpoint($small){ width: rem-calc(145); height: rem-calc(43); }
+          @include breakpoint($small){ width: rem-calc(135); height: rem-calc(33); }
         }
 
         &-cbd {
@@ -153,12 +153,12 @@ $titlePaddingLarge: rem-calc(30);
         }
 
         &-proteus {
-          margin-right: rem-calc(14);
+          margin-right: rem-calc(3);
           width: rem-calc(75); height: rem-calc(20);
 
           @include breakpoint($small){
-            margin-right: rem-calc(35);
-            width: rem-calc(141); height: rem-calc(51);
+            margin-right: rem-calc(3);
+            width: rem-calc(128); height: rem-calc(38);
           }
         }
       }
@@ -186,6 +186,7 @@ $titlePaddingLarge: rem-calc(30);
           top: rem-calc(120);
           font-size: rem-calc(18);
           line-height: 1.6;
+          margin-left: rem-calc(200);
         }
       }
 
