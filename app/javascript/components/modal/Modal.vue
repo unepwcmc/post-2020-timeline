@@ -9,11 +9,7 @@
 
         <button class="button button--secondary" @click="closeModal">Explore</button>
 
-        <div class="modal--hero__powered-by">
-          <p>Developed through support from:</p>
-          <img class='modal--hero__logo modal--hero__logo-proteus' src='/assets/logos/logo-proteus.svg'></img>
-          <img class='modal--hero__logo modal--hero__logo-unep-wcmc-bottom' src='https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg'></img>
-        </div>
+        <slot name="powered"></slot>
       </div>
     </div>
 
