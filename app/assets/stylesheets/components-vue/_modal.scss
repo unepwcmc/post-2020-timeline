@@ -178,15 +178,12 @@ $titlePaddingLarge: rem-calc(30);
       &__powered-by {
         position: relative;
         top: rem-calc(25);
-        font-size: rem-calc(15);
         line-height: 1.7;
 
         @include breakpoint($small){
           position: relative;
-          top: rem-calc(120);
-          font-size: rem-calc(18);
+          top: rem-calc(35);
           line-height: 1.6;
-          margin-left: rem-calc(200);
         }
       }
 
