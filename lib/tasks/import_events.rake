@@ -37,7 +37,7 @@ namespace :import do
       event_hash.keys.each do |key|
         next if key == :organisers || key == :categories
         if [:outputs, :summary, :category, :cbd_relation, :relevance].include? key
-          event_row_hash[key] = csv_event_row[event_hash[key]]&.strip || ""
+          event_row_hash[key] = csv_event_row[event_hash[key]]&.strip&.gsub(/\u00a0/, " ") || ""
         elsif [:start_date, :end_date].include? key
           date = Date.parse(csv_event_row[event_hash[key]]&.strip) rescue nil
           (skip_row = true) && break unless date
