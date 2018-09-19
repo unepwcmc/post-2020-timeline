@@ -1,3 +1,12 @@
+### 0.0.8
+
+**Update csv data**
+
+* Updated csv with updated events;
+Agreement on the Conservation of African-Eurasian Migratory Waterbirds MOP7,
+Trondheim Conference on Biodiversity, Sustainable Development Impact Summit 2018
+
+
 ### 0.0.7
 
 **Update csv data and remove nbsp from csv**
@@ -5,6 +14,7 @@
 * Updated csv with updated events;
 World Environment Day 2018, World Oceans Day 2018, 5th European Congress of Conservation Biology, International Expert Workshop on Biodiversity Mainstreaming in the Sectors of Energy and Mining, Manufacturing and Processing and Infrastructure, 5th International Marine Conservation Congress , CBD SBSTTA-22, 4th Blue Planet Symposium, CBD SBI-2, Committee on Fisheries (COFI 33), High-level Political Forum on Sustainable Development 2018, Committee on Forests (COFO 24), Post-2020 Stakeholder Workshop , IUCN World Conservation Congress, CMS COP13, Seminar on Transformational Change for the Biodiversity Agenda, Sustainable Development Impact Sumit 2018, African Ministerial Conference on the Environment, Deadline for initial views on the scope and content of the post-2020 global biodiversity framework.
 * Automatically remove nbsp from the csv data when importing events.
+
 
 ### 0.0.6
 
@@ -21,6 +31,7 @@ World Environment Day 2018, World Oceans Day 2018, 5th European Congress of Cons
 International Expert Workshop on Biodiversity Mainstreaming in the Sectors of Energy and Mining, Manufacturing and Processing and Infrastructure;
 COP 14 Business and Biodiversity Forum;
 Trondheim Conference on Biodiversity
+
 
 ### 0.0.4
 
