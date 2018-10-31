@@ -1,3 +1,10 @@
+### 0.0.9
+
+**Update csv data**
+
+* Updated csv with updated events;
+G7 Summit 2019, III Latin American and Caribbean Congress of Protected Areas, IUCN World Conservation Congress, World Ocean Summit 2019, African Protected Areas Congress 2019
+
 ### 0.0.8
 
 **Update csv data**
