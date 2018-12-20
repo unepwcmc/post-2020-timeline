@@ -29,6 +29,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Support for iCalendar files
 gem 'icalendar', '~> 2.4', '>= 2.4.1'
+
+gem 'sprockets', '>= 3.7.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
