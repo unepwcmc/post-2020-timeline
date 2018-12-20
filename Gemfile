@@ -29,7 +29,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Support for iCalendar files
 gem 'icalendar', '~> 2.4', '>= 2.4.1'
-
+# Force sprockets gem to 3.7.2 or above due to CVE-2018-3760. Read more: https://nvd.nist.gov/vuln/detail/CVE-2018-3760
 gem 'sprockets', '>= 3.7.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
