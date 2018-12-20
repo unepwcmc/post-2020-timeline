@@ -1,3 +1,11 @@
+### 0.0.11
+
+**Update sprockets gem**
+
+* Updated sprockets gem;
+
+Upgrade sprockets to version 3.7.2 or later. Due to CVE-2018-3760.
+
 ### 0.0.10
 
 **Update csv data**
