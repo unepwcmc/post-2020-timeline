@@ -1,3 +1,11 @@
+### 0.0.12
+
+**Fix mistakes in the csv**
+
+* Fixed some mistakes in the csv;
+
+The groupings are now consistent.
+
 ### 0.0.11
 
 **Update sprockets gem**
