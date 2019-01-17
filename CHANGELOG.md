@@ -4,7 +4,7 @@
 
 * Updated csv with updated events;
 
-World Economic Forum Annual Meeting 2019, Intergovernmental Conference on Marine Biodiversity of Areas Beyond National Jurisdiction, Intergovernmental Conference on Marine Biodiversity of Areas Beyond National Jurisdiction
+World Economic Forum Annual Meeting 2019, Second Session of the Intergovernmental Conference on Marine Biodiversity of Areas Beyond National Jurisdiction, Third Session of the Intergovernmental Conference on Marine Biodiversity of Areas Beyond National Jurisdiction
 
 ### 0.0.11
 
