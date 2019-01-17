@@ -1,10 +1,10 @@
 ### 0.0.12
 
-**Fix mistakes in the csv**
+**Update csv data**
 
-* Fixed some mistakes in the csv;
+* Updated csv with updated events;
 
-The groupings are now consistent.
+World Economic Forum Annual Meeting 2019, Intergovernmental Conference on Marine Biodiversity of Areas Beyond National Jurisdiction, Intergovernmental Conference on Marine Biodiversity of Areas Beyond National Jurisdiction
 
 ### 0.0.11
 
