@@ -1,8 +1,8 @@
 set :stage, :staging
-set :branch, "master"
+set :branch, "supported-staging"
 
 
-server "web-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
+server "web-supported-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
 
 set :application, "post-2020-timeline"
 set :server_name, "post-2020-timeline"
