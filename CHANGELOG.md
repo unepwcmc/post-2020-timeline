@@ -1,3 +1,12 @@
+### 0.0.17
+
+**Update csv data**
+
+* Updated csv with updated events;
+
+IPBES-7 Plenary, G7 Environment Meeting, International Day for Biological Diversity 2019, G7 Summit 2019, UN Climate Action Summit
+
+
 ### 0.0.16
 
 **Update csv data**
