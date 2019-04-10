@@ -1,3 +1,11 @@
+### 0.0.18
+
+**Update csv data**
+
+* Updated csv with updated events;
+
+Second Session of the Intergovernmental Conference on Marine Biodiversity of Areas Beyond National Jurisdiction, Regional Consultation Workshop on the Post-2020 Global Biodiversity Framework for Africa, Expert workshop to develop recommendations for possible gender elements in the post-2020 global biodiversity framework
+
 ### 0.0.17
 
 **Update csv data**

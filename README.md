@@ -12,5 +12,5 @@
 ## Importing data
 
 - Import event rake task
-- `rake import:events['lib/data/seed/post-2020-timeline-2019-04-04.csv']`
+- `rake import:events['lib/data/seed/post-2020-timeline-2019-04-10.csv']`
 - Check logs to see any errors
