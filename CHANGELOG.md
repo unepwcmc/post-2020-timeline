@@ -1,3 +1,9 @@
+### 0.0.24
+
+**Update csv data**
+
+Open-ended online discussions on the Post-2020 Implementation Plan for the Cartagena Protocol on Biosafety, Consultation Workshop of Biodiversity-related Conventions on the Post-2020 Global Biodiversity Framework
+
 ### 0.0.23
 
 **Update csv data**
