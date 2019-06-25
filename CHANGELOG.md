@@ -1,3 +1,9 @@
+### 0.0.25
+
+**Update csv data**
+
+CITES COP18, Ad Hoc Technical Expert Group on Digital Sequence information on Genetic Resources, Bonn Climate Change Conference (SBSTA-50/SBI-50)
+
 ### 0.0.24
 
 **Update csv data**
