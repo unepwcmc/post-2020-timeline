@@ -2,9 +2,7 @@
 
 **Update csv data**
 
-United Nations University workshop on landscapes and seascapes approaches, Thematic consultation on area-based measures for conservation of species and habitats (TBC), Thematic consultation on ecosystem restoration (TBC), Liaison Group on the Cartagena Protocol on Biosafety, Thematic consultation on the marine environment (TBC), Informal briefing by the Co-Chairs of the OEWG (TBC),
-Second meeting of the Open-ended Working Group on the Post-2020 Global Biodiversity Framework (TBC), Consultation on capacity building (TBC),
-Compliance Committee under the Nagoya Protocol (TBC), Third meeting of the Open-ended Working Group on the Post-2020 Global Biodiversity Framework
+United Nations University workshop on landscapes and seascapes approaches, Thematic consultation on area-based measures for conservation of species and habitats (TBC), Thematic consultation on ecosystem restoration (TBC), Liaison Group on the Cartagena Protocol on Biosafety, Thematic consultation on the marine environment (TBC), Informal briefing by the Co-Chairs of the OEWG (TBC), Second meeting of the Open-ended Working Group on the Post-2020 Global Biodiversity Framework (TBC), Consultation on capacity building (TBC), Compliance Committee under the Nagoya Protocol (TBC), Third meeting of the Open-ended Working Group on the Post-2020 Global Biodiversity Framework
 
 ### 0.0.26
 
