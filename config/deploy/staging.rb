@@ -1,5 +1,5 @@
 set :stage, :staging
-set :branch, "supported-staging"
+set :branch, "update/csv_update_20190716"
 
 
 server "web-supported-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
