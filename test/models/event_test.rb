@@ -1,11 +1,11 @@
 class EventTest < ActiveSupport::TestCase
 
-  test"should not save event without title" do
+  test "should not save event without title" do
     event = Event.new
     assert_not event.save
   end
 
-  test"event timeline json should be correct" do
+  test "event timeline json should be correct" do
     event = FactoryBot.create(:event)
     organiser1 = FactoryBot.create(:organiser, name:"CBD Secretariat")
     category1 = FactoryBot.create(:category, name:"Intergovernmental processes")
@@ -48,7 +48,7 @@ class EventTest < ActiveSupport::TestCase
     assert_equal expected_json, json
   end
 
-  test"filters json should be correct" do
+  test "filters json should be correct" do
     organiser1 = FactoryBot.create(:organiser, name:"CBD Secretariat")
     organiser2 = FactoryBot.create(:organiser, name:"UNEP-WCMC")
     organiser3 = FactoryBot.create(:organiser, name:"United Nations")
@@ -93,7 +93,7 @@ class EventTest < ActiveSupport::TestCase
 
   end
 
-  test"years json should be correct" do
+  test "years json should be correct" do
     event1 = FactoryBot.create(:event, start_date: Date.new(2017, 1, 1), end_date: Date.new(2018, 1, 1))
     event2 = FactoryBot.create(:event, start_date: Date.new(2019, 1, 1), end_date: Date.new(2020, 1, 1))
 

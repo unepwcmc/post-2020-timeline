@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "valid user should be correct" do
+    user = FactoryBot.create(:user)
+    assert user.valid?
+  end
 end
