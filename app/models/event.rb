@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   has_and_belongs_to_many :categories, class_name: 'Category', join_table: 'event_categories'
   validates :title, presence: true
 
+  accepts_nested_attributes_for :organisers, :categories
+
   def self.filters_to_json
     events = Event.all.order(id: :asc)
     unique_categories = Category.pluck(:name).compact.uniq.sort

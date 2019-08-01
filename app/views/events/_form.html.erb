@@ -56,6 +56,18 @@
     <%= form.check_box :is_provisional_date, id: :event_is_provisional_date %>
   </div>
 
+  <%= form.fields_for :categories do |category_form| %>
+    <p>
+      Category: <%= category_form.select :name, Category.pluck(:name) %>
+    </p>
+  <% end %>
+
+  <%= form.fields_for :organisers do |organiser_form| %>
+    <p>
+      Organiser: <%= organiser_form.select :name, Organiser.pluck(:name) %>
+    </p>  
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
