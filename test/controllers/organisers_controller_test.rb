@@ -2,7 +2,7 @@ require 'test_helper'
 
 class OrganisersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @organiser = FactoryBoy.create(:organiser)
+    @organiser = FactoryBot.create(:organiser)
   end
 
   test "should get index" do

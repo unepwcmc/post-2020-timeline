@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @category = categories(:one)
+    @category = FactoryBot.create(:category)
   end
 
   test "should get index" do
