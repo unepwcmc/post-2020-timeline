@@ -1,4 +1,5 @@
 class OrganisersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_organiser, only: [:show, :edit, :update, :destroy]
 
   # GET /organisers
