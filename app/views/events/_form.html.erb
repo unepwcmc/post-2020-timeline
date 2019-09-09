@@ -46,10 +46,13 @@
     <%= form.text_field :outputs, id: :event_outputs %>
   </div>
 
-  <div class="field">
-    <%= form.label :cbd_relation %>
-    <%= form.text_field :cbd_relation, id: :event_cbd_relation %>
-  </div>
+  <p>
+    CDB relation:
+    <%= form.select :cbd_relation,
+    Event.pluck(:cbd_relation).compact.uniq.sort,
+    {}
+    %>
+  </p>
 
   <div class="field">
     <%= form.label :is_provisional_date %>
