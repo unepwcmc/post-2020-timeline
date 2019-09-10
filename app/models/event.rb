@@ -10,7 +10,7 @@ class Event < ApplicationRecord
     events = Event.all.order(id: :asc)
     unique_categories = Category.pluck(:name).compact.uniq.sort
     unique_organisers = Organiser.pluck(:name).compact.uniq.sort
-    unique_cbd_relations = events.pluck(:cbd_relation).compact.uniq.sort.select {|i| !i.blank? }
+    unique_cbd_relations = events.pluck(:cbd_relation).compact.uniq.sort.select {|i| !(i.blank? || i=="N/A") }
     unique_cbd_relations.insert(0, "Show all")
     unique_cbd_relations.delete("Other relevance")
 
