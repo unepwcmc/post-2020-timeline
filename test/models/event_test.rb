@@ -6,7 +6,7 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "event timeline json should be correct" do
-    event = FactoryBot.create(:event)
+    event = FactoryBot.create(:event, title: "Event 1")
     organiser1 = FactoryBot.create(:organiser, name:"CBD Secretariat")
     category1 = FactoryBot.create(:category, name:"Intergovernmental processes")
     event.organisers << organiser1
@@ -56,16 +56,19 @@ class EventTest < ActiveSupport::TestCase
     category2 = FactoryBot.create(:category, name:"Marine-focus")
     category3 = FactoryBot.create(:category, name:"Communications")
     category4 = FactoryBot.create(:category, name:"Area-based conservation")
-    event1 = FactoryBot.create(:event, categories: [category1])
+    event1 = FactoryBot.create(:event, title: "Event 2", categories: [category1])
     event2 = FactoryBot.create(:event,
+                               title: "Event 3",
                                organisers: [organiser1],
                                categories: [category2],
                                cbd_relation:"Other relevance")
     event3 = FactoryBot.create(:event,
+                               title: "Event 4",
                                organisers: [organiser2],
                                categories: [category3],
                                cbd_relation:"Direct contribution")
     event4 = FactoryBot.create(:event,
+                               title: "Event 5",
                                organisers: [organiser3],
                                categories: [category4],
                                cbd_relation:"Part of the process")
@@ -94,8 +97,8 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "years json should be correct" do
-    event1 = FactoryBot.create(:event, start_date: Date.new(2017, 1, 1), end_date: Date.new(2018, 1, 1), title: "Event1")
-    event2 = FactoryBot.create(:event, start_date: Date.new(2019, 1, 1), end_date: Date.new(2020, 1, 1), title: "Event2")
+    event1 = FactoryBot.create(:event, title: "Event 6", start_date: Date.new(2017, 1, 1), end_date: Date.new(2018, 1, 1))
+    event2 = FactoryBot.create(:event, title: "Event 7", start_date: Date.new(2019, 1, 1), end_date: Date.new(2020, 1, 1))
 
     expected_json = [2017,2018,2019,2020].to_json
     json = Event.years_to_json
