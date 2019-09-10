@@ -1,3 +1,9 @@
+### 0.0.33
+
+**Update csv data**
+
+Thematic workshop on ecosystem restoration for the post-2020 global biodiversity framework, Thematic workshop on marine and coastal biodiversity for the post-2020 global biodiversity framework, United Nations University workshop on landscapes and seascapes approaches
+
 ### 0.0.32
 
 **Update csv data**
