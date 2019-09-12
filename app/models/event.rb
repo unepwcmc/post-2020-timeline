@@ -117,7 +117,7 @@ class Event < ApplicationRecord
     return true if start_date.blank? || end_date.blank?
 
     if start_date > end_date
-      errors.add(:start_date, "must be before the end date")
+      errors.add(:start_date, "must be before or equal to the end date")
     end
   end
 
