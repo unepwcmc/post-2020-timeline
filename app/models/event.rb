@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   has_and_belongs_to_many :categories, class_name: 'Category', join_table: 'event_categories'
   validates :title, uniqueness: true, presence: true
   validate :end_date_after_start_date
+  validates :cbd_relation, presence: true
 
   accepts_nested_attributes_for :organisers, :categories
 
