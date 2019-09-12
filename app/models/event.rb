@@ -4,6 +4,9 @@ class Event < ApplicationRecord
   validates :title, uniqueness: true, presence: true
   validate :end_date_after_start_date
   validates :cbd_relation, presence: true
+  validates :location, presence: true
+  validates :summary, presence: true
+  validates :relevance, presence: true
 
   accepts_nested_attributes_for :organisers, :categories
 
