@@ -5,6 +5,22 @@ class EventTest < ActiveSupport::TestCase
     assert_not event.save
   end
 
+  test "title has to be unique" do
+    event1 = FactoryBot.create(:event, title: "Event 1")
+    event2 = FactoryBot.build(:event, title: "Event 1")
+    assert_not event2.valid?
+  end
+
+  test "title cannot be blank" do
+    event = FactoryBot.build(:event, title: "  ")
+    assert_not event.valid?
+  end
+
+  test "title cannot be empty" do
+    event = FactoryBot.build(:event, title: "")
+    assert_not event.valid?
+  end
+
   test "event timeline json should be correct" do
     event = FactoryBot.create(:event, title: "Event 1")
     organiser1 = FactoryBot.create(:organiser, name:"CBD Secretariat")
