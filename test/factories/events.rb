@@ -6,6 +6,7 @@ FactoryBot.define do
     end_date Date.new(2018, 1, 1)
     location "London, UK"
     outputs "http://www.unep-wcmc.org"
+    cbd_relation "N/A"
 
     factory :event_no_end_date do
       end_date nil
