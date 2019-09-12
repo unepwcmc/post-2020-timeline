@@ -21,6 +21,13 @@ class EventTest < ActiveSupport::TestCase
     assert_not event.valid?
   end
 
+  test "start date must be before or equal to end date" do
+    event1 = FactoryBot.build(:event, title: "Event 1", start_date: Date.new(2017, 1, 1), end_date: Date.new(2017, 1, 1))
+    event2 = FactoryBot.build(:event, title: "Event 2", start_date: Date.new(2019, 1, 1), end_date: Date.new(2018, 1, 1))
+    assert event1.valid?
+    assert_not event2.valid?
+  end
+
   test "event timeline json should be correct" do
     event = FactoryBot.create(:event, title: "Event 1")
     organiser1 = FactoryBot.create(:organiser, name:"CBD Secretariat")

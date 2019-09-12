@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   has_and_belongs_to_many :organisers, class_name: 'Organiser', join_table: 'event_organisers'
   has_and_belongs_to_many :categories, class_name: 'Category', join_table: 'event_categories'
   validates :title, uniqueness: true, presence: true
+  validate :end_date_after_start_date
 
   accepts_nested_attributes_for :organisers, :categories
 
@@ -106,6 +107,15 @@ class Event < ApplicationRecord
   end
 
   private
+
+  def end_date_after_start_date
+    # if either start_date or end_date are blank we return true as we cannot compare the two
+    return true if start_date.blank? || end_date.blank?
+
+    if start_date > end_date
+      errors.add(:start_date, "must be before the end date")
+    end
+  end
 
   def self.post_2020_website
     "http://www.google.com"
