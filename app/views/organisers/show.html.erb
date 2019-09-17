@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
+<main class="container page-padding--bottom">
+  <p>
+    <strong>Name:</strong>
+    <%= @organiser.name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @organiser.name %>
-</p>
-
-<%= link_to 'Edit', edit_organiser_path(@organiser) %> |
-<%= link_to 'Back', organisers_path %>
+  <%= link_to 'Edit', edit_organiser_path(@organiser) %> |
+  <%= link_to 'Back', organisers_path %>
+</main>

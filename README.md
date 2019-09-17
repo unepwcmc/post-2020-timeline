@@ -8,6 +8,8 @@
 - `bundle exec rake db:migrate`
 - Import data using command below
 - `rails s`
+- In another tab
+- `./bin/webpack-dev-server`
 
 ## Importing data
 
