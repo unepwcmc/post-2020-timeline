@@ -13,6 +13,7 @@
     </div>
 
     <%= javascript_pack_tag 'application' %>
+    <%= javascript_include_tag 'rails-ujs' %>
 
     <% if Rails.env == 'production' %>
       <%= render 'shared/google_analytics' %>
