@@ -1,3 +1,10 @@
+### 0.0.34
+
+**Update csv data**
+
+CBD COP15, UN Ocean Conference 2020, Thematic workshop on area-based conservation measures for the post-2020 global biodiversity framework, Global thematic dialogue for indigenous peoples and local communities on the post-2020 global biodiversity framework, Cartagena Protocol on Biosafety COPMOP10, Nagoya Protocol on Access and Benefit-sharing COPMOP4
+
+
 ### 0.0.33
 
 **Update csv data**
