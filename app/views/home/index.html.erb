@@ -1,3 +1,32 @@
+<modal-wrapper></modal-wrapper>
+<modal>
+  <div slot="hero">
+    <%= render 'global/hero' %>
+  </div>
+
+  <div slot="powered">
+    <%= render 'global/powered' %>
+  </div>
+
+  <div slot="social">
+    <p>Share using:</p>
+    <%= render 'global/social' %>
+  </div>
+</modal>
+
+<back-to-top></back-to-top>
+
+<reveal-wrapper></reveal-wrapper>
+<reveal-target>
+  <filters :filters="<%= @filters %>"></filters>
+</reveal-target>
+
+<header id="v-header" class="header">
+  <%= render 'global/topbar' %>
+
+  <%= render 'global/control-bar' %>
+</header>
+
 <div class="container">
   <timeline :timeline="<%= @timeline %>"></timeline>
 </div>

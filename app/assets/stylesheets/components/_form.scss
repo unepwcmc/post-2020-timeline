@@ -1,0 +1,30 @@
+select, 
+textarea,
+input[type=text] {
+  font-size: 12px;
+}
+
+textarea,
+input[type=text] {
+  width: 100%; max-width: rem-calc(400);
+}
+
+.field {
+  margin-bottom: rem-calc(20);
+
+  label {
+    margin-bottom: rem-calc(10);
+    display: block;
+  }
+
+  &--inline {
+    label {
+      display: inline-block;
+      margin-right: rem-calc(10);
+    }
+  }
+}
+
+.actions {
+  margin-bottom: rem-calc(20);
+}

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<main class="container page-padding--bottom">
+
+  <%= render "shared/menu" %>
+
+  <h1>Organisers</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @organisers.each do |organiser| %>
+        <tr>
+          <td><%= organiser.name %></td>
+          <td><%= link_to 'Show', organiser %></td>
+          <td><%= link_to 'Edit', edit_organiser_path(organiser) %></td>
+          <td><%= link_to 'Destroy', organiser, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Organiser', new_organiser_path %>
+</main>
