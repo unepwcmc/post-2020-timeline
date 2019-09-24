@@ -1,3 +1,9 @@
+### 0.0.35
+
+**Add basic functionality to directly edit content**
+
+Added the very basic functionality to allow direct editing of events, organisers and categories through the website and some fixes. Fix date ordering. Fix event order to be chronological.
+
 ### 0.0.34
 
 **Update csv data**
