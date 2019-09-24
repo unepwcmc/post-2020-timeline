@@ -1,0 +1,51 @@
+<main class="container page-padding--bottom">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @event.title %>
+  </p>
+
+  <p>
+    <strong>Start date:</strong>
+    <%= @event.start_date %>
+  </p>
+
+  <p>
+    <strong>End date:</strong>
+    <%= @event.end_date %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= @event.location %>
+  </p>
+
+  <p>
+    <strong>Summary:</strong>
+    <%= @event.summary %>
+  </p>
+
+  <p>
+    <strong>Relevance:</strong>
+    <%= @event.relevance %>
+  </p>
+
+  <p>
+    <strong>Outputs:</strong>
+    <%= @event.outputs %>
+  </p>
+
+  <p>
+    <strong>Cbd relation:</strong>
+    <%= @event.cbd_relation %>
+  </p>
+
+  <p>
+    <strong>Is provisional date:</strong>
+    <%= @event.is_provisional_date %>
+  </p>
+
+  <%= link_to 'Edit', edit_event_path(@event) %> |
+  <%= link_to 'Back', events_path %>
+</main>

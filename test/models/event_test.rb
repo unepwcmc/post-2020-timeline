@@ -5,6 +5,69 @@ class EventTest < ActiveSupport::TestCase
     assert_not event.save
   end
 
+  test "title has to be unique" do
+    event1 = FactoryBot.create(:event, title: "Event 1")
+    event2 = FactoryBot.build(:event, title: "Event 1")
+    assert_not event2.valid?
+  end
+
+  test "title cannot be blank" do
+    event = FactoryBot.build(:event, title: "  ")
+    assert_not event.valid?
+  end
+
+  test "title cannot be empty" do
+    event = FactoryBot.build(:event, title: "")
+    assert_not event.valid?
+  end
+
+  test "location cannot be blank" do
+    event = FactoryBot.build(:event, location: "  ")
+    assert_not event.valid?
+  end
+
+  test "location cannot be empty" do
+    event = FactoryBot.build(:event, location: "")
+    assert_not event.valid?
+  end
+
+  test "relevance cannot be blank" do
+    event = FactoryBot.build(:event, relevance: "  ")
+    assert_not event.valid?
+  end
+
+  test "relevance cannot be empty" do
+    event = FactoryBot.build(:event, relevance: "")
+    assert_not event.valid?
+  end
+
+  test "summary cannot be blank" do
+    event = FactoryBot.build(:event, summary: "  ")
+    assert_not event.valid?
+  end
+
+  test "summary cannot be empty" do
+    event = FactoryBot.build(:event, summary: "")
+    assert_not event.valid?
+  end
+
+  test "cbd_relation cannot be blank" do
+    event = FactoryBot.build(:event, cbd_relation: "  ")
+    assert_not event.valid?
+  end
+
+  test "cbd_relation cannot be empty" do
+    event = FactoryBot.build(:event, cbd_relation: "")
+    assert_not event.valid?
+  end
+
+  test "start date must be before or equal to end date" do
+    event1 = FactoryBot.build(:event, title: "Event 1", start_date: Date.new(2017, 1, 1), end_date: Date.new(2017, 1, 1))
+    event2 = FactoryBot.build(:event, title: "Event 2", start_date: Date.new(2019, 1, 1), end_date: Date.new(2018, 1, 1))
+    assert event1.valid?
+    assert_not event2.valid?
+  end
+
   test "event timeline json should be correct" do
     event = FactoryBot.create(:event, title: "Event 1")
     organiser1 = FactoryBot.create(:organiser, name:"CBD Secretariat")

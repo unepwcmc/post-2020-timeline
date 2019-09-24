@@ -1,13 +1,20 @@
 class Event < ApplicationRecord
   has_and_belongs_to_many :organisers, class_name: 'Organiser', join_table: 'event_organisers'
   has_and_belongs_to_many :categories, class_name: 'Category', join_table: 'event_categories'
-  validates :title, presence: true
+  validates :title, uniqueness: true, presence: true
+  validate :end_date_after_start_date
+  validates :cbd_relation, presence: true
+  validates :location, presence: true
+  validates :summary, presence: true
+  validates :relevance, presence: true
+
+  accepts_nested_attributes_for :organisers, :categories
 
   def self.filters_to_json
     events = Event.all.order(id: :asc)
     unique_categories = Category.pluck(:name).compact.uniq.sort
     unique_organisers = Organiser.pluck(:name).compact.uniq.sort
-    unique_cbd_relations = events.pluck(:cbd_relation).compact.uniq.sort.select {|i| !i.blank? }
+    unique_cbd_relations = events.pluck(:cbd_relation).compact.uniq.sort.select {|i| !(i.blank? || i=="N/A") }
     unique_cbd_relations.insert(0, "Show all")
     unique_cbd_relations.delete("Other relevance")
 
@@ -104,6 +111,15 @@ class Event < ApplicationRecord
   end
 
   private
+
+  def end_date_after_start_date
+    # if either start_date or end_date are blank we return true as we cannot compare the two
+    return true if start_date.blank? || end_date.blank?
+
+    if start_date > end_date
+      errors.add(:start_date, "must be before or equal to the end date")
+    end
+  end
 
   def self.post_2020_website
     "http://www.google.com"
