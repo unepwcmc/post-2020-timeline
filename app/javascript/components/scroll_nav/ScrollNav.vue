@@ -36,6 +36,12 @@
       }
     },
 
+    computed: {
+      isIE () {
+        return Boolean(window.navigator.userAgent.match(/(MSIE|Trident)/))
+      }
+    },
+
     mounted () {
       // set the initial window width
       this.windowWidth = window.innerWidth
@@ -77,8 +83,13 @@
       // link that has been clicked
       scroll (year) {
         const offset = document.getElementById('year-' + year).offsetTop
-        
-        window.scrollTo({ top: offset - this.triggerOffset, behavior: 'smooth' })
+        const scrollTo = offset - this.triggerOffset
+
+        if (this.isIE) {
+          window.scrollTo(0, scrollTo)
+        } else {
+          window.scrollTo({ top: scrollTo, behavior: 'smooth' })
+        }
       },
 
       // add scroll magic event listener for each nav item
