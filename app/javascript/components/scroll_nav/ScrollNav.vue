@@ -16,9 +16,12 @@
 <script>
   import ScrollMagic from 'scrollmagic'
   import { eventHub } from '../../home.js'
+  import mixinScroll from '../../mixins/scroll'
 
   export default {
     name: 'scroll-nav',
+
+    mixins: [mixinScroll],
 
     props: {
       navArray: {
@@ -33,12 +36,6 @@
         navY: 0,
         triggerOffset: 0,
         windowWidth: 0
-      }
-    },
-
-    computed: {
-      isIE () {
-        return Boolean(window.navigator.userAgent.match(/(MSIE|Trident)/))
       }
     },
 
@@ -85,11 +82,7 @@
         const offset = document.getElementById('year-' + year).offsetTop
         const scrollTo = offset - this.triggerOffset
 
-        if (this.isIE) {
-          window.scrollTo(0, scrollTo)
-        } else {
-          window.scrollTo({ top: scrollTo, behavior: 'smooth' })
-        }
+        this.scrollTo({ top: scrollTo, behavior: 'smooth' })
       },
 
       // add scroll magic event listener for each nav item

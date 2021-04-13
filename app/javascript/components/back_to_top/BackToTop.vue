@@ -6,9 +6,12 @@
 
 <script>
   import { eventHub } from '../../home.js'
+  import mixinScroll from '../../mixins/scroll'
 
   export default {
     name: 'back-to-top',
+
+    mixins: [mixinScroll],
 
     created () {
       eventHub.$on('backToTop', this.scroll)
@@ -18,7 +21,7 @@
       scroll (behavior = 'instant') {
         const currentEvent = this.$store.state.filters.currentEvent
 
-        window.scrollTo({ top: currentEvent, behavior: behavior })
+        this.scrollTo({ top: currentEvent, behavior: behavior })
       }
     }
   }  
