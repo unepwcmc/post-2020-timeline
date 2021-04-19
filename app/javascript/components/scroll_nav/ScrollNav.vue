@@ -16,9 +16,12 @@
 <script>
   import ScrollMagic from 'scrollmagic'
   import { eventHub } from '../../home.js'
+  import mixinScroll from '../../mixins/scroll'
 
   export default {
     name: 'scroll-nav',
+
+    mixins: [mixinScroll],
 
     props: {
       navArray: {
@@ -77,8 +80,9 @@
       // link that has been clicked
       scroll (year) {
         const offset = document.getElementById('year-' + year).offsetTop
-        
-        window.scrollTo({ top: offset - this.triggerOffset, behavior: 'smooth' })
+        const scrollTo = offset - this.triggerOffset
+
+        this.scrollTo({ top: scrollTo, behavior: 'smooth' })
       },
 
       // add scroll magic event listener for each nav item
